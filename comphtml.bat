@@ -1,0 +1,1 @@
+py "script\html_to_c.py" "web\welcome.html" "code\web"

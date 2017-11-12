@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Initial Configuration </title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        html {
+            font-family: "Lucida Sans", sans-serif;
+        }
+        .row::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+        .form {
+        }
+        .txtinput {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 30px;
+            font-size: 18px;
+            font-family: "Consolas", sans-serif;
+            color: #596264;
+        }
+        .inputlbl {
+            padding: 15px;
+            font-size: 24px;
+            font-family: "Consolas", sans-serif;
+        }
+        .header {
+            background-color: #ff2f3b;
+            text-align: center;
+            color: #ffffff;
+            padding: 15px;
+        }
+        .button {
+            width: 100%;
+            padding: 15px;
+            background-color: white;
+            color: #ff6910;
+            text-align: center;
+            border: 1px solid #ff6910;
+            border-radius: 5px;
+            font-size: 24px;
+        }
+        .button:hover {
+            background-color: #ff6910;
+            color: white;
+            transition-duration: 0.5s;
+        }
+        /* For mobile phones: */
+        [class*="col-"] {
+            float: left;
+            padding: 15px;
+            width: 100%;
+        }
+        @media only screen and (min-width: 768px) {
+            /* For desktop: */
+            .col-1 {width: 8.33%;}
+            .col-2 {width: 16.66%;}
+            .col-3 {width: 25%;}
+            .col-4 {width: 33.33%;}
+            .col-5 {width: 41.66%;}
+            .col-6 {width: 50%;}
+            .col-7 {width: 58.33%;}
+            .col-8 {width: 66.66%;}
+            .col-9 {width: 75%;}
+            .col-10 {width: 83.33%;}
+            .col-11 {width: 91.66%;}
+            .col-12 {width: 100%;}
+        }
+    </style>
+
+</head>
+<body>
+
+<div class="header col-12">
+<h1>Welcome to the configuration page!</h1>
+</div>
+
+<div class="row">
+    <div class="col-3"></div>
+    <div class="col-6">
+        <form action="/connect_wlan" method="post" class="form">
+            <label class="inputlbl" for="WlanName">WLAN Name</label>
+            <input class="txtinput" type="text" name="WlanName" id="WlanName" >
+            <label class="inputlbl" for="WlanPassword">Password</label>
+            <input class="txtinput" type="password" name="WlanPassword" id="WlanPassword" >
+            <input class="button" type="submit" value="Submit">
+        </form>
+    </div>
+    <div class="col-3"></div>
+</div>
+</body>
+</html>
