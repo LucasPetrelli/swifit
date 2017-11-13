@@ -24,6 +24,7 @@ MODULES	= code/driver \
 			code/adapter/udp_adapter \
 			code/adapter/spiffs_adapter \
 			code/adapter/http_adapter \
+			code/adapter/system_adapter \
 			code/module/webserver \
 			code/testing/testsocket \
 			code/testing/testgpio \
@@ -31,7 +32,7 @@ MODULES	= code/driver \
 			code/testing/testhttp \
 			code/application/wifi_task \
 			code 
-LIBS	= gcc c hal phy pp net80211 wpa crypto main freertos lwip minic smartconfig espconn spiffs
+LIBS	= gcc c hal phy pp net80211 wpa mirom json crypto main freertos lwip minic smartconfig espconn spiffs
 
 # Root includes
 include	common_rtos.mk

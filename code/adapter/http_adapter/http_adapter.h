@@ -15,6 +15,14 @@
 #include "debug_adapter.h"
 #include "http_types.h"
 
+//#define HTTP_DEBUG
+
+#ifdef HTTP_DEBUG
+#define LOG_HTTP(args...) LOG_DEBUG(args);
+#else
+#define LOG_HTTP(args...) {do {} while(0);}
+#endif
+
 /**
  * \defgroup adapter ESP8266 Adapter APIs
  * @brief ESP8266 SDK adaptation for the project

@@ -125,29 +125,6 @@ void vWifiInitMDNS()
 	struct ip_info ipconfig;
 	wifi_get_ip_info(STATION_IF, &ipconfig);
 
-//	struct mdns_info* info = (struct mdns_info*)zalloc(sizeof(struct mdns_info));
-
-
-	mDNSresp_init(5, 12000);
-	mDNSresp_addhost("testesp.local",&ipconfig.ip);
-
-//	info.host_name = "test";
-//	info.ipAddr = ipconfig.ip.addr; //ESP8266 Station IP
-//	info.server_name = "webserver";
-//	info.server_port = 80;
-//	info.txt_data[0] = "version = now";
-//	info.txt_data[1] = "user1 = data1";
-//	info.txt_data[2] = "user2 = data2";
-//	espconn_mdns_init(&info);
-//	espconn_mdns_server_register();
-//	espconn_mdns_set_hostname("trial");
-//	espconn_mdns_enable();
-//	LOG_DEBUG("mDNS ip: %u.%u.%u.%u",
-//			(info.ipAddr>>0)&0xFF,
-//			(info.ipAddr>>8)&0xFF,
-//			(info.ipAddr>>16)&0xFF,
-//			(info.ipAddr>>24)&0xFF);
-
-//	free(info);
-
+	mDNSresp_init(0, 0xFFFF);
+	mDNSresp_addhost("swifit.local",&ipconfig.ip);
 }

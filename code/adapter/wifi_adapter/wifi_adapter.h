@@ -42,7 +42,7 @@
  * @{
  */
 
-
+tsWifiControl sWifiControl; /**< Main WIFI control structure */
 
 //-------------------------------------------------------------------------------------------------
 /**
@@ -117,12 +117,15 @@ void vWifiStartAP();
 
 //-------------------------------------------------------------------------------------------------
 /**
- * @brief		Set the host name of the station
+ * Sets the hostname of the device to be reported to the modem
+ * @param zHostname null-terminated string name of the device
  */
 void vWifiSetHostname(char* zHostname);
 //-------------------------------------------------------------------------------------------------
 
-
+/**
+ * Initialize the mDNS responder
+ */
 void vWifiInitMDNS();
 
 /**

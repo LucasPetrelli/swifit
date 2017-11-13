@@ -20,7 +20,7 @@ void vHTTPTask(void *pvParameters)
 	// If HTTP tcp socket weren't allocated, delete the task
 	if (sHTTPControl.server == NULL)
 	{
-		LOG_DEBUG("Failed to allocate http server socket!");
+		LOG_HTTP("Failed to allocate http server socket!");
 		vTaskDelete(NULL);
 	}
 
@@ -32,7 +32,7 @@ void vHTTPTask(void *pvParameters)
     {
     	// Wait for a connection
     	err_t eErr = netconn_accept(sHTTPControl.server, &sHTTPControl.client);
-    	LOG_DEBUG("Got connection!");
+    	LOG_DEBUG("Got HTTP connection!");
     	if (eErr == ERR_OK)
     	{
     		// Read the incoming data

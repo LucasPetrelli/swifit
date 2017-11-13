@@ -97,6 +97,7 @@ unsigned ICACHE_FLASH_ATTR char * encodeResp(struct ip_addr * addr, char *name, 
 
         data[2] = 0x84;
         data[7] = 1;
+        data[9] = 1;
 
         unsigned char *p = data+12;
         char *np = name;
@@ -171,51 +172,50 @@ void ICACHE_FLASH_ATTR sendOne(struct _host *h)
 }
 void ICACHE_FLASH_ATTR decodeQuery(unsigned char *data)
 {
-        if (data[0] != 0 || data[1] != 0 || data[2] != 0 || data[3] != 0) return;  // only queries
+	if (data[0] != 0 || data[1] != 0 || data[2] != 0 || data[3] != 0) return;  // only queries
 
-        int qcount = data[5]; // purposely ignore qcount > 255
-        unsigned char *p = data+12;
-        char *name;
-        int len;
-        while(qcount-- > 0)
-        {
-                if (*p == 0xc0) // pointer
-                {
-                        name = decode_name_strings(data+p[1],&len);
-                        p += 2;
-                }
-                else
-                {
-                        name = decode_name_strings(p,&len);
-                        p += len+1;
-                }
-                int qtype = p[0] * 256 + p[1];
-                int qclass = p[2] * 256 + p[3];
-                p += 4;
-#ifdef MDNSRESP_DEBUG
-		printf ("decoded name  %s qtype=%d qclass=%d\n",name,qtype, qclass);
-#endif
+	int qcount = data[5]; // purposely ignore qcount > 255
+	unsigned char *p = data+12;
+	char *name;
+	int len;
+	while(qcount-- > 0)
+	{
+		if (*p == 0xc0) // pointer
+		{
+			name = decode_name_strings(data+p[1],&len);
+			p += 2;
+		}
+		else
+		{
+			name = decode_name_strings(p,&len);
+			p += len+1;
+		}
+		int qtype = p[0] * 256 + p[1];
+		int qclass = p[2] * 256 + p[3];
+		p += 4;
+		#ifdef MDNSRESP_DEBUG
+			printf ("decoded name  %s qtype=%d qclass=%d\n",name,qtype, qclass);
+		#endif
 		if (qtype == 1 && (qclass & 0x7fff) == 1)
 		{
 			struct _host *h;
 			int i;
 			for (h = hosts, i = 0; i < nhosts; i++, h++)
 			{
-#ifdef MDNSRESP_DEBUG
-				printf("[%i]comparing with %s\n", i, h->hostname);
-#endif
+				#ifdef MDNSRESP_DEBUG
+					printf("[%i]comparing with %s\n", i, h->hostname);
+				#endif
 				if (h->hostname && (strcmp(name,h->hostname) == 0))
 				{
-#ifdef MDNSRESP_DEBUG
-					printf("its %s!\n",h->hostname);
-#endif
+					#ifdef MDNSRESP_DEBUG
+						printf("its %s!\n",h->hostname);
+					#endif
 					sendOne(h);
 				}
 			}
-			os_free(name);
 		}
+		os_free(name);
 	}
-
 	return;
 }
 

@@ -16,9 +16,11 @@
 #include "testsocket.h"
 #include "testspiffs.h"
 #include "testhttp.h"
+
 #include "wifi_adapter.h"
 #include "udp_adapter.h"
 #include "spiffs_adapter.h"
+#include "system_adapter.h"
 
 #include "webserver.h"
 
@@ -87,9 +89,11 @@ void user_init(void)
 
     printf("Init\n\n\n");
 
-	xQueueHandle xQueueFromUDPToRxHandler = xQueueCreate(10, sizeof(tsMemQueueMessage));
-	eUDPInit(xQueueFromUDPToRxHandler);
+    vSystemInit();
+//	xQueueHandle xQueueFromUDPToRxHandler = xQueueCreate(10, sizeof(tsMemQueueMessage));
+//	eUDPInit(xQueueFromUDPToRxHandler);
     vSetupWebserver();
     xTaskCreate(&vTaskWifi, "Wifi Task", 512, NULL, 2, NULL);
+    xTaskCreate(&vTaskSystemHeapReport, "Heap Report", configMINIMAL_STACK_SIZE, NULL, 2, NULL);
 }
 

@@ -9,9 +9,18 @@
 #ifndef CODE_MODULE_WEBSERVER_WEBSERVER_H_
 #define CODE_MODULE_WEBSERVER_WEBSERVER_H_
 
-#include "http_adapter.h"
+#define WEBSV_VERBOSE
+#ifdef WEBSV_VERBOSE
+#define LOG_WEB(args...) LOG_DEBUG(args)
+#else
+#define LOG_WEB(args...) { do {} while(0); }
+#endif
+
 #include "webserver_types.h"
+#include "welcome.html.h"
+#include "http_adapter.h"
 #include "debug_adapter.h"
+#include "cJSON.h"
 
 /**
  * @Brief Setup Webserver functionality
@@ -33,6 +42,13 @@ void vRequestHandler(char* zRequest);
  */
 tsHttpRequest sGetRequest(char* zRequest);
 
+
+/**
+ * @brief reads the decoded request data,
+ * @param sRequest decoded request structure
+ * @return the pointer to the response (in chars)
+ */
+char* pcHandleDecodedRequest(tsHttpRequest sRequest);
 
 
 #endif /* CODE_MODULE_WEBSERVER_WEBSERVER_H_ */

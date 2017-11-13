@@ -18,7 +18,6 @@ tsUDPControl sUDPControl;
 teException eUDPInit(xQueueHandle xQueueFromUDPToRxHandle)
 {
 	teException eException = EX_SUCCESSFUL;
-    espconn_init();
 
     // Init the local message buffer
     sUDPControl.sUDPRxBuffer.u8Length = SIZE_OF_UDP_MESSAGE_BUFFER;
