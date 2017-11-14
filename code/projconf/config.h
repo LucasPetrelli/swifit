@@ -10,4 +10,14 @@
 
 #define DEBUG
 
+#define SWITCH_PROD 	((uint8) 1)
+#define PLUG_PROD		((uint8) 2)
+
+/**
+ * Define SWITCH for plug product
+ * Define PLUG for plug product
+ */
+#define TARGET_PRODUCT PLUG_PROD
+
+
 #endif /* CONFIG_H_ */

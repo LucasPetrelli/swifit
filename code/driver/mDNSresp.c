@@ -23,7 +23,7 @@ extern int printf(const char *fmt, ...);
 
 #include "driver/mDNSresp.h"
 
-//#define MDNSRESP_DEBUG
+// #define MDNSRESP_DEBUG
 
 static int mDNSinitted = 0;
 static int ttl = 0;
@@ -196,7 +196,7 @@ void ICACHE_FLASH_ATTR decodeQuery(unsigned char *data)
 		#ifdef MDNSRESP_DEBUG
 			printf ("decoded name  %s qtype=%d qclass=%d\n",name,qtype, qclass);
 		#endif
-		if (qtype == 1 && (qclass & 0x7fff) == 1)
+		if ((qtype == 1 || qtype == 28) && (qclass & 0x7fff) == 1)
 		{
 			struct _host *h;
 			int i;
@@ -275,6 +275,7 @@ int ICACHE_FLASH_ATTR mDNSresp_addhost(char *hn, struct ip_addr* ip)
 	h->ip.addr = ip->addr;
 	h->mdnsresp = encodeResp(ip, hn, &(h->len));
 #ifdef MDNSRESP_DEBUG
+	printf("hostname %s\n", h->hostname);
 	hexdump("addhost",hosts,sizeof(hosts));
 #endif
 	return(0);

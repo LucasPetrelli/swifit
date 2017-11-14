@@ -10,6 +10,8 @@
 #include "c_types.h"
 #include "exceptions.h"
 #include "debug_adapter.h"
+#include "freertos/FreeRTOS.h"
+
 
 #define BASICTYPES_H_
 
