@@ -25,6 +25,7 @@
 #include "webserver.h"
 
 #include "wifi_task.h"
+#include "sensor_task.h"
 
 
 
@@ -95,5 +96,7 @@ void user_init(void)
     vSetupWebserver();
     xTaskCreate(&vTaskWifi, "Wifi Task", 512, NULL, 2, NULL);
     xTaskCreate(&vTaskSystemHeapReport, "Heap Report", configMINIMAL_STACK_SIZE, NULL, 2, NULL);
+    xTaskCreate(&vSensorTask, "Sensor", configMINIMAL_STACK_SIZE, NULL, 2, NULL);
+
 }
 

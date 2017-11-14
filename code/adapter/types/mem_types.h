@@ -8,6 +8,28 @@
 
 #ifndef CODE_MODULE_MEMORY_MEM_TYPES_H_
 #define CODE_MODULE_MEMORY_MEM_TYPES_H_
+/**
+ * \addtogroup adapter
+ * @{
+ */
+
+/**
+ * \addtogroup types
+ * @{
+ */
+
+
+/**
+ * \defgroup memory Memory
+ * @brief definition of basic memory data types (e.g. Queue types)
+ */
+
+/**
+ * \addtogroup memory
+ * @{
+ */
+
+
 
 /**
  * @brief Queue message type enumeration
@@ -16,6 +38,7 @@
  */
 typedef enum {
 	UDP_MESSAGE_RX,			/**< Received UDP message queue item */
+	SENSOR_MESSAGE,			/**< Sensor status message */
 	N_QUEUE_MSG_TYPES,		/**< Queue item types count */
 } teMemQueueMessageType;
 
@@ -29,4 +52,15 @@ typedef struct {
 	void* pvData;					/**< Queue item data */
 } tsMemQueueMessage;
 
+/**
+ * @}
+ */
+
+/**
+ * @}
+ */
+
+/**
+ * @}
+ */
 #endif /* CODE_MODULE_MEMORY_MEM_TYPES_H_ */

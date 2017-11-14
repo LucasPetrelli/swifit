@@ -11,6 +11,28 @@
 #include "debug_adapter.h"
 
 /**
+ * \addtogroup adapter
+ * @{
+ */
+
+/**
+ * \addtogroup types
+ * @{
+ */
+
+/**
+ * \defgroup exceptions Exceptions
+ * @brief definition of the main exception enumeration
+ */
+
+/**
+ * \addtogroup exceptions
+ * @{
+ */
+
+
+
+/**
  * @brief Macro for setting an exception while logging the action
  */
 #define SET_EXCEPTION( EXC ) { eException=(EXC); LOG_DEBUG("[L %u] EXCEPTION: " #EXC , __LINE__); }
@@ -33,5 +55,18 @@ typedef enum {
 	EX_FILESYSTEM_RD_ERROR = 0x31,			/**< Attempt to read from a file error */
 	EX_FILESYSTEM_WR_ERROR = 0x32			/**< Attempt to write to file error */
 } teException;
+
+
+/**
+ * @}
+ */
+
+/**
+ * @}
+ */
+
+/**
+ * @}
+ */
 
 #endif /* EXCEPTIONS_H_ */

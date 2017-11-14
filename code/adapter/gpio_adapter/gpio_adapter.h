@@ -99,13 +99,18 @@ typedef enum {
 	GPIO_15,
 } teGPIONumber;
 
+/**
+ * @brief Macro that transforms a teGPIONumber into a teGPIOBit
+ */
+#define GPIO_BIT( x ) (teGPIOBit) (1<<(uint8)(x))
+
 
 /**
  * @Brief GPIO input value enumerator
  */
 typedef enum {
-	LOW,
-	HIGH,
+	LOW, //!< LOW
+	HIGH,//!< HIGH
 } teGPIOValue;
 
 /**
