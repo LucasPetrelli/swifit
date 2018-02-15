@@ -107,7 +107,8 @@
     </style>
 
     <script>
-        function sendData() {
+        function sendAPData()
+        {
             var xhttp = new XMLHttpRequest();
             wlan = document.getElementById("WlanName").value;
             pswd = document.getElementById("WlanPSWD").value;
@@ -117,13 +118,54 @@
             };
             content = JSON.stringify(data);
             xhttp.onreadystatechange = function () {
-                if (this.readyState == 4 && this.status == 200) {
+                if (this.readyState === 4 && this.status === 200) {
                     document.getElementById("status").innerHTML = this.responseText;
+                    requestDeviceReset()
                 }
             };
             xhttp.open("POST", "/cgi/connect_wlan", true);
             xhttp.send(content);
         }
+
+        function requestStatus()
+        {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState === 4 && this.status === 200) {
+                    document.getElementById("status").innerHTML = this.responseText;
+                }
+            };
+            xhttp.open("GET", "/cgi/status", true);
+            xhttp.send();
+        }
+
+        function requestConfigMessage()
+        {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState === 4 && this.status === 200) {
+                    document.getElementById("config_message").innerHTML = this.responseText;
+                }
+            };
+            xhttp.open("GET", "/cgi/config_message", true);
+            xhttp.send();
+        }
+
+        function requestDeviceReset()
+        {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState === 4 && this.status === 200) {
+                    document.getElementById("config_message").innerHTML = "Device restarting...";
+                }
+            };
+            xhttp.open("GET", "/cgi/device_restart", true);
+            xhttp.send();
+        }
+
+
+
+        requestConfigMessage()
     </script>
 
 </head>
@@ -134,8 +176,9 @@
 </div>
 
 <div class="row">
-    <div class="col-4 info" id="status">
-        <p>Enter your home WLAN's SSID and password.</p>
+    <div class="col-4 info">
+        <p id="status">Enter your home WLAN's SSID and password.</p>
+        <p id="config_message"></p>
     </div>
     <div class="col-4">
         <form action="" class="form">
@@ -144,7 +187,7 @@
             <label class="inputlbl" for="WlanPassword">Password</label>
             <input class="txtinput" type="password" name="WlanPassword" id="WlanPSWD" >
         </form>
-        <button class="button" type="submit" onclick="sendData()">Submit</button>
+        <button class="button" type="submit" onclick="sendAPData()">Submit</button>
     </div>
 </div>
 </body>

@@ -5,29 +5,33 @@
  *
  * @brief
  */
-
-#include "webserver.h"
 #include <stdio.h>
 #include <stdlib.h>
 
-const char* zHttpHeaderOK = {
-		"HTTP/1.1 200 OK\r\n"
-		"Content-type: text/html\r\n\r\n"
-		""
-};
+#include "webserver.h"
+#include "configuration.h"
+
 
 cJSON_Hooks sJSONHooks ;
 
 void vSetupWebserver()
 {
+	// Set the callback that handles an received HTTP request
 	vHTTPSetCallback((vHTTPRequestCallback) vRequestHandler);
+
+	// Launch the HTTP listener task
+	// It calls the callback configured above when an HTTP request is received
     xTaskCreate(&vHTTPTask, "http_server", 512, NULL, 2, NULL);
 }
 
 void vRequestHandler(char* zRequest)
 {
 	LOG_WEB("New request!\n%s", zRequest);
+
+	// Parses the raw request into a structure with data split
     tsHttpRequest sParsedRequest = sGetRequest(zRequest);
+
+    // Handles the request
     char* pcResponse = pcHandleDecodedRequest(sParsedRequest);
     if (pcResponse)
     {
@@ -40,54 +44,64 @@ char* pcHandleDecodedRequest(tsHttpRequest sRequest)
 {
 	char* pcResponse = NULL;
 
-	if (strncmp(sRequest.pcURIData, URI_CGI, strlen(URI_CGI))==0)
+	// If no URI was requested, answer with the home page
+	// The function looks into the current mode and selects the appropriate page
+	if (sRequest.u16URILen == 1)
+	{
+		pcResponse = zGetHomepage();
+	}
+	else if (strncmp(sRequest.pcURIData, URI_CGI, strlen(URI_CGI))==0)
 	{
 		LOG_WEB("CGI requested");
 		char* p = sRequest.pcURIData + strlen(URI_CGI);
-		if (strncmp(p, URI_CGI_CONFIG_WLAN, strlen(URI_CGI_CONFIG_WLAN))==0)
+		char* zCGI = (char*)zalloc(sRequest.u16URILen - strlen(URI_CGI) + 1);
+		char* data = (char*)zalloc(sRequest.u16PostLen + 1);
+		strncpy(zCGI, p, sRequest.u16URILen - strlen(URI_CGI));
+		strncpy(data, sRequest.pcPostData, sRequest.u16PostLen);
+
+		LOG_WEB("%s requested\nData: %s", zCGI, data);
+		if (strncmp(p, zConfigWlanCGI, strlen(zConfigWlanCGI))==0)
 		{
-			char* data = (char*)zalloc(sRequest.u16PostLen + 1);
-			strncpy(data, sRequest.pcPostData, sRequest.u16PostLen);
-			LOG_WEB("%s requested\nData: %s", URI_CGI_CONFIG_WLAN, data);
-
-
-			cJSON* sObj = cJSON_Parse(data);
-			if (!sObj)
-			{
-				LOG_WEB("Error parsing JSON ---- %s", cJSON_GetErrorPtr());
-			}
-			char* d = cJSON_Print(sObj);
-
-			free(data);
-			LOG_WEB("json coded then uncoded:  %s", d);
-
-			free(d);
-			cJSON_Delete(sObj);
-
-
-			const char* acResponseBody = "Response ok!";
-			uint32 u32ResponseLen = strlen(zHttpHeaderOK)+strlen(acResponseBody)+1;
-			pcResponse = (char*)zalloc(u32ResponseLen);
-			strcat(pcResponse, zHttpHeaderOK);
-			strcat(pcResponse, acResponseBody);
-			LOG_WEB("\n%s", pcResponse);
+			pcResponse = zHandlerConfigWlan(data);
 		}
-		else
+		else if (strncmp(p, zStatusCGI, strlen(zStatusCGI))==0)
 		{
-			pcResponse = (char*)zalloc(strlen(acWelcomeHtml));
-			strcat(pcResponse, acWelcomeHtml);
+			pcResponse = zHandlerStatus(data);
 		}
-	}
-	else
-	{
-		pcResponse = (char*)zalloc(strlen(acWelcomeHtml));
-		strcat(pcResponse, acWelcomeHtml);
+		else if (strncmp(p, zConfigMessageCGI, strlen(zConfigMessageCGI))==0)
+		{
+			pcResponse = zHandlerConfigMessage(data);
+		}
+		else if (strncmp(p, zDeviceRestartCGI, strlen(zDeviceRestartCGI))==0)
+		{
+			pcResponse = zHandlerDeviceRestart(data);
+		}
+		free(zCGI);
+		free(data);
 	}
 
 pcHandleDecodedRequest_exit:
 	return pcResponse;
 }
 
+char* zGetHomepage()
+{
+	char* pcHomepage = NULL;
+	tsConfiguration* psDeviceConfig = psConfigurationGet();
+	if (psDeviceConfig->eMode == CONFIG_MODE)
+	{
+		pcHomepage = (char*)zalloc(strlen(acWelcome_configHtml));
+		strcat(pcHomepage, acWelcome_configHtml);
+	}
+	else
+	{
+		// Using the config webpage as placeholder
+		pcHomepage = (char*)zalloc(strlen(acWelcome_configHtml));
+		strcat(pcHomepage, acWelcome_configHtml);
+	}
+
+	return pcHomepage;
+}
 
 tsHttpRequest sGetRequest(char* zRequest)
 {
@@ -140,14 +154,14 @@ tsHttpRequest sGetRequest(char* zRequest)
 		sParsedRequest.u16PostLen = 0;
 	}
 
-	LOG_DEBUG(
-		"\nRequest parsed:\n"
-		"Type: %i\n"
-		"URI Len: %u\n"
-		"Data Len: %u\n",
-		sParsedRequest.eType,
-		sParsedRequest.u16URILen,
-		sParsedRequest.u16PostLen
-	);
+//	LOG_DEBUG(
+//		"\nRequest parsed:\n"
+//		"Type: %i\n"
+//		"URI Len: %u\n"
+//		"Data Len: %u\n",
+//		sParsedRequest.eType,
+//		sParsedRequest.u16URILen,
+//		sParsedRequest.u16PostLen
+//	);
 	return sParsedRequest;
 }

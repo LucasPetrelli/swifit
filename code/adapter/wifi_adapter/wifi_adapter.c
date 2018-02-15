@@ -5,7 +5,7 @@ teException eWifiConnectToAP(char* pcSsid, char* pcPassword)
 	teException eException = EX_SUCCESSFUL;
     struct station_config* sConfig = (struct station_config*)zalloc(sizeof(struct station_config));
 
-	espconn_mdns_close();
+	//espconn_mdns_close();
 
     sprintf(sConfig->ssid, pcSsid);
     sprintf(sConfig->password, pcPassword);
@@ -28,14 +28,46 @@ end_WifiConnectToAP:
 	return eException;
 }
 
-teException eWifiWaitToBeConnected()
+teException eWifiWaitToBeConnected(uint8_t u8Timeout)
 {
 	teException eException = EX_SUCCESSFUL;
     STATION_STATUS eStatus;
     do
     {
+    	vTaskDelay(1000/portTICK_RATE_MS);
     	eStatus = wifi_station_get_connect_status();
+    	LOG_DEBUG("Querying connection status [%u]", eStatus);
+
+    	u8Timeout -= 1;
+    	if (u8Timeout == 0){
+    		break;
+    	}
+
     } while (eStatus != STATION_GOT_IP);
+
+    if (eStatus != STATION_GOT_IP)
+    {
+    	LOG_DEBUG("Connection timeout [%u]", eStatus);
+    	switch (eStatus)
+    	{
+    	case STATION_WRONG_PASSWORD:
+    	{
+    		SET_EXCEPTION(EX_WIFI_WRONG_PASSWORD);
+    		break;
+    	}
+    	case STATION_NO_AP_FOUND:
+    	{
+    		SET_EXCEPTION(EX_WIFI_AP_NOT_FOUND);
+    		break;
+    	}
+    	default:
+    	{
+    		SET_EXCEPTION(EX_GENERIC_FAIL);
+    		break;
+    	}
+    	}
+    }
+
 end_WifiWaitToBeConnected:
 	return eException;
 }
@@ -89,6 +121,8 @@ BOOL bWifiIsWifiConnected()
 void vWifiSetMode(teWifiMode eMode)
 {
 	WIFI_MODE eEspMode = STATION_MODE;
+	wifi_station_set_auto_connect(false);
+	wifi_station_set_reconnect_policy(false);
 	if (eMode == WIFI_AP)
 	{
 		eEspMode = SOFTAP_MODE;

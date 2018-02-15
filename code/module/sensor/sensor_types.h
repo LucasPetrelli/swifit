@@ -35,10 +35,10 @@
  * @brief Sensor type enumeration
  */
 typedef enum {
-	UNASSIGNED,		//!< Sensor not initialized
-	PIR,    		//!< Depicts an PIR sensor
-	SWITCH, 		//!< Depicts a switch
-	N_SENSOR		//!< Type of sensor count
+	INVALID_SENSOR,		//!< Sensor not initialized
+	PIR,    			//!< Depicts an PIR sensor
+	SWITCH, 			//!< Depicts a switch
+	N_SENSOR			//!< Type of sensor count
 } teSensorType;
 
 
@@ -46,8 +46,8 @@ typedef enum {
  * @brief Sensor state depiction
  */
 typedef enum {
-	DEACTIVATED,
-	ACTIVATED
+	UNTRIGGERED,
+	TRIGGERED
 } teSensorState;
 
 /**

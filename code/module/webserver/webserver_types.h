@@ -9,10 +9,11 @@
 #ifndef CODE_WEBSERVER_TYPES_H_
 #define CODE_WEBSERVER_TYPES_H_
 
-#define URI_CGI_CONFIG_WLAN "connect_wlan"
+//#define URI_CGI_CONFIG_WLAN "connect_wlan"
 #define URI_CGI "/cgi/"
 
 #include "basictypes.h"
+#include "http_ok.h"
 
 typedef enum {
 	HTTP_GET,

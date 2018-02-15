@@ -10,10 +10,21 @@
 #define CODE_ADAPTER_DEBUG_ADAPTER_DEBUG_ADAPTER_H_
 
 #include "config.h"
+#include "freertos/FreeRTOS.h"
+#include "freertos/semphr.h"
+
+
+extern xSemaphoreHandle xPrintSemaphore;
+
+
 #ifdef DEBUG
-	#define LOG_DEBUG(args...) {printf("[%s]", __FILE__);printf(args);printf("\n");}
+	#define LOG_DEBUG(args...) {xSemaphoreTake(xPrintSemaphore, portMAX_DELAY);  printf("[%s]", __FILE__);printf(args);printf("\n"); xSemaphoreGive(xPrintSemaphore);}
 #else
 	#define LOG_DEBUG(args...) {do {} while(0);}
 #endif
+
+
+void vDebugInit(void);
+
 
 #endif /* CODE_ADAPTER_DEBUG_ADAPTER_DEBUG_ADAPTER_H_ */

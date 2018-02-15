@@ -25,14 +25,16 @@ MODULES	= code/driver \
 			code/adapter/spiffs_adapter \
 			code/adapter/http_adapter \
 			code/adapter/system_adapter \
+			code/module/webserver/handlers \
 			code/module/webserver \
 			code/module/sensor \
-			code/testing/testsocket \
-			code/testing/testgpio \
-			code/testing/testspiffs \
-			code/testing/testhttp \
+			code/module/actuator \
+			code/module/filesystem \
+			code/module/configuration \
 			code/application/wifi_task \
 			code/application/sensor_task \
+			code/application/actuator_task \
+			code/application/platform_task \
 			code 
 LIBS	= gcc c hal phy pp net80211 wpa mirom json crypto main freertos lwip minic smartconfig espconn spiffs
 

@@ -10,14 +10,14 @@
 
 void vSensorTask(void* pvParameters)
 {
-	xQueueHandle xQueueFromSensorToTask= xQueueCreate(10, sizeof(tsMemQueueMessage));
+	xQueueHandle xQueueFromISRToTask = xQueueCreate(10, sizeof(tsMemQueueMessage));
 
-	vSensorInitPlatform(xQueueFromSensorToTask);
+	vSensorInitPlatform(xQueueFromISRToTask);
 
 	while(1)
 	{
 		tsMemQueueMessage *psQueueMesssage = (tsMemQueueMessage *)zalloc(sizeof(tsMemQueueMessage));
-		if (xQueueReceive(xQueueFromSensorToTask ,(const void*) psQueueMesssage, portMAX_DELAY) == pdTRUE)
+		if (xQueueReceive(xQueueFromISRToTask ,(const void*) psQueueMesssage, portMAX_DELAY) == pdTRUE)
 		{
 			tsSensorEvent* psEvent = (tsSensorEvent*) psQueueMesssage->pvData;
 			LOG_DEBUG(

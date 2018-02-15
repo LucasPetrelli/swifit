@@ -19,7 +19,9 @@
  */
 void vSystemInit();
 
-void vTaskSystemHeapReport(void* pvParameters);
+uint32_t u32GetFreeHeap();
+
+void vSystemReset();
 
 
 #endif /* CODE_ADAPTER_SYSTEM_ADAPTER_SYSTEM_ADAPTER_H_ */

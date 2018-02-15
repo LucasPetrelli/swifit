@@ -64,7 +64,7 @@ teException eWifiConnectToAP(char* pcSsid, char* pcPassword);
   *
   * @return    teException
   */
-teException eWifiWaitToBeConnected();
+teException eWifiWaitToBeConnected(uint8_t u8Timeout);
 //-------------------------------------------------------------------------------------------------
 
 //-------------------------------------------------------------------------------------------------

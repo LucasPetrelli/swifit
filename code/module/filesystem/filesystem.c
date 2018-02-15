@@ -27,6 +27,7 @@ teException eReadFromFile(char* zFilename, char* pcData, uint32 u32Len)
 	{
 		SET_EXCEPTION(EX_FILESYSTEM_RD_ERROR);
 	}
+	LOG_DEBUG("Read result: %u", i32ReadResult);
 	vSPIFFSClose(sFile);
 
 eReadFromFile_end:

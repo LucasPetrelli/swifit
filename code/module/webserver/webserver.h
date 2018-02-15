@@ -9,7 +9,7 @@
 #ifndef CODE_MODULE_WEBSERVER_WEBSERVER_H_
 #define CODE_MODULE_WEBSERVER_WEBSERVER_H_
 
-#define WEBSV_VERBOSE
+//#define WEBSV_VERBOSE
 #ifdef WEBSV_VERBOSE
 #define LOG_WEB(args...) LOG_DEBUG(args)
 #else
@@ -17,7 +17,10 @@
 #endif
 
 #include "webserver_types.h"
-#include "welcome.html.h"
+#include "handler_types.h"
+
+#include "welcome_config.html.h"
+
 #include "http_adapter.h"
 #include "debug_adapter.h"
 #include "cJSON.h"
@@ -50,5 +53,8 @@ tsHttpRequest sGetRequest(char* zRequest);
  */
 char* pcHandleDecodedRequest(tsHttpRequest sRequest);
 
+
+
+char* zGetHomepage();
 
 #endif /* CODE_MODULE_WEBSERVER_WEBSERVER_H_ */

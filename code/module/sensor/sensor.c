@@ -16,6 +16,9 @@ tsSensorControl sSensorControl;
 void vSensorInitPlatform(xQueueHandle xQueueFromISRToSensorTask)
 {
 
+
+	PIN_FUNC_SELECT(PERIPHS_IO_MUX_MTCK_U, FUNC_GPIO13);
+	// PIN_FUNC_SELECT(PERIPHS_IO_MUX_SD_DATA3_U, FUNC_GPIO10);
 	vGPIOIntrSetHandler(vSensorHandlerIsr);
 	sSensorControl.xQueueFromISRToTask = xQueueFromISRToSensorTask;
 	if (TARGET_PRODUCT == PLUG_PROD)
@@ -23,19 +26,19 @@ void vSensorInitPlatform(xQueueHandle xQueueFromISRToSensorTask)
 		LOG_DEBUG("Config as PLUG");
 		asSensor[0].u8Id = 1;
 		asSensor[0].eType = PIR;
-		asSensor[0].eGPIOAssigned = GPIO_4;
+		asSensor[0].eGPIOAssigned = GPIO_13;
 		asSensor[0].u8IntId = 0;
 
 		vGPIOSetIOMode(GPIO_BIT(asSensor[0].eGPIOAssigned), GPIO_Input);
 		vGPIOIntrSetTrigger(asSensor[0].eGPIOAssigned, GPIO_INTR_ANYEDGE);
 
 
-		asSensor[1].eType = UNASSIGNED;
+		asSensor[1].eType = INVALID_SENSOR;
 	}
 	else
 	{
-		asSensor[0].eType = UNASSIGNED;
-		asSensor[1].eType = UNASSIGNED;
+		asSensor[0].eType = INVALID_SENSOR;
+		asSensor[1].eType = INVALID_SENSOR;
 	}
 }
 
@@ -54,13 +57,13 @@ void vSensorHandlerIsr(uint32 mask)
 			psEvent->u8Id = asSensor[u8I].u8Id;
 			if (eGpioState == HIGH)
 			{
-				psEvent->eState = ACTIVATED;
-				asSensor[u8I].eState = ACTIVATED;
+				psEvent->eState = TRIGGERED;
+				asSensor[u8I].eState = TRIGGERED;
 			}
 			else
 			{
-				psEvent->eState = DEACTIVATED;
-				asSensor[u8I].eState = DEACTIVATED;
+				psEvent->eState = UNTRIGGERED;
+				asSensor[u8I].eState = UNTRIGGERED;
 			}
 			psMsg->eType = SENSOR_MESSAGE;
 			psMsg->pvData = (void*) psEvent;

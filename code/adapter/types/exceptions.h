@@ -48,6 +48,8 @@ typedef enum {
 	EX_WIFI_CONFIG = 0x10,					/**< Failed to config wifi */
 	EX_WIFI_CONNECT = 0x11,					/**< Failed to connect to the wifi network assigned */
 	EX_WIFI_READ_IP = 0x12,					/**< Failed to read the IP given by the access point */
+	EX_WIFI_AP_NOT_FOUND = 0x13,			/**< Failed to connect due to AP not found */
+	EX_WIFI_WRONG_PASSWORD = 0x14,			/**< Failed to connect due to wrong password */
 
 	EX_UDP_EMPTY_BUFFER = 0x20,				/**< Attempt to pop from empty buffer */
 

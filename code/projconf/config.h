@@ -19,5 +19,7 @@
  */
 #define TARGET_PRODUCT PLUG_PROD
 
+//#define REPROGRAM
+
 
 #endif /* CONFIG_H_ */

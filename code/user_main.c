@@ -13,19 +13,19 @@
 
 #include "driver/gpio.h"
 
-#include "testsocket.h"
-#include "testspiffs.h"
-#include "testhttp.h"
-
 #include "wifi_adapter.h"
 #include "udp_adapter.h"
 #include "spiffs_adapter.h"
 #include "system_adapter.h"
 
 #include "webserver.h"
+#include "configuration.h"
+
 
 #include "wifi_task.h"
 #include "sensor_task.h"
+#include "actuator_task.h"
+#include "platform_task.h"
 
 
 
@@ -88,15 +88,45 @@ void user_init(void)
     char* pcPassword = "Falp24gh";
     char* pcName = "Magitek-Bit-001";
 
-    printf("Init\n\n\n");
 
     vSystemInit();
+    LOG_DEBUG("Init\n\n\n");
+    struct	rst_info	*rtc_info	=	system_get_rst_info();
+    LOG_DEBUG("reset reason:	%x\n",	rtc_info->reason);
+	if	(rtc_info->reason	==	REASON_WDT_RST	||
+		rtc_info->reason	==	REASON_EXCEPTION_RST	||
+		rtc_info->reason	==	REASON_SOFT_WDT_RST)	{
+		if	(rtc_info->reason	==	REASON_EXCEPTION_RST)	{
+
+			LOG_DEBUG("Fatal exception (%d):\n", rtc_info->exccause);
+
+		}
+
+		LOG_DEBUG(
+				"epc1=0x%08x,	"
+				"epc2=0x%08x,	"
+				"epc3=0x%08x,	"
+				"excvaddr=0x%08x,	"
+				"depc=0x%08x\n",
+				rtc_info->epc1,
+				rtc_info->epc2,
+				rtc_info->epc3,
+				rtc_info->excvaddr,
+				rtc_info->depc);//The	address	of	the	last	crash	is	printed,	which	is	used	to	debug	garbled	output.
+	}
+
+    vConfigurationRead();
 //	xQueueHandle xQueueFromUDPToRxHandler = xQueueCreate(10, sizeof(tsMemQueueMessage));
 //	eUDPInit(xQueueFromUDPToRxHandler);
     vSetupWebserver();
     xTaskCreate(&vTaskWifi, "Wifi Task", 512, NULL, 2, NULL);
-    xTaskCreate(&vTaskSystemHeapReport, "Heap Report", configMINIMAL_STACK_SIZE, NULL, 2, NULL);
     xTaskCreate(&vSensorTask, "Sensor", configMINIMAL_STACK_SIZE, NULL, 2, NULL);
+    xTaskCreate(&vActuatorTask, "Actuator", configMINIMAL_STACK_SIZE, NULL, 2, NULL);
+
+    tsPlatformTaskConfiguration* psPlatformTask = (tsPlatformTaskConfiguration*) zalloc (sizeof(tsPlatformTaskConfiguration));
+    psPlatformTask->u32Period = 100;
+    psPlatformTask->u32HeapReportPeriod = 5000;
+    xTaskCreate(&vPlatformTask, "Platform", configMINIMAL_STACK_SIZE, (void*) psPlatformTask, 2, NULL);
 
 }
 

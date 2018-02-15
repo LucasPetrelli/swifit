@@ -12,6 +12,8 @@ flashBatch = r"C:\repo\swifit\flash.bat"
 
 
 os.chdir(os.path.curdir)
+#os.chdir(r'C:\repo\swifit')
+
 if len(sys.argv) > 1 and sys.argv[1] == 'clean':
     try:
         shutil.rmtree('build')
@@ -19,5 +21,9 @@ if len(sys.argv) > 1 and sys.argv[1] == 'clean':
         pass
 else:
     p = subprocess.run([htmlComp])
-    subprocess.run([r"C:\MinGW\bin\mingw32-make.exe", "-f", makeFile])
-    subprocess.run([flashBatch])
+    if p.returncode:
+        exit(p.returncode)
+    p = subprocess.run([r"C:\MinGW\bin\mingw32-make.exe", "-f", makeFile])
+    if p.returncode:
+        exit(p.returncode)
+    p = subprocess.run([flashBatch])

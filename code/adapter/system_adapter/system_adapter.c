@@ -12,15 +12,18 @@ void vSystemInit()
 {
     UART_SetBaudrate(UART0, 115200);
     espconn_init();
+    vDebugInit();
+    vSPIFFSInit();
 }
 
 
-void vTaskSystemHeapReport(void* pvParameters)
+uint32_t u32GetFreeHeap()
 {
-	while (1)
-	{
-		uint32 u32Free = system_get_free_heap_size();
-		LOG_DEBUG("Remaining heap: %u", u32Free);
-		vTaskDelay( 5000/portTICK_RATE_MS );
-	}
+	return system_get_free_heap_size();
+}
+
+
+void vSystemReset()
+{
+	system_restart();
 }

@@ -12,6 +12,7 @@ void vGPIOSetIOMode(uint16 u16GPIOBitfield, teGPIOMode eMode)
 {
 	if (eMode == GPIO_Input)
 	{
+		LOG_DEBUG("Setting %x as %u", u16GPIOBitfield, eMode);
 		GPIO_AS_INPUT(u16GPIOBitfield);
 	} else
 	{
