@@ -37,6 +37,15 @@
  * @{
  */
 
+//#define UDPDEBUG
+
+#ifdef UDPDEBUG
+	#define LOG_UDP(msg) vUDPLog(msg)
+#else
+	#define LOG_UDP(msg) { do {} while(0); }
+#endif
+
+
 //-------------------------------------------------------------------------------------------------
 /**
  * @brief     Does the preparations to work with UDP
@@ -127,6 +136,9 @@ teException eUDPSendData(uint8* u8Ip, uint32 u32Port, tsUDPMessage* psMessage);
 teException eUDPCreateMessage(tsUDPMessage *psBuffer, uint8* pu8Data, uint32 u32Len);
 //-------------------------------------------------------------------------------------------------
 
+
+
+void vUDPLog(tsUDPMessage* psMsg);
 /**
  * @}
  */

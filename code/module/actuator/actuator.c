@@ -8,15 +8,22 @@
 
 #include "actuator.h"
 
+/**
+ * @brief Actuator control structure
+ *
+ * Allocates one structure for each available allocator. This list can be indexed by actuator IDs (teActuatorId)
+ * Only available locally
+ */
 tsActuator asActuator[MAX_ACTUATOR];
 
 void vActuatorInitPlatform()
 {
+	// Call to the GPIO muxes, selecting GPIO as output on the given pins
 	PIN_FUNC_SELECT(PERIPHS_IO_MUX_GPIO4_U, FUNC_GPIO4);
 	PIN_FUNC_SELECT(PERIPHS_IO_MUX_MTMS_U, FUNC_GPIO14);
 	PIN_FUNC_SELECT(PERIPHS_IO_MUX_MTDI_U, FUNC_GPIO12);
 
-	// Configuration of blue LED
+	// Configuration of red LED
 	asActuator[LED_RED].eId = LED_RED;
 	asActuator[LED_RED].eType = LED;
 	asActuator[LED_RED].eGPIOAssigned = GPIO_12;
@@ -25,7 +32,7 @@ void vActuatorInitPlatform()
 	vGPIOSetIOMode(GPIO_BIT(asActuator[LED_RED].eGPIOAssigned), GPIO_Output);
 	vActuatorDeactivate(&asActuator[LED_RED]);
 
-	// Configuration of GREEN LED
+	// Configuration of blue LED
 	asActuator[LED_BLUE].eId = LED_BLUE;
 	asActuator[LED_BLUE].eType = LED;
 	asActuator[LED_BLUE].eGPIOAssigned = GPIO_14;
@@ -35,7 +42,7 @@ void vActuatorInitPlatform()
 	vActuatorDeactivate(&asActuator[LED_BLUE]);
 
 
-	// Configuration of blue LED
+	// Configuration of the relay
 	asActuator[MAIN_RELAY].eId = MAIN_RELAY;
 	asActuator[MAIN_RELAY].eType = RELAY;
 	asActuator[MAIN_RELAY].eGPIOAssigned = GPIO_4;
@@ -80,4 +87,9 @@ void vActuatorToggleById(teActuatorId eId)
 	{
 		vActuatorActivate(&asActuator[eId]);
 	}
+}
+
+teActuatorState eActuatorGetStateById(teActuatorId eId)
+{
+	return asActuator[eId].eState;
 }

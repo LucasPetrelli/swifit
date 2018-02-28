@@ -90,17 +90,17 @@ void vTaskWifi(void *pvParameters)
 
 
 				LOG_DEBUG("Connection setup OK, waiting for connection");
-				uint8_t u8Timeout = 10;								// Timeout in seconds
+				uint8_t u8Timeout = 20;								// Timeout in seconds
 				eException = eWifiWaitToBeConnected(u8Timeout);
 
 				// Peek eException for result
 				if (eException != EX_SUCCESSFUL)
 				{
 					// If the AP was reached before, retry
-					if (psCurrentConfiguration->eMode == CONNECTING_TO_KNOWN_AP)
-					{
-						continue;
-					}
+//					if (psCurrentConfiguration->eMode == CONNECTING_TO_KNOWN_AP)
+//					{
+//						continue;
+//					}
 
 					// If not, will setup a config mode to retrieve a new AP data from the user
 					psCurrentConfiguration->eMode = CONFIG_MODE;

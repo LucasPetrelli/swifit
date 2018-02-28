@@ -36,7 +36,6 @@ teException eWifiWaitToBeConnected(uint8_t u8Timeout)
     {
     	vTaskDelay(1000/portTICK_RATE_MS);
     	eStatus = wifi_station_get_connect_status();
-    	LOG_DEBUG("Querying connection status [%u]", eStatus);
 
     	u8Timeout -= 1;
     	if (u8Timeout == 0){
@@ -122,7 +121,7 @@ void vWifiSetMode(teWifiMode eMode)
 {
 	WIFI_MODE eEspMode = STATION_MODE;
 	wifi_station_set_auto_connect(false);
-	wifi_station_set_reconnect_policy(false);
+	wifi_station_set_reconnect_policy(true);
 	if (eMode == WIFI_AP)
 	{
 		eEspMode = SOFTAP_MODE;

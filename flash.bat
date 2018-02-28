@@ -1,1 +1,1 @@
-esptool -p COM9 -b 460800 write_flash -fm dio  0x0 firmware\eagle.flash.bin 0x20000 firmware\eagle.irom0text.bin
+esptool -p COM8 -b 460800 write_flash -fm dio  0x0 firmware\eagle.flash.bin 0x20000 firmware\eagle.irom0text.bin

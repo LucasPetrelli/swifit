@@ -12,6 +12,23 @@
 #include "wifi_task_types.h"
 #include "freertos/FreeRTOS.h"
 
+/**
+ * \defgroup application Application
+ * @brief Application tasks that handle the proper feature implementation
+ * @addtogroup application
+ * @{
+ *
+ * \defgroup wifi Wifi
+ * @brief Task dedicated to take care of the Wi-Fi connection
+ * @addtogroup wifi
+ * @{
+ */
+
 void vTaskWifi(void *pvParameters);
+
+/**
+ * @}
+ * @}
+ */
 
 #endif /* CODE_APPLICATION_WIFI_TASK_WIFI_TASK_H_ */

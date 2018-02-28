@@ -1,6 +1,6 @@
 #include "welcome_config.html.h"
 
-const char acWelcome_configHtml[] = {
+const char ICACHE_RODATA_ATTR STORE_ATTR acWelcome_configHtml[] = {
 	"HTTP/1.1 200 OK\r\n"
 	"Content-type: text/html\r\n\r\n"
 	""

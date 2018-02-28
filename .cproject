@@ -64,7 +64,7 @@
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
-						<entry excluding="configuration|wifi_adapter|WiFiAdapter|testsocket|testing|projconf|types|adapter|udp_adapter" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+						<entry excluding="wifi_adapter|WiFiAdapter|testsocket|testing|projconf|types|configuration|adapter|udp_adapter" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
 						<entry excluding="types" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="adapter/udp_adapter"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="adapter/udp_adapter/types"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="adapter/wifi_adapter"/>
@@ -139,7 +139,7 @@
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
-						<entry excluding="configuration|wifi_adapter|WiFiAdapter|testsocket|testing|projconf|types|adapter|udp_adapter" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+						<entry excluding="wifi_adapter|WiFiAdapter|testsocket|testing|projconf|types|configuration|adapter|udp_adapter" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
 						<entry excluding="types" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="adapter/udp_adapter"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="adapter/udp_adapter/types"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="adapter/wifi_adapter"/>

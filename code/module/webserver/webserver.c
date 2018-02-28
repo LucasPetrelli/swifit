@@ -10,7 +10,10 @@
 
 #include "webserver.h"
 #include "configuration.h"
-
+#include "actuator.h"
+#include "sensor.h"
+#include "devices.h"
+#include "cJSON.h"
 
 cJSON_Hooks sJSONHooks ;
 
@@ -26,7 +29,7 @@ void vSetupWebserver()
 
 void vRequestHandler(char* zRequest)
 {
-	LOG_WEB("New request!\n%s", zRequest);
+	//LOG_WEB("New request!\n%s", zRequest);
 
 	// Parses the raw request into a structure with data split
     tsHttpRequest sParsedRequest = sGetRequest(zRequest);
@@ -76,6 +79,15 @@ char* pcHandleDecodedRequest(tsHttpRequest sRequest)
 		{
 			pcResponse = zHandlerDeviceRestart(data);
 		}
+		else if (strncmp(p, zDeviceListCGI, strlen(zDeviceListCGI))==0)
+		{
+			pcResponse = zHandlerDeviceList(data);
+		}
+		else if (strncmp(p, zIssueActionCGI, strlen(zIssueActionCGI))==0)
+		{
+			pcResponse = zHandlerIssueAction(data);
+		}
+
 		free(zCGI);
 		free(data);
 	}
@@ -84,23 +96,115 @@ pcHandleDecodedRequest_exit:
 	return pcResponse;
 }
 
+char* zReadHomePageFromFlash(char* address)
+{
+	uint32_t* page = NULL;
+	uint32_t u32ByteRead;
+	uint32_t u32StrLen = 0;
+	char* startingAddress = address;
+	uint32_t u32AmountCopied = 0;
+	uint32_t* u32WrPtr = NULL;
+
+	//find strlen
+
+	u32ByteRead = *((uint32_t*)address);
+	//LOG_DEBUG("Strlen mask 0x%08x", ((uint32_t)~0x03));
+	//LOG_DEBUG("RD 0x%08x", u32ByteRead);
+	while (u32ByteRead & ((uint32_t)0x000000FF))
+	{
+		u32ByteRead >>= 8;
+		u32StrLen += 1;
+
+		if ((u32StrLen&((uint32_t)0x03))==0)
+		{
+			address += 4;
+			u32ByteRead = *((uint32_t*)address);
+		}
+
+	}
+	//ceil strlen to a multiple of 4
+	u32StrLen += 1;
+	u32StrLen += 4 - u32StrLen%4;
+	//LOG_DEBUG("Webpage size = %u", u32StrLen);
+	//allocate u32StrLen+1
+	page = (uint32_t*) zalloc(u32StrLen);
+	u32WrPtr = page;
+	for (u32AmountCopied=0; u32AmountCopied<u32StrLen; u32AmountCopied+=4)
+	{
+		//LOG_DEBUG("ADDR 0x%08x = 0x%08x", u32WrPtr, *((uint32_t*) (startingAddress+u32AmountCopied)));
+		*u32WrPtr = *((uint32_t*) (startingAddress+u32AmountCopied));
+		u32WrPtr +=1;
+	}
+	//LOG_DEBUG("%u copied", strlen( (char*)page));
+	//LOG_DEBUG("%s", (char*)page);
+	return (char*)page;
+}
+
 char* zGetHomepage()
 {
 	char* pcHomepage = NULL;
 	tsConfiguration* psDeviceConfig = psConfigurationGet();
 	if (psDeviceConfig->eMode == CONFIG_MODE)
 	{
-		pcHomepage = (char*)zalloc(strlen(acWelcome_configHtml));
-		strcat(pcHomepage, acWelcome_configHtml);
+		pcHomepage = zReadHomePageFromFlash((char*) acWelcome_configHtml);
 	}
 	else
 	{
-		// Using the config webpage as placeholder
-		pcHomepage = (char*)zalloc(strlen(acWelcome_configHtml));
-		strcat(pcHomepage, acWelcome_configHtml);
+		pcHomepage = zReadHomePageFromFlash((char*) acHomepageHtml);
 	}
-
 	return pcHomepage;
+}
+
+cJSON* psWebserverMakeJSONFromDevice(tsDevice* psDev)
+{
+	// create object to represent self
+	cJSON* psJSONSelf = cJSON_CreateObject();
+
+	// create itens for represent self information
+	cJSON* psJSONId = cJSON_CreateNumber(0);
+	char cId_[11];
+	sprintf(cId_, "%u", psDev->u32ID);
+
+	cJSON_AddStringToObject(psJSONSelf, "id", cId_);
+	if (psDev->eType == DEVICE_SWITCH)
+	{
+		cJSON_AddStringToObject(psJSONSelf, "type", "Switch");
+		cJSON_AddStringToObject(psJSONSelf, "name", "My Switch");
+		cJSON_AddFalseToObject(psJSONSelf, "hasPir");
+	}
+	else if (psDev->eType == DEVICE_SOCKET)
+	{
+		cJSON_AddStringToObject(psJSONSelf, "type", "Plug");
+		cJSON_AddStringToObject(psJSONSelf, "name", "My Plug");
+		cJSON_AddTrueToObject(psJSONSelf, "hasPir");
+
+		teSensorState ePIRState = psDev->eSensorState;
+		if (ePIRState == TRIGGERED)
+		{
+			cJSON_AddTrueToObject(psJSONSelf, "pirStatus");
+		}
+		else
+		{
+			cJSON_AddFalseToObject(psJSONSelf, "pirStatus");
+		}
+
+		teActuatorState eRelayState = psDev->eActuatorState;
+		if (eRelayState == ACTIVATED)
+		{
+			cJSON_AddTrueToObject(psJSONSelf, "relayStatus");
+		}
+		else
+		{
+			cJSON_AddFalseToObject(psJSONSelf, "relayStatus");
+		}
+
+	}
+	return psJSONSelf;
+}
+
+void vWebserverDeleteJSON(cJSON* psJSON)
+{
+	cJSON_Delete(psJSON);
 }
 
 tsHttpRequest sGetRequest(char* zRequest)

@@ -10,8 +10,8 @@
 
 #define DEBUG
 
-#define SWITCH_PROD 	((uint8) 1)
-#define PLUG_PROD		((uint8) 2)
+#define SWITCH_PROD 	((uint8_t) 1)
+#define PLUG_PROD		((uint8_t) 2)
 
 /**
  * Define SWITCH for plug product

@@ -8,9 +8,26 @@
 #ifndef CODE_MODULE_CONFIGURATION_CONFIGURATION_TYPES_H_
 #define CODE_MODULE_CONFIGURATION_CONFIGURATION_TYPES_H_
 
+/**
+ * \defgroup module Functional Modules
+ * @brief Functional modules for handling a specific task
+ * @addtogroup module
+ * @{
+ *
+ * \defgroup configuration Configuration
+ * @brief Handling of the device running configuration
+ * @{
+ *
+ * \defgroup configuration_types Types
+ * @brief Device running configuration type definitions
+ * @addtogroup configuration_types
+ * @{
+ */
 
-/*
+/**
  * @brief Device operation type
+ *
+ * This enumeration follows the ASCII pattern instead of a integer counter
  */
 typedef enum {
 	CONFIG_MODE = '0',				/**< Device in configuration mode */
@@ -19,13 +36,20 @@ typedef enum {
 	CONNECTING_TO_KNOWN_AP = '3',   /**< Device trying to connect to an AP previously verified */
 } teOperationMode;
 
-
+/**
+ * @brief Device configuration structure
+ */
 typedef struct {
-	char acAP[32];
-	char acPassword[32];
-	char acMessage[64];
-	teOperationMode eMode;
+	char acAP[32];					//!< The device access point name
+	char acPassword[32];			//!< The access point password
+	char acMessage[64];				//!< A message saved in the memory
+	teOperationMode eMode;			//!< The current operation mode
 } tsConfiguration;
 
+/**
+ * @}
+ * @}
+ * @}
+ */
 
 #endif /* CODE_MODULE_CONFIGURATION_CONFIGURATION_TYPES_H_ */

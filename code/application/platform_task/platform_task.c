@@ -20,11 +20,21 @@ void vPlatformTask(void* pvParameters)
 	tsConfiguration* psConfig = psConfigurationGet();
 	teOperationMode eMode = psConfig->eMode;
 	vPlatformSetLEDs(eMode);
+	teActuatorState eRelayCurrentState = eActuatorGetStateById(MAIN_RELAY);
+	teActuatorState eRelayLastState = eRelayCurrentState;
+	vPlatformSetRelayLED(eRelayCurrentState);
 
 	while (1)
 	{
 		vTaskDelayUntil(&psTask->xLastWakeTime, psTask->u32Period/portTICK_RATE_MS );
 		tsConfiguration* psConfig = psConfigurationGet();
+		// Get the relay state, check for a change
+		eRelayCurrentState = eActuatorGetStateById(MAIN_RELAY);
+		if (eRelayCurrentState != eRelayLastState)
+		{
+			eRelayLastState = eRelayCurrentState;
+			vPlatformSetRelayLED(eRelayCurrentState);
+		}
 
 		if (xScheduledReset)
 		{
@@ -42,8 +52,9 @@ void vPlatformTask(void* pvParameters)
 			{
 				psTask->u32HeapReportCounter = 0;
 
-				uint32 u32Free = u32GetFreeHeap();
-				LOG_DEBUG("Remaining heap: %u", u32Free);
+				uint32 u32Free = u32SystemFreeHeap();
+				uint32 u32Id = u32SystemGetId();
+				LOG_DEBUG("Remaining heap: %u Random number: %u", u32Free, u32Id);
 			}
 
 			psTask->u32HeapReportCounter += psTask->u32Period;
@@ -70,26 +81,34 @@ void vPlatformSetLEDs(teOperationMode eMode)
 	case CONFIG_MODE:
 	{
 		vActuatorTaskToggleSlow(LED_BLUE, 0);
-		vActuatorTaskDeactivate(LED_RED);
 		break;
 	}
 	case NORMAL_MODE:
 	{
 		vActuatorTaskActivate(LED_BLUE);
-		vActuatorTaskDeactivate(LED_RED);
 		break;
 	}
 	case ATTEMPT_NEW_CONNECTION:
 	{
 		vActuatorTaskToggleFast(LED_BLUE, 0);
-		vActuatorTaskDeactivate(LED_RED);
 		break;
 	}
 	case CONNECTING_TO_KNOWN_AP:
 	{
 		vActuatorTaskToggleFast(LED_BLUE, 0);
-		vActuatorTaskToggleFast(LED_RED, 0);
 		break;
 	}
+	}
+}
+
+void vPlatformSetRelayLED(teActuatorState eState)
+{
+	if (eState == ACTIVATED)
+	{
+		vActuatorTaskActivate(LED_RED);
+	}
+	else
+	{
+		vActuatorTaskDeactivate(LED_RED);
 	}
 }

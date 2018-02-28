@@ -11,19 +11,17 @@
 /**
  * \defgroup module Functional Modules
  * @brief Functional modules for handling a specific task
- */
-
-/**
  * @addtogroup module
  * @{
- */
-
-/**
+ *
  * \defgroup actuator Actuator
  * @brief Handling of actuator elements
- */
-/**
- * @addtogroup actuator
+ * @{
+ *
+ * \defgroup actuator_types Types
+ * @brief Actuator type definitions
+ * @addtogroup actuator_types
+ * @{
  */
 
 #include "gpio_adapter.h"
@@ -43,18 +41,18 @@ typedef enum {
  * @brief Actuator state
  */
 typedef enum {
-	DEACTIVATED,
-	ACTIVATED
+	DEACTIVATED,		//!< Actuator is not activated
+	ACTIVATED			//!< Actuator is activated
 } teActuatorState;
 
 /**
  * @brief Actuator ids
  */
 typedef enum {
-	LED_RED,
-	LED_BLUE,
-	MAIN_RELAY,
-	N_ACTUATORS
+	LED_RED,			//!< The platform red LED, used to depict the relay state
+	LED_BLUE,			//!< The platform blue LED, used to depict the connection state
+	MAIN_RELAY,			//!< The platform relay, used to switch the mains power to the load
+	N_ACTUATORS			//!< Depicts the number of actuators avaiable
 } teActuatorId;
 
 /**
@@ -65,9 +63,12 @@ typedef struct {
 	teGPIONumber eGPIOAssigned;		//!< GPIO assigned to the actuator
 	teActuatorId eId;				//!< Id of the actuator
 	teActuatorState eState;			//!< Current state of the actuator
-
 } tsActuator;
 
-
+/**
+ * @}
+ * @}
+ * @}
+ */
 
 #endif /* CODE_MODULE_ACTUATOR_ACTUATOR_TYPES_H_ */

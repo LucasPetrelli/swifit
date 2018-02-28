@@ -3,7 +3,7 @@ import socket
 import hexdump
 
 s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-s.bind(('', 5353))
+s.bind(('', 2345))
 
 while True:
     x, addr = s.recvfrom(1024)

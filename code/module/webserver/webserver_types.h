@@ -14,22 +14,48 @@
 
 #include "basictypes.h"
 #include "http_ok.h"
+/**
+ * \defgroup module Functional Modules
+ * @brief Functional modules for handling a specific task
+ * @addtogroup module
+ * @{
+ *
+ * \defgroup webserver Webserver
+ * @brief Handling of the web user interface
+ * @{
+ *
+ * \defgroup webserver_types Types
+ * @brief Webserver type definitions
+ * @addtogroup webserver_types
+ * @{
+ */
 
+/**
+ * @brief HTTP method identification
+ */
 typedef enum {
-	HTTP_GET,
-	HTTP_POST,
-	HTTP_CORRUPT,
+	HTTP_GET,		//!< HTTP GET method received
+	HTTP_POST,		//!< HTTP POST method received
+	HTTP_CORRUPT,	//!< Unknown method received
 } teRequestType;
 
+/**
+ * @brief HTTP request decoded data, separated into relevant fields
+ */
 typedef struct {
-	teRequestType eType;
+	teRequestType eType;	//!< Type of the request
 
-	char* pcURIData;
-	uint16 u16URILen;
+	char* pcURIData;		//!< Resource requested string
+	uint16 u16URILen;		//!< Length of the resource string
 
-	char* pcPostData;
-	uint16 u16PostLen;
+	char* pcPostData;		//!< Data posted by the request
+	uint16 u16PostLen;		//!< Length of the data posted
 } tsHttpRequest;
 
+/**
+ * @}
+ * @}
+ * @}
+ */
 
 #endif /* CODE_MODULE_WEBSERVER_WEBSERVER_TYPES_H_ */

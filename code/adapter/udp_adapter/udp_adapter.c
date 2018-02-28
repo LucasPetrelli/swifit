@@ -5,7 +5,7 @@
  * @brief UDP adapter source file
  */
 #include "udp_adapter.h"
-
+#include "system_adapter.h"
 
 /**
  * @brief Main UDP adapter control definition
@@ -76,21 +76,18 @@ teException eUDPBufferGet(tsUDPMessage *psMessage)
 void eUDPRecvCallback(void* psConnRx, char* pData, unsigned short u8Len)
 {
 	struct espconn *psConn = (struct espconn *)psConnRx;
-	remot_info *sRemote = (remot_info*)zalloc(sizeof(remot_info));
-	sint8 i8Error = espconn_get_connection_info(psConn, &sRemote, 0);
+	remot_info *psRemote = NULL;
+	sint8 i8Error = espconn_get_connection_info(psConn, &psRemote, 0);
 
 	if (i8Error != 0)
 	{
 		printf("Error while retrieving info (Code %d)", i8Error);
 		return;
 	}
-
 	tsUDPMessage* psRecvMessage = (tsUDPMessage*)zalloc(sizeof(tsUDPMessage));
 	psRecvMessage->u32Len = (uint32) u8Len;
 	memcpy(psRecvMessage->acData_, pData, u8Len);
-	memcpy(psRecvMessage->u8IP_, sRemote->remote_ip, 4);
-
-	LOG_DEBUG("UDP message created\n")
+	memcpy(psRecvMessage->u8IP_, psRemote->remote_ip, 4);
 
 	if (sUDPControl.xQueueFromUDPToRxHandler != NULL)
 	{
@@ -99,21 +96,8 @@ void eUDPRecvCallback(void* psConnRx, char* pData, unsigned short u8Len)
 		psQueueMessage->pvData = (void *)psRecvMessage;
 		portBASE_TYPE pxHigherPriorityTaskWoken;
 		portBASE_TYPE pdResult = xQueueSendFromISR(sUDPControl.xQueueFromUDPToRxHandler,(void*) psQueueMessage, &pxHigherPriorityTaskWoken);
-
-		#ifdef DEBUG
-			if (pdResult == pdTRUE)
-			{
-				printf("UDP message passed to queue!\n");
-			}
-			else
-			{
-				printf("UDP queue full!\n");
-			}
-		#endif
+		free(psQueueMessage);
 	}
-
-	eUDPBufferPut(psRecvMessage);
-	LOG_DEBUG("UDP message buffered\n");
 }
 
 teException eUDPCreateListener(uint8* u8Ip, uint32 u32Port)
@@ -125,7 +109,7 @@ teException eUDPCreateListener(uint8* u8Ip, uint32 u32Port)
 	psConn->type = ESPCONN_UDP;
 	psConn->state = ESPCONN_NONE;
 	psConn->proto.udp = (esp_udp *)zalloc(sizeof(esp_udp));
-	psConn->proto.udp->local_port = 1000;
+	psConn->proto.udp->local_port = u32Port;
 
 	memcpy(psConn->proto.udp->local_ip, u8Ip, 4);
 
@@ -176,6 +160,8 @@ teException eUDPSendData(uint8* u8Ip, uint32 u32Port, tsUDPMessage* psMessage)
 	espconn_sendto(psConn, psMessage->acData_, psMessage->u32Len);
 out_UDPSendData:
 	espconn_delete(psConn);
+	free(psConn->proto.udp);
+	free(psConn);
 	return eException;
 }
 
@@ -192,4 +178,28 @@ teException eUDPCreateMessage(tsUDPMessage *psBuffer, uint8* pu8Data, uint32 u32
 	}
 
 	return eException;
+}
+
+void vUDPLog(tsUDPMessage* psMsg)
+{
+	uint32_t u32Iterator = 0;
+	LOG_DEBUG("---- UDP Message LOG ----");
+	LOG_DEBUG("IP:\t%u.%u.%u.%u", psMsg->u8IP_[0], psMsg->u8IP_[1], psMsg->u8IP_[2], psMsg->u8IP_[3]);
+	LOG_DEBUG("Len:\t%u", psMsg->u32Len);
+	char newLine[3*16+1];
+	while (u32Iterator < psMsg->u32Len)
+	{
+		sprintf(&newLine[(u32Iterator%16)*3],"%02x ", psMsg->acData_[u32Iterator]);
+		u32Iterator += 1;
+		if (u32Iterator%16 == 0)
+		{
+			LOG_DEBUG(newLine);
+			memset(newLine, 0, 3*16+1);
+		}
+	}
+	if (newLine[0])
+	{
+		LOG_DEBUG(newLine);
+	}
+	LOG_DEBUG("---- --------------- ----");
 }

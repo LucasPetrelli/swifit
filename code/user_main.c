@@ -26,6 +26,7 @@
 #include "sensor_task.h"
 #include "actuator_task.h"
 #include "platform_task.h"
+#include "behavior_task.h"
 
 
 
@@ -115,18 +116,43 @@ void user_init(void)
 				rtc_info->depc);//The	address	of	the	last	crash	is	printed,	which	is	used	to	debug	garbled	output.
 	}
 
+	// --- Read configuration from the fs
     vConfigurationRead();
-//	xQueueHandle xQueueFromUDPToRxHandler = xQueueCreate(10, sizeof(tsMemQueueMessage));
-//	eUDPInit(xQueueFromUDPToRxHandler);
+
+	// --- Webserver setup (+Task)
     vSetupWebserver();
-    xTaskCreate(&vTaskWifi, "Wifi Task", 512, NULL, 2, NULL);
+
+    // --- Wifi Task
+    xTaskCreate(&vTaskWifi, "Wifi Task", 512, NULL, 4, NULL);
+
+    // --- Sensor Task
     xTaskCreate(&vSensorTask, "Sensor", configMINIMAL_STACK_SIZE, NULL, 2, NULL);
+
+    // --- Actuator Task
     xTaskCreate(&vActuatorTask, "Actuator", configMINIMAL_STACK_SIZE, NULL, 2, NULL);
 
+    // --- Platform Task
     tsPlatformTaskConfiguration* psPlatformTask = (tsPlatformTaskConfiguration*) zalloc (sizeof(tsPlatformTaskConfiguration));
     psPlatformTask->u32Period = 100;
     psPlatformTask->u32HeapReportPeriod = 5000;
     xTaskCreate(&vPlatformTask, "Platform", configMINIMAL_STACK_SIZE, (void*) psPlatformTask, 2, NULL);
+
+    // --- Behavior Task
+    tsBehaviourTaskConfiguration* psBehaviourTask = (tsBehaviourTaskConfiguration*) zalloc (sizeof(tsBehaviourTaskConfiguration));
+    psBehaviourTask->u32Period = 100;
+    psBehaviourTask->u32BroadcastPeriod = 1000;
+    psBehaviourTask->xBehaviorQueue = xQueueCreate(10, sizeof(tsMemQueueMessage));
+    psBehaviourTask->xBroadcastTimer = xTimerCreate(
+    		"Broadcast",
+			psBehaviourTask->u32BroadcastPeriod/portTICK_RATE_MS,
+			pdTRUE,
+			(void*) 1,
+			vBehaviourBroadcastCallback
+	);
+    xTaskCreate(&vBehaviorTask, "Behavior", 512, (void*) psBehaviourTask, 5, NULL);
+
+    // --- UDP ISR
+	eUDPInit(psBehaviourTask->xBehaviorQueue);
 
 }
 

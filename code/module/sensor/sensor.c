@@ -7,7 +7,8 @@
 
 
 #include "sensor.h"
-#include "config.h"
+
+#include "../../projconf/product_config.h"
 #include "mem_types.h"
 
 tsSensor asSensor[MAX_SENSOR];
@@ -72,4 +73,9 @@ void vSensorHandlerIsr(uint32 mask)
 
 		}
 	}
+}
+
+teSensorState eSensorGetState(teSensorType eSensor)
+{
+	return asSensor[eSensor].eState;
 }

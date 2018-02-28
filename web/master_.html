@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+    <meta charset="UTF-8">
+    <title>Swifit Control Panel</title>
+    <style>
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-family: "Lucida Sans", sans-serif;
+}
+
+ul {
+    list-style-type: none;
+    margin: 5px;
+    padding: 0;
+    overflow: hidden;
+    background-color: coral;
+    border-radius: 5px;
+}
+
+li {
+    float: left;
+    border-right: 1px solid #bbb;
+}
+
+li:last-child {
+    border-right: none;
+}
+
+.deviceInfo {
+    border-radius: 5px;
+    background-color: salmon;
+    color: white;
+    margin: 5px;
+    padding: 10px;
+}
+
+.labelNormal {
+    float: left;
+    width: 75%;
+
+    font-size: 20px;
+}
+
+.valueNormal {
+    float: left;
+    text-align: right;
+    width: 25%;
+
+    font-size: 20px;
+}
+.pir {
+    position: relative;
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: azure;
+}
+.pir:before {
+    position: absolute;
+    display: inline-block;
+    left: 3px;
+    top: 3px;
+    content: "";
+    width: 18px;
+    height: 18px;
+    background-color: white;
+    border-radius: 50%;
+}
+
+.pirActive:before {
+    background-color: darkred;
+}
+
+.topMenu {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.topMenu:hover {
+    background-color: orangered;
+}
+
+.topMenuActive {
+    background-color: darkred;
+}
+
+.slightMargin {
+    margin: 10px 0px;
+}
+
+/* Rounded switch CSS */
+/* From https://www.w3schools.com/howto/howto_css_switch.asp */
+/* The switch - the box around the slider */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 48px;
+    height: 25px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+    display: none;
+}
+
+/* The slider */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: #2196F3;
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+    -webkit-transform: translateX(22px);
+    -ms-transform: translateX(22px);
+    transform: translateX(22px);
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+/*----------------------------------------------------------*/
+
+
+
+/* For mobile phones: */
+[class*="col-"] {
+    float: left;
+    padding: 0px;
+    width: 100%;
+}
+
+@media only screen and (min-width: 768px) {
+    .col-1 {
+        width: 33%;
+    }
+
+    .col-2 {
+        width: 33%;
+    }
+
+    .col-3 {
+        width: 33%;
+    }
+
+    .col-4 {
+        width: 33%;
+    }
+
+    .col-5 {
+        width: 66%;
+    }
+
+    .col-6 {
+        width: 66%;
+    }
+
+    .col-7 {
+        width: 66%;
+    }
+
+    .col-8 {
+        width: 66%;
+    }
+
+    .col-9 {
+        width: 100%;
+    }
+
+    .col-10 {
+        width: 100%;
+    }
+
+    .col-11 {
+        width: 100%;
+    }
+
+    .col-12 {
+        width: 100%;
+    }
+}
+
+@media only screen and (min-width: 1440px) {
+    /* For desktop: */
+    .col-1 {
+        width: 8.33%;
+    }
+
+    .col-2 {
+        width: 16.66%;
+    }
+
+    .col-3 {
+        width: 25%;
+    }
+
+    .col-4 {
+        width: 33.33%;
+    }
+
+    .col-5 {
+        width: 41.66%;
+    }
+
+    .col-6 {
+        width: 50%;
+    }
+
+    .col-7 {
+        width: 58.33%;
+    }
+
+    .col-8 {
+        width: 66.66%;
+    }
+
+    .col-9 {
+        width: 75%;
+    }
+
+    .col-10 {
+        width: 83.33%;
+    }
+
+    .col-11 {
+        width: 91.66%;
+    }
+
+    .col-12 {
+        width: 100%;
+    }
+}
+
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.row:first-child {
+    margin-left: 0;
+}
+.row:last-child {
+    margin-right: 0;
+}
+</style>
+</head>
+<body>
+
+<!-- Upper menu -->
+<div class="row">
+    <ul>
+        <li class="topMenu" id="DeviceMenuItem" onclick=changeActivePage(this)>Devices</li>
+        <li class="topMenu" id="ControlMenuItem" onclick=changeActivePage(this)>Control</li>
+    </ul>
+</div>
+
+<div id="WelcomePage" class="mainbody">
+    <p>Welcome main body</p>
+</div>
+<!--End of page -->
+
+<!--Device information page layout-->
+<div id="DevicesPage" class="mainbody">
+    <div class="row">
+
+        <div class="col-2">
+            <div class="deviceInfo">
+                <div class="device row slightMargin">
+                    <div class="device labelNormal">Name:</div>
+                    <div id="NameValue" class="device valueNormal">Switch</div>
+                    <br>
+                </div>
+                <div class="device row slightMargin">
+                    <div class="device labelNormal">Type:</div>
+                    <div id="TypeValue" class="device valueNormal">Switch</div>
+                    <br>
+                </div>
+
+                <div class="device row slightMargin">
+                    <div class="device labelNormal">ID:</div>
+                    <div id="IdValue" class="device valueNormal">Switch</div>
+                </div>
+
+                <div id="PlugStatus" class="device row slightMargin">
+                    <div class="device labelNormal">Power status:</div>
+                    <!-- Rounded switch -->
+                    <div class="device valueNormal">
+                        <label class="switch"><input id="RelayStatus" type="checkbox"><span class="slider round"></span></label>
+                    </div>
+                </div>
+
+                <div id="SwitchStatus" class="device row slightMargin">
+                    <div class="device labelNormal">Switch status:</div>
+                    <!-- Rounded switch -->
+                    <div class="device valueNormal">
+                        <label class="switch"><input id="SwitchStatus" type="checkbox"><span class="slider round"></span></label>
+                    </div>
+                </div>
+
+                <div id="PIRStatus" class="device row slightMargin">
+                    <div class="device labelNormal">Infrared status:</div>
+                    <!-- Rounded switch -->
+                    <div class="device valueNormal">
+                        <label class="pir pirActive"></label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!--End of page -->
+
+<div id="ProgramPage" class="mainbody">
+    <p>Control main body</p>
+</div>
+<!--End of page -->
+
+<script>
+document.getElementById("DevicesPage").style.display = "none";
+document.getElementById("ProgramPage").style.display = "none";
+
+var pages = {
+    "Welcome": "WelcomePage",
+    "DeviceMenuItem": "DevicesPage",
+    "ControlMenuItem": "ProgramPage"
+};
+var activePage = "WelcomePage";
+
+var device = {
+    "name" : "MyDevice",
+    "type" : "Switch",
+    "id"   : 1,
+
+    "relayStatus" : true,
+
+    "hasPIR": true,
+    "pirStatus": false,
+
+    "switchStatus": false
+};
+
+
+var device1 = {
+    "Name" : "MyDevice1",
+    "Type" : "Switch",
+    "ID"   : 1,
+    "Status" : true
+};
+
+
+var device2 = {
+    "Name" : "MyDevice2",
+    "Type" : "Outlet",
+    "ID"   : 2,
+    "Status" : false
+};
+
+
+var device3 = {
+    "Name" : "MyDevice3",
+    "Type" : "Outlet",
+    "ID"   : 3,
+    "Status" : true
+};
+
+var deviceRefreshTimer;
+
+function changeActivePage(listElement) {
+    var id = listElement.id;
+    clearCurrentPage();
+    var element = document.getElementById(pages[id]);
+    element.style.display = "block";
+    listElement.classList.add("topMenuActive");
+
+    if (pages[id] === "DevicesPage")
+    {
+        deviceRefreshTimer = setInterval(setupDevicePage, 500);
+        console.log('device page');
+        setupDevicePage();
+    }
+    else {
+        if (deviceRefreshTimer) {
+            clearInterval(deviceRefreshTimer);
+        }
+    }
+
+    activePage = pages[id];
+}
+
+function clearCurrentPage() {
+    for (item in pages) {
+        var id = pages[item];
+        var element = document.getElementById(id);
+        element.style.display = "none";
+
+
+        var listElement = document.getElementById(item);
+        if (listElement) {
+            if (listElement.classList.contains("topMenuActive")) {
+                listElement.classList.remove("topMenuActive");
+            }
+        }
+
+    }
+}
+
+function setupDevicePage() {
+    var listOfDevices = {
+        "devices" : [device1, device2, device3]
+    };
+    var element = document.getElementById("DevicesPage");
+
+    var htmlForDeviceTemplate = "" +
+        "        <div class=\"col-2\">\n" +
+        "            <div class=\"deviceInfo\">\n" +
+        "\n" +
+        "                <div class=\"device row slightMargin\">\n" +
+        "                    <div class=\"device labelNormal\">Name:</div>\n" +
+        "                    <div id=\"NameValue\" class=\"device valueNormal\">Switch</div>\n" +
+        "                    <br>\n" +
+        "                </div>\n" +
+        "\n" +
+        "                <div class=\"device row slightMargin\">\n" +
+        "                    <div class=\"device labelNormal\">Type:</div>\n" +
+        "                    <div id=\"TypeValue\" class=\"device valueNormal\">Switch</div>\n" +
+        "                    <br>\n" +
+        "                </div>\n" +
+        "\n" +
+        "                <div class=\"device row slightMargin\">\n" +
+        "                    <div class=\"device labelNormal\">ID:</div>\n" +
+        "                    <div id=\"IdValue\" class=\"device valueNormal\">Switch</div>\n" +
+        "                </div>\n" +
+        "\n" +
+        "                <div id=\"PlugInfo\" class=\"device row slightMargin\">\n" +
+        "                    <div class=\"device labelNormal\">Power status:</div>\n" +
+        "                    <!-- Rounded switch -->\n" +
+        "                    <div class=\"device valueNormal\">\n" +
+        "                        <label class=\"switch\"><input id=\"RelayStatus\" type=\"checkbox\"><span class=\"slider round\"></span></label>\n" +
+        "                    </div>\n" +
+        "                </div>\n" +
+        "\n" +
+        "                <div id=\"SwitchInfo\" class=\"device row slightMargin\">\n" +
+        "                    <div class=\"device labelNormal\">Switch status:</div>\n" +
+        "                    <!-- Rounded switch -->\n" +
+        "                    <div class=\"device valueNormal\">\n" +
+        "                        <label class=\"switch\"><input id=\"SwitchStatus\" type=\"checkbox\"><span class=\"slider round\"></span></label>\n" +
+        "                    </div>\n" +
+        "                </div>\n" +
+        "\n" +
+        "                <div id=\"PIRInfo\" class=\"device row slightMargin\">\n" +
+        "                    <div class=\"device labelNormal\">Infrared status:</div>\n" +
+        "                    <!-- Rounded switch -->\n" +
+        "                    <div class=\"device valueNormal\">\n" +
+        "                        <label id=\"PIRStatus\" class=\"pir \"></label>\n" +
+        "                    </div>\n" +
+        "                </div>\n" +
+        "            </div>\n" +
+        "        </div>";
+
+    var requestForDevices = new XMLHttpRequest();
+    requestForDevices.onreadystatechange = function () {
+        if (this.readyState === 4 && this.status === 200) {
+            element.innerHTML = "";
+            var listOfDevices = JSON.parse(this.responseText);
+            var amountOfDevices = listOfDevices.devices.length;
+            for (var i = 0; i < amountOfDevices; i++) {
+                var device = listOfDevices.devices[i];
+                var htmlForNewDevice = document.createElement('template');
+                htmlForNewDevice.innerHTML = htmlForDeviceTemplate.trim();
+                htmlForNewDevice.content.getElementById("NameValue").innerHTML = device.name;
+                htmlForNewDevice.content.getElementById("TypeValue").innerHTML = device.type;
+                htmlForNewDevice.content.getElementById("IdValue").innerHTML = device.id;
+
+                if (device.type === "Plug") {
+                    htmlForNewDevice.content.getElementById("SwitchInfo").style.display = "none";
+                    htmlForNewDevice.content.getElementById("RelayStatus").checked = device.relayStatus;
+                    if (device.hasPir) {
+                        if (device.pirStatus === true) {
+                            htmlForNewDevice.content.getElementById("PIRStatus").classList.toggle("pirActive");
+                        }
+                    }
+                    else {
+                        htmlForNewDevice.content.getElementById("PIRInfo").style.display = "none";
+                    }
+                } else {
+                    htmlForNewDevice.content.getElementById("RelayInfo").style.display = "none";
+                    htmlForNewDevice.content.getElementById("SwitchStatus").checked = device.switchStatus;
+                    htmlForNewDevice.content.getElementById("PIRInfo").style.display = "none";
+                }
+
+                htmlForNewDevice.content.getElementById("RelayStatus").checked = device.relayStatus;
+                element.appendChild(htmlForNewDevice.content.firstChild);
+            }
+        }
+    };
+    requestForDevices.open("GET", "/cgi/devices", true);
+    requestForDevices.send();
+}
+</script>
+</body>
+</html>

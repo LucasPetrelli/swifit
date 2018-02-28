@@ -9,21 +9,54 @@
 #ifndef CODE_MODULE_WEBSERVER_WEBSERVER_H_
 #define CODE_MODULE_WEBSERVER_WEBSERVER_H_
 
+//Type definition
+#include "webserver_types.h"
+#include "handler_types.h"
+
+//Webpages
+#include "welcome_config.html.h"
+#include "homepage.html.h"
+
+//Used adapters
+#include "http_adapter.h"
+#include "debug_adapter.h"
+
+//Other modules
+#include "devices_types.h"
+
+//Third party
+#include "cJSON.h"
+
+/**
+ * \defgroup module Functional Modules
+ * @brief Functional modules for handling a specific task
+ * @addtogroup module
+ * @{
+ *
+ * \defgroup webserver Webserver
+ * @brief Handling of the web user interface
+ * @{
+ *
+ * \defgroup webserver_api API
+ * @brief Webserver handling functions
+ * @addtogroup webserver_api
+ * @{
+ */
+
+
 //#define WEBSV_VERBOSE
+
+/**
+ * @brief Local logger function definition
+ *
+ * This macro prints only when the WEBSV_VERBOSE symbol is defined
+ */
 #ifdef WEBSV_VERBOSE
 #define LOG_WEB(args...) LOG_DEBUG(args)
 #else
 #define LOG_WEB(args...) { do {} while(0); }
 #endif
 
-#include "webserver_types.h"
-#include "handler_types.h"
-
-#include "welcome_config.html.h"
-
-#include "http_adapter.h"
-#include "debug_adapter.h"
-#include "cJSON.h"
 
 /**
  * @Brief Setup Webserver functionality
@@ -36,7 +69,7 @@ void vSetupWebserver();
 /**
  * @brief HTTP request handler
  *
- * Handles a HTTP, parsing it's data and replying accordingly
+ * Handles a HTTP request, parsing it's data and replying accordingly
  */
 void vRequestHandler(char* zRequest);
 
@@ -53,8 +86,27 @@ tsHttpRequest sGetRequest(char* zRequest);
  */
 char* pcHandleDecodedRequest(tsHttpRequest sRequest);
 
+/**
+ * @brief generates a JSON representation of the current state of the device
+ * @param psDev a pointer to the device to be transformed into JSON
+ * @return a pointer to the JSON object
+ */
+cJSON* psWebserverMakeJSONFromDevice(tsDevice* psDev);
+
+/**
+ * @brief deletes a JSON object
+ * @param pointer to the JSON object
+ */
+void vWebserverDeleteJSON(cJSON* psJSON);
 
 
+/**
+ * @brief Homepage retrieval function
+ * @return a pointer to the homepage html/css/js code, as a null terminated string
+ *
+ * Retrieves the home page suitable for the current mode (configuration or normal operation). It allocated the
+ * needed memory and returns a pointer to the allocated data. The caller must handle the deallocation of the memory.
+ */
 char* zGetHomepage();
 
 #endif /* CODE_MODULE_WEBSERVER_WEBSERVER_H_ */

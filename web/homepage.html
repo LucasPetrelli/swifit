@@ -1,60 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
+<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
 <head>
-    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Swifit network</title>
-
-
-    <style>
-        * {
-            box-sizing: border-box;
-        }
-        html {
-            font-family: "Lucida Sans", sans-serif;
-        }
-        .row::after {
-            content: "";
-            clear: both;
-            display: table;
-        }
-        /* For mobile phones: */
-        [class*="col-"] {
-            float: left;
-            padding: 15px;
-            width: 100%;
-        }
-        @media only screen and (min-width: 1024px) {
-            .col-1 {width: 50%;}
-            .col-2 {width: 50%;}
-            .col-3 {width: 50%;}
-            .col-4 {width: 50%;}
-            .col-5 {width: 50%;}
-            .col-6 {width: 50%;}
-            .col-7 {width: 100%;}
-            .col-8 {width: 100%;}
-            .col-9 {width: 100%;}
-            .col-10 {width: 100%;}
-            .col-11 {width: 100%;}
-            .col-12 {width: 100%;}
-        }
-        @media only screen and (min-width: 1440px) {
-            /* For desktop: */
-            .col-1 {width: 8.33%;}
-            .col-2 {width: 16.66%;}
-            .col-3 {width: 25%;}
-            .col-4 {width: 33.33%;}
-            .col-5 {width: 41.66%;}
-            .col-6 {width: 50%;}
-            .col-7 {width: 58.33%;}
-            .col-8 {width: 66.66%;}
-            .col-9 {width: 75%;}
-            .col-10 {width: 83.33%;}
-            .col-11 {width: 91.66%;}
-            .col-12 {width: 100%;}
-        }
-    </style>
+    <meta charset="UTF-8">
+    <title>Swifit Control Panel</title>
+    <link rel="stylesheet" type="text/css" href="homepage.css">
 </head>
 <body>
 
+<!-- Upper menu -->
+<div class="row">
+    <ul>
+        <li class="topMenu" id="DeviceMenuItem" onclick=changeActivePage(this)>Devices</li>
+        <li class="topMenu" id="ControlMenuItem" onclick=changeActivePage(this)>Control</li>
+    </ul>
+</div>
+
+<div id="WelcomePage" class="mainbody">
+    <p>Welcome main body</p>
+</div>
+<!--End of page -->
+
+<!--Device information page layout-->
+<div id="DevicesPage" class="mainbody">
+    <div class="row">
+
+        <div class="col-2">
+            <div class="deviceInfo">
+                <div class="device row slightMargin">
+                    <div class="device labelNormal">Name:</div>
+                    <div id="NameValue" class="device valueNormal">Switch</div>
+                    <br>
+                </div>
+                <div class="device row slightMargin">
+                    <div class="device labelNormal">Type:</div>
+                    <div id="TypeValue" class="device valueNormal">Switch</div>
+                    <br>
+                </div>
+
+                <div class="device row slightMargin">
+                    <div class="device labelNormal">ID:</div>
+                    <div id="IdValue" class="device valueNormal">Switch</div>
+                </div>
+
+                <div id="PlugStatus" class="device row slightMargin">
+                    <div class="device labelNormal">Power status:</div>
+                    <!-- Rounded switch -->
+                    <div class="device valueNormal">
+                        <label class="switch"><input id="RelayStatus" type="checkbox"><span class="slider round"></span></label>
+                    </div>
+                </div>
+
+                <div id="SwitchStatus" class="device row slightMargin">
+                    <div class="device labelNormal">Switch status:</div>
+                    <!-- Rounded switch -->
+                    <div class="device valueNormal">
+                        <label class="switch"><input id="SwitchStatus" type="checkbox"><span class="slider round"></span></label>
+                    </div>
+                </div>
+
+                <div id="PIRStatus" class="device row slightMargin">
+                    <div class="device labelNormal">Infrared status:</div>
+                    <!-- Rounded switch -->
+                    <div class="device valueNormal">
+                        <label class="pir pirActive"></label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!--End of page -->
+
+<div id="ProgramPage" class="mainbody">
+    <p>Control main body</p>
+</div>
+<!--End of page -->
+
+<script src="homepage.js"></script>
 </body>
 </html>

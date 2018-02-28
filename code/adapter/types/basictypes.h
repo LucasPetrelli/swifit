@@ -6,7 +6,7 @@
  */
 
 #ifndef BASICTYPES_H_
-#include "config.h"
+#include "../../projconf/product_config.h"
 #include "c_types.h"
 #include "exceptions.h"
 #include "debug_adapter.h"
