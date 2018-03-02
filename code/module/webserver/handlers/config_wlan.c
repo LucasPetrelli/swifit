@@ -61,6 +61,5 @@ end_zHandlerConfigWlan:
 	char* pcResponse = (char*)zalloc(u32ResponseLen);
 	strcat(pcResponse, zHttpHeaderOK);
 	strcat(pcResponse, acResponseBody);
-	LOG_DEBUG("\n%s", pcResponse);
 	return pcResponse;
 }

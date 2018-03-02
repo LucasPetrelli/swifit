@@ -201,3 +201,11 @@ void vActuatorTaskToggleSlow(teActuatorId eId, uint8_t u8Duration)
 	sMsg.pvData = (void*) psRequest;
 	xQueueSendToBack(xQueue, (void*) &sMsg, 0);
 }
+
+void vActuatorTaskPutInQUeue(tsActuatorTaskRequest* psReq)
+{
+	tsMemQueueMessage sMsg;
+	sMsg.eType = ACTUATOR_MESSAGE;
+	sMsg.pvData = (void*) psReq;
+	xQueueSendToBack(xQueue, (void*) &sMsg, 0);
+}

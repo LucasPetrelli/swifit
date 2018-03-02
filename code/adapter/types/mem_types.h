@@ -40,7 +40,7 @@ typedef enum {
 	UDP_MESSAGE_RX,			/**< Received UDP message queue item */
 	SENSOR_MESSAGE,			/**< Sensor status message */
 	ACTUATOR_MESSAGE,		/**< Actuator request message */
-	RESTART_MESSAGE,
+	RESTART_MESSAGE,		/**< Device restart messa */
 	N_QUEUE_MSG_TYPES,		/**< Queue item types count */
 } teMemQueueMessageType;
 

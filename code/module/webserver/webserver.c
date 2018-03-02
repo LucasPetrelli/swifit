@@ -161,7 +161,6 @@ cJSON* psWebserverMakeJSONFromDevice(tsDevice* psDev)
 	cJSON* psJSONSelf = cJSON_CreateObject();
 
 	// create itens for represent self information
-	cJSON* psJSONId = cJSON_CreateNumber(0);
 	char cId_[11];
 	sprintf(cId_, "%u", psDev->u32ID);
 

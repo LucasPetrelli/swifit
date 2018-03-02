@@ -61,6 +61,21 @@ void vActuatorTaskToggleFast(teActuatorId eId, uint8_t u8Duration);
  */
 void vActuatorTaskToggleSlow(teActuatorId eId, uint8_t u8Duration);
 
+
+/**
+ * @brief Mounts an request structure to be received by an actuator task
+ * @param eId ID of the target actuator
+ * @param eType Type of the request
+ * @return A pointer to the mounter request
+ */
+tsActuatorTaskRequest* psActuatorMountRequest(teActuatorId eId, teActuatorTaskRequestType eType);
+
+/**
+ * @brief Puts a requisition on the task queue
+ * @param psReq The requisition to be put in the queue
+ */
+void vActuatorTaskPutInQUeue(tsActuatorTaskRequest* psReq);
+
 /**
  * @}
  * @}

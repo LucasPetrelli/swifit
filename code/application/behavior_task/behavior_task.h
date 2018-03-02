@@ -46,6 +46,7 @@ void vBehaviourDetectMode(tsBehaviourTaskConfiguration* psTask);
  */
 void vBehaviourBroadcastCallback(xTimerHandle pxTimer);
 
+void vBehaviourPutInQueue(tsMemQueueMessage* psMsg);
 
 /**
  * @brief gets the list of known devices

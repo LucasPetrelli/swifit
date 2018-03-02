@@ -34,6 +34,7 @@
 #include "device_restart.h"
 #include "devices_list.h"
 #include "issue_action.h"
+#include "change_name.h"
 #endif /* CODE_MODULE_WEBSERVER_HANDLERS_HANDLER_TYPES_H_ */
 
 /**

@@ -49,7 +49,8 @@ typedef struct {
 	teActuatorTaskRequestType eType;		//!< The type of the request
 	teActuatorId eId;						//!< The id of the target actuator
 	teActuatorTaskRequestStatus eStatus;	//!< The status of the request
-	uint8 u8Duration;						//!< The duration of the request
+	uint8_t u8Duration;						//!< The duration of the request
+	uint32_t u32Id;							//!< Target identity
 } tsActuatorTaskRequest;
 
 /**

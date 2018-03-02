@@ -82,6 +82,18 @@ tsProtocolMessage* psProtocolMakeStatus(uint8_t* pu8TargetIp)
 	return psMsg;
 }
 
+tsProtocolMessage* psProtocolMakeAction(tsActuatorTaskRequest* psReq, uint8_t* pu8TargetIp)
+{
+	tsProtocolMessage* psMsg = (tsProtocolMessage*)zalloc(sizeof(tsProtocolMessage));
+	LOG_DEBUG("Making action");
+
+	psMsg->eType = MSG_ACTION;
+	memcpy(psMsg->u8IP_, pu8TargetIp, 4);
+	memcpy(psMsg->acData_, (void*) psReq, sizeof(tsActuatorTaskRequest));
+	psMsg->u32DataCount = sizeof(tsActuatorTaskRequest);
+	return psMsg;
+}
+
 void vProtocolLog(tsProtocolMessage* psMsg)
 {
 	LOG_DEBUG("---- Protocol Message LOG ----");

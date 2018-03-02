@@ -14,6 +14,9 @@
 // Directly used adapters
 #include "udp_adapter.h"
 
+// Relationed tasks
+#include "actuator_task.h"
+
 /**
  * \defgroup module Functional Modules
  * @brief Functional modules for handling a specific task
@@ -95,6 +98,14 @@ tsProtocolMessage* psProtocolMakeBroadcastMsg();
  * The caller is responsible of calling vProtocolFreeMessage into the returned appointed structure.
  */
 tsProtocolMessage* psProtocolMakeStatus(uint8_t* pu8TargetIp);
+
+/**
+ * @brief Allocates and populates a new action message.
+ * @param psReq Actuator task requisition to be transformed into message.
+ * @param pu8TargetIp The target of the message.
+ * @return Pointer to the created message.
+ */
+tsProtocolMessage* psProtocolMakeAction(tsActuatorTaskRequest* psReq, uint8_t* pu8TargetIp);
 
 /**
  * @brief Logs using LOG_DEBUG the message data in a "beautiful" manner
