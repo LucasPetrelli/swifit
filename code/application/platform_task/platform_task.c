@@ -103,7 +103,7 @@ void vPlatformSetLEDs(teOperationMode eMode)
 
 void vPlatformSetRelayLED(teActuatorState eState)
 {
-	if (eState == ACTIVATED)
+	if (eState == DEACTIVATED)
 	{
 		vActuatorTaskActivate(LED_RED);
 	}

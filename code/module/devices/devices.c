@@ -54,8 +54,6 @@ void vDeviceRemove(xListOfDevices* pxDevList, tsDevice* psDev)
 			return;
 		}
 	}
-
-
 }
 
 void vDeviceUpdate(tsDevice* psReceiver, tsDevice* psModel)
@@ -83,6 +81,9 @@ tsDevice* psDeviceGetSelf()
 
 	eWifiRetrieveCurrentIP(psDev->u8IP_);
 	psDev->u32ID = u32SystemGetId();
+
+	char* zDeviceName = zConfigurationGetName();
+	strncpy(psDev->cName_, zDeviceName, strlen(zDeviceName));
 
     if (TARGET_PRODUCT == PLUG_PROD)
     {

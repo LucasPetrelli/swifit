@@ -8,6 +8,8 @@
 #ifndef CODE_MODULE_CONFIGURATION_CONFIGURATION_TYPES_H_
 #define CODE_MODULE_CONFIGURATION_CONFIGURATION_TYPES_H_
 
+#include "basictypes.h"
+
 /**
  * \defgroup module Functional Modules
  * @brief Functional modules for handling a specific task
@@ -23,6 +25,8 @@
  * @addtogroup configuration_types
  * @{
  */
+
+#define NAME_LENGTH ((uint32_t) 32)
 
 /**
  * @brief Device operation type
@@ -40,9 +44,9 @@ typedef enum {
  * @brief Device configuration structure
  */
 typedef struct {
-	char acAP[32];					//!< The device access point name
-	char acPassword[32];			//!< The access point password
-	char acMessage[64];				//!< A message saved in the memory
+	char acAP_[32];					//!< The device access point name
+	char acPassword_[32];			//!< The access point password
+	char acMessage_[64];			//!< A message saved in the memory
 	teOperationMode eMode;			//!< The current operation mode
 } tsConfiguration;
 

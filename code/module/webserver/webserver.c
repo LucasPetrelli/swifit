@@ -24,7 +24,7 @@ void vSetupWebserver()
 
 	// Launch the HTTP listener task
 	// It calls the callback configured above when an HTTP request is received
-    xTaskCreate(&vHTTPTask, "http_server", 512, NULL, 2, NULL);
+    xTaskCreate(&vHTTPTask, "http_server", 512, NULL, 4, NULL);
 }
 
 void vRequestHandler(char* zRequest)
@@ -164,17 +164,16 @@ cJSON* psWebserverMakeJSONFromDevice(tsDevice* psDev)
 	char cId_[11];
 	sprintf(cId_, "%u", psDev->u32ID);
 
+	cJSON_AddStringToObject(psJSONSelf, "name", psDev->cName_);
 	cJSON_AddStringToObject(psJSONSelf, "id", cId_);
 	if (psDev->eType == DEVICE_SWITCH)
 	{
 		cJSON_AddStringToObject(psJSONSelf, "type", "Switch");
-		cJSON_AddStringToObject(psJSONSelf, "name", "My Switch");
 		cJSON_AddFalseToObject(psJSONSelf, "hasPir");
 	}
 	else if (psDev->eType == DEVICE_SOCKET)
 	{
 		cJSON_AddStringToObject(psJSONSelf, "type", "Plug");
-		cJSON_AddStringToObject(psJSONSelf, "name", "My Plug");
 		cJSON_AddTrueToObject(psJSONSelf, "hasPir");
 
 		teSensorState ePIRState = psDev->eSensorState;

@@ -7,6 +7,7 @@
 
 
 #include "actuator.h"
+#include "configuration.h"
 
 /**
  * @brief Actuator control structure
@@ -46,13 +47,18 @@ void vActuatorInitPlatform()
 	asActuator[MAIN_RELAY].eId = MAIN_RELAY;
 	asActuator[MAIN_RELAY].eType = RELAY;
 	asActuator[MAIN_RELAY].eGPIOAssigned = GPIO_4;
-	asActuator[MAIN_RELAY].eState = DEACTIVATED;
-
 	vGPIOSetIOMode(GPIO_BIT(asActuator[MAIN_RELAY].eGPIOAssigned), GPIO_Output);
-	vActuatorActivate(&asActuator[MAIN_RELAY]);
+	teActuatorState eRelayInitialState = (teActuatorState) u8ConfigurationGetActuatorState();
+	if (eRelayInitialState == ACTIVATED)
+	{
+		vActuatorActivate(&asActuator[MAIN_RELAY]);
+	}
+	else
+	{
+		vActuatorDeactivate(&asActuator[MAIN_RELAY]);
+	}
+
 }
-
-
 
 void vActuatorActivate(tsActuator* psActuator)
 {
@@ -70,11 +76,19 @@ void vActuatorDeactivate(tsActuator* psActuator)
 void vActuatorActivateById(teActuatorId eId)
 {
 	vActuatorActivate(&asActuator[eId]);
+	if (eId == MAIN_RELAY)
+	{
+		vConfigurationSetActuatorState((uint8_t)ACTIVATED);
+	}
 }
 
 void vActuatorDeactivateById(teActuatorId eId)
 {
 	vActuatorDeactivate(&asActuator[eId]);
+	if (eId == MAIN_RELAY)
+	{
+		vConfigurationSetActuatorState((uint8_t)DEACTIVATED);
+	}
 }
 
 void vActuatorToggleById(teActuatorId eId)

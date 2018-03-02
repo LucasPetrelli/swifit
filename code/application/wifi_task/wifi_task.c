@@ -80,7 +80,7 @@ void vTaskWifi(void *pvParameters)
 				teException eException;
 				// Try to connect to the access point
 				// This call is asynchronous, returning failure if something goes wrong in the launch process
-				eException = eWifiConnectToAP(psCurrentConfiguration->acAP, psCurrentConfiguration->acPassword);
+				eException = eWifiConnectToAP(psCurrentConfiguration->acAP_, psCurrentConfiguration->acPassword_);
 				if (eException != EX_SUCCESSFUL)
 				{
 					LOG_DEBUG("Something went wrong in connection setup");
@@ -108,25 +108,25 @@ void vTaskWifi(void *pvParameters)
 					// Set a message to be displayed in the config page
 					LOG_DEBUG("Something went wrong WHILE trying to connect, going to AP mode");
 
-					memset((void*)psCurrentConfiguration->acMessage, 0, strlen(psCurrentConfiguration->acMessage));
+					memset((void*)psCurrentConfiguration->acMessage_, 0, strlen(psCurrentConfiguration->acMessage_));
 					switch (eException)
 					{
 					case EX_WIFI_AP_NOT_FOUND:
 					{
-						strcat(psCurrentConfiguration->acMessage, psCurrentConfiguration->acAP);
-						strcat(psCurrentConfiguration->acMessage, " was not found!");
+						strcat(psCurrentConfiguration->acMessage_, psCurrentConfiguration->acAP_);
+						strcat(psCurrentConfiguration->acMessage_, " was not found!");
 						break;
 					}
 					case EX_WIFI_WRONG_PASSWORD:
 					{
-						strcat(psCurrentConfiguration->acMessage, "Password invalid for ");
-						strcat(psCurrentConfiguration->acMessage, psCurrentConfiguration->acAP);
+						strcat(psCurrentConfiguration->acMessage_, "Password invalid for ");
+						strcat(psCurrentConfiguration->acMessage_, psCurrentConfiguration->acAP_);
 						break;
 					}
 					default:
 					{
-						strcat(psCurrentConfiguration->acMessage, "Failed to connect to ");
-						strcat(psCurrentConfiguration->acMessage, psCurrentConfiguration->acAP);
+						strcat(psCurrentConfiguration->acMessage_, "Failed to connect to ");
+						strcat(psCurrentConfiguration->acMessage_, psCurrentConfiguration->acAP_);
 					}
 					}
 					vConfigurationSet(psCurrentConfiguration);
@@ -141,7 +141,7 @@ void vTaskWifi(void *pvParameters)
 
 				// If successful, config device as NORMAL MODE
 				psCurrentConfiguration->eMode = NORMAL_MODE;
-				memset((void*)psCurrentConfiguration->acMessage, 0, strlen(psCurrentConfiguration->acMessage));
+				memset((void*)psCurrentConfiguration->acMessage_, 0, strlen(psCurrentConfiguration->acMessage_));
 				vConfigurationSet(psCurrentConfiguration);
 
 				// Wifi task is IDLE

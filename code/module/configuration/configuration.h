@@ -56,6 +56,35 @@ tsConfiguration* psConfigurationGet();
 void vConfigurationClearMessage();
 
 /**
+ * @brief Gets the device name
+ * @return Pointer to the zero terminatted string of the device name
+ *
+ * Gets the device name either from the RAM or FLASH
+ */
+char* zConfigurationGetName();
+
+/**
+ * @brief Sets the device name
+ * @param zName Pointer to the zero terminatted string of the device name
+ *
+ * Sets the devie name in the RAM and FLASH
+ */
+void vConfigurationSetName(char* zName);
+
+/**
+ * @brief Reads from flash memory the starting actuator state
+ * @return The actuator state (0 - DEACTIVATED, 1 - ACTIVATED)
+ */
+uint8_t u8ConfigurationGetActuatorState();
+
+/**
+ * @brief Sets in the flash memory the starting actuator state
+ * @param u8State The actuator state (0 - DEACTIVATED, 1 - ACTIVATED)
+ */
+void vConfigurationSetActuatorState(uint8_t u8State);
+
+
+/**
  * @}
  * @}
  * @}

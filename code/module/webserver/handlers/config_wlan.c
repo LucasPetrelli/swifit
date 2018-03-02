@@ -38,17 +38,17 @@ char* zHandlerConfigWlan(char* pcRequestData)
 
 	tsConfiguration sNewConfig;
 	sNewConfig.eMode = ATTEMPT_NEW_CONNECTION;
-	memset(sNewConfig.acAP, '\0', strlen(sNewConfig.acAP));
-	strcpy(sNewConfig.acAP, jsonAP->valuestring);
-	memset(sNewConfig.acPassword, '\0', strlen(sNewConfig.acPassword));
-	strcpy(sNewConfig.acPassword, jsonPSWD->valuestring);
+	memset(sNewConfig.acAP_, '\0', strlen(sNewConfig.acAP_));
+	strcpy(sNewConfig.acAP_, jsonAP->valuestring);
+	memset(sNewConfig.acPassword_, '\0', strlen(sNewConfig.acPassword_));
+	strcpy(sNewConfig.acPassword_, jsonPSWD->valuestring);
 
 	LOG_DEBUG(
 		"JSON data received:\n"
 		"AP: %s\n"
 		"PSWD: %s",
-		sNewConfig.acAP,
-		sNewConfig.acPassword
+		sNewConfig.acAP_,
+		sNewConfig.acPassword_
 	);
 	vConfigurationSet(&sNewConfig);
 

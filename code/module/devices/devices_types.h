@@ -11,6 +11,7 @@
 #include "actuator_types.h"
 #include "sensor_types.h"
 #include "basictypes.h"
+#include "configuration.h"
 
 /**
  * \defgroup module Functional Modules
@@ -45,7 +46,7 @@ typedef struct {
 	uint8_t u8IP_[4];				//!< The device IP
 	uint32_t u32ID;					//!< The device ID
 
-	char cName_[32];				//!< The device name given by the user
+	char cName_[NAME_LENGTH];		//!< The device name given by the user
 
 	teDeviceType eType;				//!< The device type
 	teActuatorState eActuatorState;	//!< Device actuator state (relay)

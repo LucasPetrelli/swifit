@@ -126,10 +126,10 @@ void user_init(void)
     xTaskCreate(&vTaskWifi, "Wifi Task", 512, NULL, 4, NULL);
 
     // --- Sensor Task
-    xTaskCreate(&vSensorTask, "Sensor", configMINIMAL_STACK_SIZE, NULL, 2, NULL);
+    xTaskCreate(&vSensorTask, "Sensor", configMINIMAL_STACK_SIZE, NULL, 3, NULL);
 
     // --- Actuator Task
-    xTaskCreate(&vActuatorTask, "Actuator", configMINIMAL_STACK_SIZE, NULL, 2, NULL);
+    xTaskCreate(&vActuatorTask, "Actuator", 512, NULL, 3, NULL);
 
     // --- Platform Task
     tsPlatformTaskConfiguration* psPlatformTask = (tsPlatformTaskConfiguration*) zalloc (sizeof(tsPlatformTaskConfiguration));

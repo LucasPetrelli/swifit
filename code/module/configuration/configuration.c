@@ -23,7 +23,9 @@ const char zDefaultConfigurationContent[CONFIG_FILE_LENGTH] = "0\n"
 		"\n";
 
 
-tsConfiguration sConfig;
+tsConfiguration prv_sConfig;
+char prv_acName_[NAME_LENGTH];
+
 
 void vConfigurationRead()
 {
@@ -60,19 +62,33 @@ void vConfigurationRead()
 	u8LenOfPassword = pcStartOfMessage - pcStartOfPassword - 1;
 	u8LenOfMessage = pcEndOfFile - pcStartOfMessage;
 
-	sConfig.eMode = (teOperationMode) pcFileContent[0];
-	strncpy(sConfig.acAP, pcStartOfAP, u8LenOfAP);
-	strncpy(sConfig.acPassword, pcStartOfPassword, u8LenOfPassword);
-	strncpy(sConfig.acMessage, pcStartOfMessage, u8LenOfMessage);
-
+	prv_sConfig.eMode = (teOperationMode) pcFileContent[0];
+	strncpy(prv_sConfig.acAP_, pcStartOfAP, u8LenOfAP);
+	strncpy(prv_sConfig.acPassword_, pcStartOfPassword, u8LenOfPassword);
+	strncpy(prv_sConfig.acMessage_, pcStartOfMessage, u8LenOfMessage);
 
 vReadConfiguration_end:
 	LOG_DEBUG("Info retrieved");
-	LOG_DEBUG("Mode: %u", sConfig.eMode);
-	LOG_DEBUG("AP [%u]: %s", u8LenOfAP, sConfig.acAP);
-	LOG_DEBUG("Password [%u]: %s", u8LenOfPassword, sConfig.acPassword);
-	LOG_DEBUG("Message [%u]: %s", u8LenOfMessage, sConfig.acMessage);
+	LOG_DEBUG("Mode: %u", prv_sConfig.eMode);
+	LOG_DEBUG("AP [%u]: %s", u8LenOfAP, prv_sConfig.acAP_);
+	LOG_DEBUG("Password [%u]: %s", u8LenOfPassword, prv_sConfig.acPassword_);
+	LOG_DEBUG("Message [%u]: %s", u8LenOfMessage, prv_sConfig.acMessage_);
 	free(pcFileContent);
+
+	if (zConfigurationGetName()==NULL)
+	{
+		if (TARGET_PRODUCT == PLUG_PROD)
+		{
+			vConfigurationSetName("Swifit Socket");
+		}
+		else
+		{
+			vConfigurationSetName("Swifit Switch");
+		}
+	}
+
+	LOG_DEBUG("Device Name: [ %s ]", prv_acName_);
+
 	return;
 }
 
@@ -85,19 +101,64 @@ void vConfigurationSetDefault()
 void vConfigurationSet(tsConfiguration* psConfig)
 {
 	char* zFileContent = (char*)zalloc(u8MaxSizeOfConfigFile);
-	sprintf(zFileContent, zConfigurationTemplate, psConfig->eMode, psConfig->acAP, psConfig->acPassword, psConfig->acMessage);
+	sprintf(zFileContent, zConfigurationTemplate, psConfig->eMode, psConfig->acAP_, psConfig->acPassword_, psConfig->acMessage_);
 	eWriteToFile((char*) zConfigurationFile, zFileContent, strlen(zFileContent));
 	free(zFileContent);
-	sConfig = *psConfig;
+	prv_sConfig = *psConfig;
 }
 
 tsConfiguration* psConfigurationGet()
 {
-	return &sConfig;
+	return &prv_sConfig;
 }
 
 void vConfigurationClearMessage()
 {
-	memset(sConfig.acMessage, '\0', strlen(sConfig.acMessage));
-	vConfigurationSet(&sConfig);
+	memset(prv_sConfig.acMessage_, '\0', strlen(prv_sConfig.acMessage_));
+	vConfigurationSet(&prv_sConfig);
+}
+
+char* zConfigurationGetName()
+{
+	teException eException;
+	if (strlen(prv_acName_) == 0)
+	{
+		eException = eReadFromFile("name", prv_acName_, NAME_LENGTH);
+		if (eException != EX_SUCCESSFUL)
+		{
+			return NULL;
+		}
+	}
+	return prv_acName_;
+}
+
+void vConfigurationSetName(char* zName)
+{
+	memset(prv_acName_, '\0', strlen(prv_acName_));
+	strncpy(prv_acName_, zName, strlen(zName));
+	eWriteToFile("name", prv_acName_, strlen(prv_acName_));
+}
+
+uint8_t u8ConfigurationGetActuatorState()
+{
+	uint8_t u8State = 0;
+	char zActuator[2];
+	LOG_DEBUG("Read actuator state");
+	teException eException = eReadFromFile("act", zActuator, 2);
+	if (eException != EX_SUCCESSFUL)
+	{
+		LOG_DEBUG("Read fail");
+		u8State = 0;
+	}
+	u8State = (uint8_t)strtoul(zActuator, NULL, 10);
+	LOG_DEBUG("State read = [%u]",u8State);
+	return u8State;
+}
+
+void vConfigurationSetActuatorState(uint8_t u8State)
+{
+	char zActuator[4];
+	sprintf(zActuator, "%u", u8State%2);
+	LOG_DEBUG("Write actuator state (%s)(%u)", zActuator, strlen(zActuator));
+	eWriteToFile("act", zActuator, strlen(zActuator));
 }
