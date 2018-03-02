@@ -1,0 +1,1 @@
+"C:\Espressif\xtensa-lx106-elf\bin\xtensa-lx106-elf-objdump.exe" -d "C:\repo\swifit\build\app.out" >disassemble.txt
