@@ -14,6 +14,7 @@ void vSNTPInit()
 {
 	ip_addr_t sIp;
 	IP4_ADDR(&sIp, 200,160,7,186);
+	sntp_setserver(0, &sIp);
 	sntp_set_timezone(-3);
 	sntp_init();
 }

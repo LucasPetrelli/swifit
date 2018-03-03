@@ -25,6 +25,7 @@
 #include "wifi_task.h"
 #include "sensor_task.h"
 #include "actuator_task.h"
+#include "timekeeper_task.h"
 #include "platform_task.h"
 #include "behavior_task.h"
 
@@ -150,6 +151,11 @@ void user_init(void)
 			vBehaviourBroadcastCallback
 	);
     xTaskCreate(&vBehaviorTask, "Behavior", 512, (void*) psBehaviourTask, 5, NULL);
+
+    // --- Timekeeper Task
+    tsTimekeeperTaskConfiguration* psTimekeeperTask = (tsTimekeeperTaskConfiguration*) zalloc (sizeof(tsTimekeeperTaskConfiguration));
+    psTimekeeperTask->u32Period = 1000;
+    xTaskCreate(vTimekeeperTask, "Timekeeper", 512, (void*) psTimekeeperTask, 3, NULL);
 
     // --- UDP ISR
 	eUDPInit(psBehaviourTask->xBehaviorQueue);
