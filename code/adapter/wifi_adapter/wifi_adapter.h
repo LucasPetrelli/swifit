@@ -16,6 +16,8 @@
 #include "esp_wifi.h"
 
 #include "espconn_mdns.h"
+#include "freertos/FreeRTOS.h"
+#include "freertos/queue.h"
 
 #define AP_SSID "SwifiConfig"
 #define AP_PSWD "placeholder"
@@ -122,6 +124,13 @@ void vWifiStartAP();
  */
 void vWifiSetHostname(char* zHostname);
 //-------------------------------------------------------------------------------------------------
+
+/**
+ * Sets the queue to where the wifi connection state change will put it's events
+ * @param xQueue The queue handle
+ */
+
+
 
 /**
  * Initialize the mDNS responder

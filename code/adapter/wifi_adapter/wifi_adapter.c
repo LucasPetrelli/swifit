@@ -1,4 +1,9 @@
 #include "wifi_adapter.h"
+#include "mem_types.h"
+
+xQueueHandle xWifiNotifyQueue;
+
+void prv_vWifiStateChangeHandler(System_Event_t* event);
 
 teException eWifiConnectToAP(char* pcSsid, char* pcPassword)
 {
@@ -160,4 +165,72 @@ void vWifiInitMDNS()
 
 	mDNSresp_init(0, 0xFFFF);
 	mDNSresp_addhost("swifit.local",&ipconfig.ip);
+}
+
+void vWifiSetNotificationQueue(xQueueHandle xQueue)
+{
+	xWifiNotifyQueue = xQueue;
+	wifi_set_event_handler_cb(prv_vWifiStateChangeHandler);
+}
+
+void prv_vWifiStateChangeHandler(System_Event_t* event)
+{
+	LOG_DEBUG("Wifi event: [%u]", event->event_id);
+	tsMemQueueMessage sMsg;
+	switch (event->event_id)
+	{
+	case EVENT_STAMODE_SCAN_DONE:
+	{
+		LOG_DEBUG("EVENT_STAMODE_SCAN_DONE");
+		break;
+	}
+	case EVENT_STAMODE_CONNECTED:
+	{
+		LOG_DEBUG("EVENT_STAMODE_CONNECTED");
+		break;
+	}
+	case EVENT_STAMODE_DISCONNECTED:
+	{
+		LOG_DEBUG("EVENT_STAMODE_DISCONNECTED [reason %u]", event->event_info.disconnected.reason);
+		teWifiConnectionStatus eStatus = WIFI_DISCONNECTED;
+		sMsg.eType = WIFI_MESSAGE;
+		sMsg.pvData = (void*) eStatus;
+		xQueueSendFromISR(xWifiNotifyQueue ,(void*) &sMsg, NULL);
+		break;
+	}
+	case EVENT_STAMODE_AUTHMODE_CHANGE:
+	{
+		LOG_DEBUG("EVENT_STAMODE_AUTHMODE_CHANGE");
+		break;
+	}
+	case EVENT_STAMODE_GOT_IP:
+	{
+		LOG_DEBUG("EVENT_STAMODE_GOT_IP");
+		teWifiConnectionStatus eStatus = WIFI_CONNECTED_TO_AP;
+		sMsg.eType = WIFI_MESSAGE;
+		sMsg.pvData = (void*) eStatus;
+		xQueueSendFromISR(xWifiNotifyQueue ,(void*) &sMsg, NULL);
+		break;
+	}
+	case EVENT_STAMODE_DHCP_TIMEOUT:
+	{
+		LOG_DEBUG("EVENT_STAMODE_DHCP_TIMEOUT");
+		break;
+	}
+	case EVENT_SOFTAPMODE_STACONNECTED:
+	{
+		LOG_DEBUG("EVENT_SOFTAPMODE_STACONNECTED");
+		break;
+	}
+	case EVENT_SOFTAPMODE_STADISCONNECTED:
+	{
+		LOG_DEBUG("EVENT_SOFTAPMODE_STADISCONNECTED");
+		break;
+	}
+	case EVENT_SOFTAPMODE_PROBEREQRECVED:
+	{
+		LOG_DEBUG("EVENT_SOFTAPMODE_PROBEREQRECVED");
+		break;
+	}
+	}
 }

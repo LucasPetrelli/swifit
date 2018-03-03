@@ -8,11 +8,18 @@
 #include "wifi_task.h"
 #include "configuration.h"
 #include "system_adapter.h"
+#include "freertos/FreeRTOS.h"
+#include "freertos/queue.h"
+#include "mem_types.h"
 
 void vTaskWifi(void *pvParameters)
 {
 	tsConfiguration* psCurrentConfiguration = psConfigurationGet();
+
 	teWifiTaskState eTaskState;
+	xQueueHandle xWifiTaskQueue = xQueueCreate(10, sizeof(tsMemQueueMessage));
+	vWifiSetNotificationQueue(xWifiTaskQueue);
+	vWifiSetHostname(zConfigurationGetName());
 
 
 	// Prepare initial state based on the last saved configuration
@@ -150,7 +157,14 @@ void vTaskWifi(void *pvParameters)
 			}
 			case WIFI_TASK_IDLE:
 			{
-				vTaskDelay(100/portTICK_RATE_MS);
+				tsMemQueueMessage sMsg;
+				portBASE_TYPE xResult;
+				xResult = xQueueReceive(xWifiTaskQueue, (void*)&sMsg, portMAX_DELAY);
+				if (xResult == pdTRUE)
+				{
+					teWifiConnectionStatus eNewStatus = (teWifiConnectionStatus) sMsg.pvData;
+					LOG_DEBUG("Wifi task received %u", eNewStatus);
+				}
 				break;
 			}
 			default:
