@@ -21,7 +21,6 @@ char* zHandlerIssueAction(char* pcRequestData)
 	tsActuatorTaskRequest* psReq;
 
 
-	LOG_DEBUG("%s", pcRequestData);
 
 	if (jsNewStatus->type == cJSON_True)
 	{

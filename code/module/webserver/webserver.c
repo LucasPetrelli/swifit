@@ -27,7 +27,7 @@ void vSetupWebserver()
 
 	// Launch the HTTP listener task
 	// It calls the callback configured above when an HTTP request is received
-    xTaskCreate(&vHTTPTask, "http_server", 512, NULL, 4, NULL);
+    xTaskCreate(&vHTTPTask, "http_server", 256, NULL, 4, NULL);
 }
 
 void vRequestHandler(char* zRequest)
@@ -62,13 +62,17 @@ char* pcHandleDecodedRequest(tsHttpRequest sRequest)
 	}
 	else
 	{
-		if (strncmp(sRequest.pcURIData, "/homepage.js", strlen("/homepage.js")) == 0)
+		if (strncmp(sRequest.pcURIData, acHomepageJsId, strlen(acHomepageJsId)) == 0)
 		{
 			pcResponse = prv_zReadHomePageFromFlash((char*) acHomepageJs);
 		}
-		else if (strncmp(sRequest.pcURIData, "/homepage.css", strlen("/homepage.css")) == 0)
+		else if (strncmp(sRequest.pcURIData, acHomepageCssId, strlen(acHomepageCssId)) == 0)
 		{
 			pcResponse = prv_zReadHomePageFromFlash((char*) acHomepageCss);
+		}
+		else if (strncmp(sRequest.pcURIData, acDevices_pageJsId, strlen(acDevices_pageJsId)) == 0)
+		{
+			pcResponse = prv_zReadHomePageFromFlash((char*) acDevices_pageJs);
 		}
 	}
 
@@ -257,13 +261,13 @@ tsHttpRequest sGetRequest(char* zRequest)
 
 	if (sParsedRequest.eType == HTTP_POST)
 	{
-		pcAux1=strstr(zRequest, "\r\n\r\n");
+		LOG_DEBUG("\n%s", zRequest);
+		pcAux1=strstr(zRequest, "{");
 		if (pcAux1 == NULL)
 		{
 			LOG_DEBUG("Didn't find post data");
 			return sParsedRequest;
 		}
-		pcAux1 =(char*)((uint32)pcAux1 + 4);
 		pcAux2=strchr(pcAux1, '\0');
 
 		sParsedRequest.pcPostData = pcAux1;

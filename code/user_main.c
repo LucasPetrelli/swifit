@@ -94,29 +94,29 @@ void user_init(void)
     vSystemInit();
     LOG_DEBUG("Init\n\n\n");
     struct	rst_info	*rtc_info	=	system_get_rst_info();
-    LOG_DEBUG("reset reason:	%x\n",	rtc_info->reason);
-	if	(rtc_info->reason	==	REASON_WDT_RST	||
-		rtc_info->reason	==	REASON_EXCEPTION_RST	||
-		rtc_info->reason	==	REASON_SOFT_WDT_RST)	{
-		if	(rtc_info->reason	==	REASON_EXCEPTION_RST)	{
-
-			LOG_DEBUG("Fatal exception (%d):\n", rtc_info->exccause);
-
-		}
-
-		LOG_DEBUG(
-				"epc1=0x%08x,	"
-				"epc2=0x%08x,	"
-				"epc3=0x%08x,	"
-				"excvaddr=0x%08x,	"
-				"depc=0x%08x\n",
-				rtc_info->epc1,
-				rtc_info->epc2,
-				rtc_info->epc3,
-				rtc_info->excvaddr,
-				rtc_info->depc);//The	address	of	the	last	crash	is	printed,	which	is	used	to	debug	garbled	output.
-	}
-
+//    LOG_DEBUG("reset reason:	%x\n",	rtc_info->reason);
+//	if	(rtc_info->reason	==	REASON_WDT_RST	||
+//		rtc_info->reason	==	REASON_EXCEPTION_RST	||
+//		rtc_info->reason	==	REASON_SOFT_WDT_RST)	{
+//		if	(rtc_info->reason	==	REASON_EXCEPTION_RST)	{
+//
+//			LOG_DEBUG("Fatal exception (%d):\n", rtc_info->exccause);
+//
+//		}
+//
+//		LOG_DEBUG(
+//				"epc1=0x%08x,	"
+//				"epc2=0x%08x,	"
+//				"epc3=0x%08x,	"
+//				"excvaddr=0x%08x,	"
+//				"depc=0x%08x\n",
+//				rtc_info->epc1,
+//				rtc_info->epc2,
+//				rtc_info->epc3,
+//				rtc_info->excvaddr,
+//				rtc_info->depc);//The	address	of	the	last	crash	is	printed,	which	is	used	to	debug	garbled	output.
+//	}
+	LOG_DEBUG("Starting heap: %u", u32SystemFreeHeap());
 	// --- Read configuration from the fs
     vConfigurationRead();
 
@@ -128,7 +128,7 @@ void user_init(void)
     xTaskCreate(&vSensorTask, "Sensor", configMINIMAL_STACK_SIZE, NULL, 3, NULL);
 
     // --- Actuator Task
-    xTaskCreate(&vActuatorTask, "Actuator", 512, NULL, 3, NULL);
+    xTaskCreate(&vActuatorTask, "Actuator", 300, NULL, 3, NULL);
 
     // --- Platform Task
     tsPlatformTaskConfiguration* psPlatformTask = (tsPlatformTaskConfiguration*) zalloc (sizeof(tsPlatformTaskConfiguration));
@@ -161,7 +161,7 @@ void user_init(void)
     psWifiTaskConfiguration->xWifiNotificationQueue = xQueueCreate(10, sizeof(tsMemQueueMessage));
     psWifiTaskConfiguration->xTimekeeperNotificationQueue = psTimekeeperTask->xTimekeeperQueue;
     psWifiTaskConfiguration->xBehaviorNotificationQueue = psBehaviourTask->xBehaviorQueue;
-    xTaskCreate(&vTaskWifi, "Wifi Task", 512, (void*) psWifiTaskConfiguration, 4, NULL);
+    xTaskCreate(&vTaskWifi, "Wifi Task", 256, (void*) psWifiTaskConfiguration, 4, NULL);
     // --- UDP ISR
 	eUDPInit(psBehaviourTask->xBehaviorQueue);
 

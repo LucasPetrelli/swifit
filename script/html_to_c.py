@@ -36,6 +36,7 @@ if __name__ == '__main__':
     targetFileName = target.split('\\')[-1]
     targetName, targetExtension = targetFileName.split('.')
     varName = "ac{}{}".format(targetName.capitalize(),targetExtension.capitalize())
+    resourceName = "ac{}{}Id".format(targetName.capitalize(),targetExtension.capitalize())
 
     outputCFile = targetFileName + '.c'
     outputHFile = targetFileName + '.h'
@@ -43,7 +44,9 @@ if __name__ == '__main__':
     outputCPath = os.path.join(outputPath, outputCFile)
     outputHPath = os.path.join(outputPath, outputHFile)
 
-    headerFileBuffer = "#include \"c_types.h\"\nextern const char {}[];".format(varName)
+    headerFileBuffer = "#include \"c_types.h\"\n" +\
+                       "extern const char {}[];\n".format(varName) + \
+                       "extern const char {}[];".format(resourceName)
 
     # with open(target) as inputFile:
     #     content = inputFile.read()
@@ -68,6 +71,7 @@ if __name__ == '__main__':
 
     with open(target) as inputFile:
         sourceFileBuffer = "#include \"{}\"\n\n".format(outputHFile)
+        sourceFileBuffer += "const char {}[] = \"/{}\";\n".format(resourceName, targetFileName)
         sourceFileBuffer += "const char ICACHE_RODATA_ATTR STORE_ATTR {}[]".format(varName) + " = {\n"
 
         if targetExtension == 'html':

@@ -54,3 +54,6 @@ Temporary Items
 *.o
 *.out
 *.bin
+.settings/language.settings.xml
+script/.idea/workspace.xml
+web/.idea/workspace.xml

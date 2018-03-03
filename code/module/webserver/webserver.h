@@ -18,6 +18,7 @@
 #include "homepage.html.h"
 #include "homepage.css.h"
 #include "homepage.js.h"
+#include "devices_page.js.h"
 
 //Used adapters
 #include "http_adapter.h"
