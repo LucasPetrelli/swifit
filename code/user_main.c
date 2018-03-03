@@ -123,8 +123,6 @@ void user_init(void)
 	// --- Webserver setup (+Task)
     vSetupWebserver();
 
-    // --- Wifi Task
-    xTaskCreate(&vTaskWifi, "Wifi Task", 512, NULL, 4, NULL);
 
     // --- Sensor Task
     xTaskCreate(&vSensorTask, "Sensor", configMINIMAL_STACK_SIZE, NULL, 3, NULL);
@@ -155,8 +153,15 @@ void user_init(void)
     // --- Timekeeper Task
     tsTimekeeperTaskConfiguration* psTimekeeperTask = (tsTimekeeperTaskConfiguration*) zalloc (sizeof(tsTimekeeperTaskConfiguration));
     psTimekeeperTask->u32Period = 1000;
-    xTaskCreate(vTimekeeperTask, "Timekeeper", 512, (void*) psTimekeeperTask, 3, NULL);
+    psTimekeeperTask->xTimekeeperQueue = xQueueCreate(10, sizeof(tsMemQueueMessage));
+    xTaskCreate(vTimekeeperTask, "Timekeeper", configMINIMAL_STACK_SIZE, (void*) psTimekeeperTask, 3, NULL);
 
+    // --- Wifi Task
+    tsWifiTaskConfiguration* psWifiTaskConfiguration = (tsWifiTaskConfiguration*)zalloc(sizeof(tsWifiTaskConfiguration));
+    psWifiTaskConfiguration->xWifiNotificationQueue = xQueueCreate(10, sizeof(tsMemQueueMessage));
+    psWifiTaskConfiguration->xTimekeeperNotificationQueue = psTimekeeperTask->xTimekeeperQueue;
+    psWifiTaskConfiguration->xBehaviorNotificationQueue = psBehaviourTask->xBehaviorQueue;
+    xTaskCreate(&vTaskWifi, "Wifi Task", 512, (void*) psWifiTaskConfiguration, 4, NULL);
     // --- UDP ISR
 	eUDPInit(psBehaviourTask->xBehaviorQueue);
 

@@ -60,6 +60,7 @@ void vHTTPSetCallback(vHTTPRequestCallback vFunc)
 
 void vHTTPSendAnswer(char* zAnswer)
 {
+	netconn_set_sendtimeout(sHTTPControl.client, 2000);
 	netconn_write(sHTTPControl.client, zAnswer, strlen(zAnswer), 0);
 }
 

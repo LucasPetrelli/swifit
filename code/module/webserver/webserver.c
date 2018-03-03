@@ -17,6 +17,9 @@
 
 cJSON_Hooks sJSONHooks ;
 
+char* prv_pcHandleCGIRequest(const tsHttpRequest* sRequest, char* pcResponse);
+char* prv_zReadHomePageFromFlash(char* address);
+
 void vSetupWebserver()
 {
 	// Set the callback that handles an received HTTP request
@@ -55,48 +58,64 @@ char* pcHandleDecodedRequest(tsHttpRequest sRequest)
 	}
 	else if (strncmp(sRequest.pcURIData, URI_CGI, strlen(URI_CGI))==0)
 	{
-		LOG_WEB("CGI requested");
-		char* p = sRequest.pcURIData + strlen(URI_CGI);
-		char* zCGI = (char*)zalloc(sRequest.u16URILen - strlen(URI_CGI) + 1);
-		char* data = (char*)zalloc(sRequest.u16PostLen + 1);
-		strncpy(zCGI, p, sRequest.u16URILen - strlen(URI_CGI));
-		strncpy(data, sRequest.pcPostData, sRequest.u16PostLen);
-
-		LOG_WEB("%s requested\nData: %s", zCGI, data);
-		if (strncmp(p, zConfigWlanCGI, strlen(zConfigWlanCGI))==0)
+		pcResponse = prv_pcHandleCGIRequest(&sRequest, pcResponse);
+	}
+	else
+	{
+		if (strncmp(sRequest.pcURIData, "/homepage.js", strlen("/homepage.js")) == 0)
 		{
-			pcResponse = zHandlerConfigWlan(data);
+			pcResponse = prv_zReadHomePageFromFlash((char*) acHomepageJs);
 		}
-		else if (strncmp(p, zStatusCGI, strlen(zStatusCGI))==0)
+		else if (strncmp(sRequest.pcURIData, "/homepage.css", strlen("/homepage.css")) == 0)
 		{
-			pcResponse = zHandlerStatus(data);
+			pcResponse = prv_zReadHomePageFromFlash((char*) acHomepageCss);
 		}
-		else if (strncmp(p, zConfigMessageCGI, strlen(zConfigMessageCGI))==0)
-		{
-			pcResponse = zHandlerConfigMessage(data);
-		}
-		else if (strncmp(p, zDeviceRestartCGI, strlen(zDeviceRestartCGI))==0)
-		{
-			pcResponse = zHandlerDeviceRestart(data);
-		}
-		else if (strncmp(p, zDeviceListCGI, strlen(zDeviceListCGI))==0)
-		{
-			pcResponse = zHandlerDeviceList(data);
-		}
-		else if (strncmp(p, zIssueActionCGI, strlen(zIssueActionCGI))==0)
-		{
-			pcResponse = zHandlerIssueAction(data);
-		}
-
-		free(zCGI);
-		free(data);
 	}
 
 pcHandleDecodedRequest_exit:
 	return pcResponse;
 }
 
-char* zReadHomePageFromFlash(char* address)
+char* prv_pcHandleCGIRequest(const tsHttpRequest* sRequest, char* pcResponse)
+{
+	LOG_WEB("CGI requested");
+	char* p = sRequest->pcURIData + strlen(URI_CGI);
+	char* zCGI = (char*) zalloc(sRequest->u16URILen - strlen(URI_CGI) + 1);
+	char* data = (char*) zalloc(sRequest->u16PostLen + 1);
+	strncpy(zCGI, p, sRequest->u16URILen - strlen(URI_CGI));
+	strncpy(data, sRequest->pcPostData, sRequest->u16PostLen);
+	LOG_WEB("%s requested\nData: %s", zCGI, data);
+	if (strncmp(p, zConfigWlanCGI, strlen(zConfigWlanCGI)) == 0)
+	{
+		pcResponse = zHandlerConfigWlan(data);
+	}
+	else if (strncmp(p, zStatusCGI, strlen(zStatusCGI)) == 0)
+	{
+		pcResponse = zHandlerStatus(data);
+	}
+	else if (strncmp(p, zConfigMessageCGI, strlen(zConfigMessageCGI)) == 0)
+	{
+		pcResponse = zHandlerConfigMessage(data);
+	}
+	else if (strncmp(p, zDeviceRestartCGI, strlen(zDeviceRestartCGI)) == 0)
+	{
+		pcResponse = zHandlerDeviceRestart(data);
+	}
+	else if (strncmp(p, zDeviceListCGI, strlen(zDeviceListCGI)) == 0)
+	{
+		pcResponse = zHandlerDeviceList(data);
+	}
+	else if (strncmp(p, zIssueActionCGI, strlen(zIssueActionCGI)) == 0)
+	{
+		pcResponse = zHandlerIssueAction(data);
+	}
+
+	free(zCGI);
+	free(data);
+	return pcResponse;
+}
+
+char* prv_zReadHomePageFromFlash(char* address)
 {
 	uint32_t* page = NULL;
 	uint32_t u32ByteRead;
@@ -146,11 +165,11 @@ char* zGetHomepage()
 	tsConfiguration* psDeviceConfig = psConfigurationGet();
 	if (psDeviceConfig->eMode == CONFIG_MODE)
 	{
-		pcHomepage = zReadHomePageFromFlash((char*) acWelcome_configHtml);
+		pcHomepage = prv_zReadHomePageFromFlash((char*) acWelcome_configHtml);
 	}
 	else
 	{
-		pcHomepage = zReadHomePageFromFlash((char*) acHomepageHtml);
+		pcHomepage = prv_zReadHomePageFromFlash((char*) acHomepageHtml);
 	}
 	return pcHomepage;
 }

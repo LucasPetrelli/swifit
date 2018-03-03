@@ -16,6 +16,8 @@
 //Webpages
 #include "welcome_config.html.h"
 #include "homepage.html.h"
+#include "homepage.css.h"
+#include "homepage.js.h"
 
 //Used adapters
 #include "http_adapter.h"
