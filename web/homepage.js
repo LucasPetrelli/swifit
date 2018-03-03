@@ -31,6 +31,10 @@ function changeActivePage(listElement) {
         }
     }
 
+    if (pages[id] === "TimingPage") {
+        requestSetupTimingPage();
+    }
+
     activePage = pages[id];
 }
 
