@@ -23,7 +23,7 @@
  * @addtogroup sntp_adapter
  * @{
  */
-
+#include "basictypes.h"
 /**
  * @brief Does the required initialization for the SNTP functionality
  */
