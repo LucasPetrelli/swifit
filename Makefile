@@ -21,12 +21,14 @@ MODULES	= code/driver \
 			code/adapter/debug_adapter \
 			code/adapter/gpio_adapter \
 			code/adapter/wifi_adapter \
+			code/adapter/sntp_adapter \
 			code/adapter/udp_adapter \
 			code/adapter/spiffs_adapter \
 			code/adapter/http_adapter \
 			code/adapter/system_adapter \
 			code/module/webserver/handlers \
 			code/module/webserver \
+			code/module/timing \
 			code/module/sensor \
 			code/module/actuator \
 			code/module/filesystem \
@@ -38,6 +40,7 @@ MODULES	= code/driver \
 			code/application/actuator_task \
 			code/application/platform_task \
 			code/application/behavior_task \
+			code/application/timekeeper_task \
 			code 
 LIBS	= gcc c hal phy pp net80211 wpa mirom json crypto main freertos lwip minic smartconfig espconn spiffs
 

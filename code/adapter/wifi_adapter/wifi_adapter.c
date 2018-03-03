@@ -21,8 +21,6 @@ teException eWifiConnectToAP(char* pcSsid, char* pcPassword)
     	goto end_WifiConnectToAP;
     }
 
-    vWifiSetHostname(STA_NAME);
-
     if (!wifi_station_connect())
     {
     	SET_EXCEPTION(EX_WIFI_CONNECT)

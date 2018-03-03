@@ -129,6 +129,7 @@ void vWifiSetHostname(char* zHostname);
  * Sets the queue to where the wifi connection state change will put it's events
  * @param xQueue The queue handle
  */
+void vWifiSetNotificationQueue(xQueueHandle xQueue);
 
 
 

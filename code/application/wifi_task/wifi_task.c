@@ -15,11 +15,8 @@
 void vTaskWifi(void *pvParameters)
 {
 	tsConfiguration* psCurrentConfiguration = psConfigurationGet();
-
-	teWifiTaskState eTaskState;
-	xQueueHandle xWifiTaskQueue = xQueueCreate(10, sizeof(tsMemQueueMessage));
-	vWifiSetNotificationQueue(xWifiTaskQueue);
-	vWifiSetHostname(zConfigurationGetName());
+	tsWifiTaskConfiguration* psTask = (tsWifiTaskConfiguration*) pvParameters;
+	vWifiSetNotificationQueue(psTask->xWifiNotificationQueue);
 
 
 	// Prepare initial state based on the last saved configuration
@@ -28,7 +25,7 @@ void vTaskWifi(void *pvParameters)
 		//Device in configuration mode, set up as access point
 		case CONFIG_MODE:
 		{
-			eTaskState = WIFI_TASK_SETUP_AP;
+			psTask->eState = WIFI_TASK_SETUP_AP;
 			break;
 		}
 
@@ -38,7 +35,7 @@ void vTaskWifi(void *pvParameters)
 		{
 			psCurrentConfiguration->eMode = CONNECTING_TO_KNOWN_AP;
 			vConfigurationSet(psCurrentConfiguration);
-			eTaskState = WIFI_TASK_SETUP_STATION;
+			psTask->eState = WIFI_TASK_SETUP_STATION;
 			break;
 		}
 
@@ -46,7 +43,7 @@ void vTaskWifi(void *pvParameters)
 		// It is saved in the psCurrentConfiguration
 		case ATTEMPT_NEW_CONNECTION:
 		{
-			eTaskState = WIFI_TASK_SETUP_STATION;
+			psTask->eState = WIFI_TASK_SETUP_STATION;
 			break;
 		}
 
@@ -54,7 +51,7 @@ void vTaskWifi(void *pvParameters)
 		// Keep in this state while the AP is not reached
 		case CONNECTING_TO_KNOWN_AP:
 		{
-			eTaskState = WIFI_TASK_SETUP_STATION;
+			psTask->eState = WIFI_TASK_SETUP_STATION;
 			break;
 		}
 	}
@@ -63,7 +60,7 @@ void vTaskWifi(void *pvParameters)
 
 	while(1)
 	{
-		switch (eTaskState)
+		switch (psTask->eState)
 		{
 			// Setup as access point - will create it's own network
 			case WIFI_TASK_SETUP_AP:
@@ -71,7 +68,7 @@ void vTaskWifi(void *pvParameters)
 				LOG_DEBUG("CONFIG MODE - setting as access point");
 				vWifiSetMode(WIFI_AP);
 				vWifiStartAP();
-				eTaskState = WIFI_TASK_IDLE;
+				psTask->eState = WIFI_TASK_IDLE;
 				break;
 			}
 
@@ -83,6 +80,7 @@ void vTaskWifi(void *pvParameters)
 
 				LOG_DEBUG("OP MODE - establishing connection");
 				vWifiSetMode(WIFI_STATION);
+				vWifiSetHostname(zConfigurationGetName());
 
 				teException eException;
 				// Try to connect to the access point
@@ -91,7 +89,7 @@ void vTaskWifi(void *pvParameters)
 				if (eException != EX_SUCCESSFUL)
 				{
 					LOG_DEBUG("Something went wrong in connection setup");
-					eTaskState = WIFI_TASK_SETUP_AP;
+					psTask->eState = WIFI_TASK_SETUP_AP;
 					break;
 				}
 
@@ -104,10 +102,10 @@ void vTaskWifi(void *pvParameters)
 				if (eException != EX_SUCCESSFUL)
 				{
 					// If the AP was reached before, retry
-//					if (psCurrentConfiguration->eMode == CONNECTING_TO_KNOWN_AP)
-//					{
-//						continue;
-//					}
+					if (psCurrentConfiguration->eMode == CONNECTING_TO_KNOWN_AP)
+					{
+						continue;
+					}
 
 					// If not, will setup a config mode to retrieve a new AP data from the user
 					psCurrentConfiguration->eMode = CONFIG_MODE;
@@ -142,7 +140,7 @@ void vTaskWifi(void *pvParameters)
 					vSystemReset();
 
 					// This code won't be reached, but keep it here for information
-					eTaskState = WIFI_TASK_SETUP_AP;
+					psTask->eState = WIFI_TASK_SETUP_AP;
 					break;
 				}
 
@@ -152,23 +150,42 @@ void vTaskWifi(void *pvParameters)
 				vConfigurationSet(psCurrentConfiguration);
 
 				// Wifi task is IDLE
-				eTaskState = WIFI_TASK_IDLE;
+				psTask->eState = WIFI_TASK_IDLE;
 				break;
 			}
 			case WIFI_TASK_IDLE:
 			{
 				tsMemQueueMessage sMsg;
 				portBASE_TYPE xResult;
-				xResult = xQueueReceive(xWifiTaskQueue, (void*)&sMsg, portMAX_DELAY);
+
+				// Blocks until a notification is received from the wifi ISR
+				xResult = xQueueReceive(psTask->xWifiNotificationQueue, (void*)&sMsg, portMAX_DELAY);
+
 				if (xResult == pdTRUE)
 				{
 					teWifiConnectionStatus eNewStatus = (teWifiConnectionStatus) sMsg.pvData;
 					LOG_DEBUG("Wifi task received %u", eNewStatus);
+
+					// Notify other tasks
+					tsMemQueueMessage sNotification;
+					sNotification.eType = WIFI_MESSAGE;
+					sNotification.pvData = (void*) eNewStatus;
+					portBASE_TYPE xSendResult;
+					if (psTask->xBehaviorNotificationQueue)
+					{
+						LOG_DEBUG("Notifying behavior");
+						xSendResult = xQueueSend(psTask->xBehaviorNotificationQueue, (void*)&sNotification, 0);
+					}
+					if (psTask->xTimekeeperNotificationQueue)
+					{
+						LOG_DEBUG("Notifying timekeeper");
+						xSendResult = xQueueSend(psTask->xTimekeeperNotificationQueue, (void*)&sNotification, 0);
+					}
 				}
 				break;
 			}
 			default:
-				eTaskState = WIFI_TASK_IDLE;
+				psTask->eState = WIFI_TASK_IDLE;
 				break;
 		}
 	}

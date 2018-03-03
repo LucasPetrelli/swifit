@@ -20,10 +20,24 @@
  * @{
  */
 #include "freertos/FreeRTOS.h"
+#include "freertos/queue.h"
 
+
+typedef enum {
+	TIMEKEEPER_WIFI_NOT_CONNECTED,
+	TIMEKEEPER_NOT_SYNC,
+	TIMEKEEPER_SYNC
+}teTimekeeperState;
+
+/**
+ * @brief Timekeeper task control structure
+ */
 typedef struct {
-	uint32_t u32Period;
-	portTickType xLastWakeUpTick;
+	uint32_t u32Period;						//!< Period of the task
+	portTickType xLastWakeUpTick;			//!< Last wake up time
+	xQueueHandle xTimekeeperQueue;			//!< Queue from which the task receives messages
+
+	teTimekeeperState eState;				//!< Current timekeeper state
 } tsTimekeeperTaskConfiguration;
 
 /**

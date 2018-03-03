@@ -24,6 +24,15 @@
  * @{
  */
 
+typedef struct {
+	xQueueHandle xWifiNotificationQueue;
+	xQueueHandle xBehaviorNotificationQueue;
+	xQueueHandle xTimekeeperNotificationQueue;
+
+	teWifiTaskState eState;
+} tsWifiTaskConfiguration;
+
+
 void vTaskWifi(void *pvParameters);
 
 /**

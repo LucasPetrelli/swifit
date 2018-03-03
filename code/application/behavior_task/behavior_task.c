@@ -9,6 +9,7 @@
 #include "mem_types.h"
 #include "comm_protocol.h"
 #include "devices.h"
+#include "wifi_types.h"
 
 #include "freertos/FreeRTOS.h"
 #include "freertos/timers.h"
@@ -23,7 +24,7 @@ void vBehaviorTask(void* pvParemeters)
 	tsBehaviourTaskConfiguration* psTask = (tsBehaviourTaskConfiguration*) pvParemeters;
 	psTask->xLastWakeTime = xTaskGetTickCount();
 	prv_psTaskConfig = psTask;
-	vBehaviourDetectMode(psTask);
+	psTask->eMode = NOT_CONNECTED;
 	tsProtocolMessage* psProtMessage = NULL;
 	while(1)
 	{
@@ -34,6 +35,7 @@ void vBehaviorTask(void* pvParemeters)
 		// If There is a new message, process it
 		if (xNewMessage == pdTRUE)
 		{
+			LOG_DEBUG("Got message");
 			switch (psQueueMsg->eType)
 			{
 			case UDP_MESSAGE_RX:
@@ -51,11 +53,27 @@ void vBehaviorTask(void* pvParemeters)
 				prv_vBehaviourHandleActuatorReq(psTask, psReq);
 				break;
 			}
+			case WIFI_MESSAGE:
+			{
+				teWifiConnectionStatus eNewWifiStatus = (teWifiConnectionStatus) psQueueMsg->pvData;
+				if (eNewWifiStatus == WIFI_CONNECTED_TO_AP)
+				{
+					// Got connection, detect new mode
+					vBehaviourDetectMode(psTask);
+					continue;
+				}
+				else if (eNewWifiStatus == WIFI_DISCONNECTED)
+				{
+					// Lost connection, set back to disconnected
+					psTask->eMode = NOT_CONNECTED;
+				}
+				break;
+			}
 			}
 		}
 		free(psQueueMsg);
 
-
+		// Do processing on the protocol message received according to the mode
 		switch (psTask->eMode)
 		{
 			case HEAD:
@@ -151,39 +169,28 @@ void vBehaviourDetectMode(tsBehaviourTaskConfiguration* psTask)
 	const uint32_t u32MaxTimeout = 10000; // milliseconds
 	uint32_t u32Timeout = (u32SystemRandom() % (u32MaxTimeout - u32MinTimeout)) + u32MinTimeout;
 	LOG_DEBUG("Will wait for %u ms", u32Timeout);
-
 	// Check whether the wifi task will be able to connect. If fail, the behavior mode sets to disconnected
-	teException eWifiException = eWifiWaitToBeConnected(30);
-	if (eWifiException != EX_SUCCESSFUL)
+	vProtocolInit();
+	tsMemQueueMessage* psQueueMessage = (tsMemQueueMessage*) zalloc(sizeof(tsMemQueueMessage));
+	// Do setup, checking if there is an head in the connected network
+	if (xQueueReceive(psTask->xBehaviorQueue, (const void*) psQueueMessage, u32Timeout/portTICK_RATE_MS) == pdTRUE)
 	{
-		psTask->eMode = NOT_CONNECTED;
-		LOG_DEBUG("Set as NOT_CONNECTED");
+		tsProtocolMessage* psProtMessage = (tsProtocolMessage*)zalloc(sizeof(tsProtocolMessage));
+		vProtocolDecodeUDP((tsUDPMessage*) psQueueMessage->pvData, psProtMessage);
+		psTask->eMode = NODE;
+		memcpy(psTask->u8MasterIP_, psProtMessage->u8IP_, 4);
+		LOG_DEBUG("Set as NODE - master IP: %u . %u . %u . %u ", psTask->u8MasterIP_[0], psTask->u8MasterIP_[1], psTask->u8MasterIP_[2], psTask->u8MasterIP_[3]);
+		free(psQueueMessage->pvData);
+		free(psProtMessage);
 	}
 	else
 	{
-		vProtocolInit();
-		tsMemQueueMessage* psQueueMessage = (tsMemQueueMessage*) zalloc(sizeof(tsMemQueueMessage));
-		// Do setup, checking if there is an head in the connected network
-		if (xQueueReceive(psTask->xBehaviorQueue, (const void*) psQueueMessage, u32Timeout/portTICK_RATE_MS) == pdTRUE)
-		{
-			tsProtocolMessage* psProtMessage = (tsProtocolMessage*)zalloc(sizeof(tsProtocolMessage));
-			vProtocolDecodeUDP((tsUDPMessage*) psQueueMessage->pvData, psProtMessage);
-			psTask->eMode = NODE;
-			memcpy(psTask->u8MasterIP_, psProtMessage->u8IP_, 4);
-			LOG_DEBUG("Set as NODE - master IP: %u . %u . %u . %u ", psTask->u8MasterIP_[0], psTask->u8MasterIP_[1], psTask->u8MasterIP_[2], psTask->u8MasterIP_[3]);
-			free(psQueueMessage->pvData);
-			free(psProtMessage);
-		}
-		else
-		{
-			vProtocolDoBroadcast();
-			psTask->eMode = HEAD;
-			xTimerStart(psTask->xBroadcastTimer, 0);
-			LOG_DEBUG("Set as HEAD");
-
-		}
-		free(psQueueMessage);
+		vProtocolDoBroadcast();
+		psTask->eMode = HEAD;
+		xTimerStart(psTask->xBroadcastTimer, 0);
+		LOG_DEBUG("Set as HEAD");
 	}
+	free(psQueueMessage);
 }
 
 void vBehaviourBroadcastCallback(xTimerHandle pxTimer)
