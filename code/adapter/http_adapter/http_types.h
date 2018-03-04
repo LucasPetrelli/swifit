@@ -6,8 +6,8 @@
  * @brief
  */
 
-#ifndef CODE_ADAPTER_HTTP_ADAPTER_HTTP_TYPES_H_
-#define CODE_ADAPTER_HTTP_ADAPTER_HTTP_TYPES_H_
+#ifndef CODE_ADAPTER_HTTP_ADAPTER__HTTP_TYPES_H_
+#define CODE_ADAPTER_HTTP_ADAPTER__HTTP_TYPES_H_
 
 /**
  * @brief Pointer to HTTP request receive callback function
@@ -23,4 +23,4 @@ typedef struct {
 	struct netconn *client;
 	struct netconn *server;
 } tsHTTPControl;
-#endif /* CODE_ADAPTER_HTTP_ADAPTER_HTTP_TYPES_H_ */
+#endif /* CODE_ADAPTER_HTTP_ADAPTER__HTTP_TYPES_H_ */

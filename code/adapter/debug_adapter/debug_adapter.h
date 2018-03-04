@@ -40,7 +40,7 @@ extern xSemaphoreHandle xPrintSemaphore;
  * Will be replaced by nothing when the DEBUG symbol is not defined
  */
 #ifdef DEBUG
-	#define LOG_DEBUG(args...) {xSemaphoreTake(xPrintSemaphore, portMAX_DELAY);  printf("[%s]", __FILE__);printf(args);printf("\n"); xSemaphoreGive(xPrintSemaphore);}
+	#define LOG_DEBUG(args...) {xSemaphoreTake(xPrintSemaphore, portMAX_DELAY);  printf("[%s:%u]", __FILE__, __LINE__);printf(args);printf("\n"); xSemaphoreGive(xPrintSemaphore);}
 #else
 	#define LOG_DEBUG(args...) {do {} while(0);}
 #endif

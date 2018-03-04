@@ -128,3 +128,16 @@
     border-radius: 50%;
     background: white;
 }
+
+.refreshBtn {
+    border: none;
+    border-radius: 5px;
+    background-color: cornflowerblue;
+    padding: 10px 5px;
+    text-align: center;
+    color: whitesmoke;
+}
+
+.refreshBtn:hover {
+    background-color: darkblue;
+}

@@ -12,8 +12,9 @@
 #include <lwip/api.h>
 
 #include "freertos/FreeRTOS.h"
-#include "debug_adapter.h"
+
 #include "http_types.h"
+#include "debug_adapter.h"
 
 //#define HTTP_DEBUG
 
@@ -71,6 +72,7 @@ void vHTTPSetCallback(vHTTPRequestCallback vFunc);
  * @param zAnswer: null-terminated string representing the answer
  */
 void vHTTPSendAnswer(char* zAnswer);
+
 
 /**
  * @}

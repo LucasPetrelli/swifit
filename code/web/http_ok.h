@@ -29,6 +29,8 @@
  */
 extern const char* zHttpHeaderOK;
 
+extern const char zHttpNotFound[];
+
 /**
  * @}
  * @}

@@ -15,6 +15,7 @@
 #include "devices.h"
 #include "timing.h"
 #include "cJSON.h"
+#include "os_config.h"
 
 cJSON_Hooks sJSONHooks ;
 
@@ -29,11 +30,11 @@ xTaskHandle vSetupWebserver()
 	// Launch the HTTP listener task
 	// It calls the callback configured above when an HTTP request is received
 	xTaskHandle xCreatedTask;
-    xTaskCreate(&vHTTPTask, "http_server", 256+64, NULL, 4, &xCreatedTask);
+    xTaskCreate(&vHTTPTask, "http_server", 512, NULL, HTTP_TASK_PRIO, &xCreatedTask);
     return xCreatedTask;
 }
 
-void vRequestHandler(char* zRequest)
+void* vRequestHandler(char* zRequest)
 {
 	//LOG_WEB("New request!\n%s", zRequest);
 
@@ -44,6 +45,7 @@ void vRequestHandler(char* zRequest)
     char* pcResponse = pcHandleDecodedRequest(sParsedRequest);
     if (pcResponse)
     {
+//    	return pcResponse;
 		vHTTPSendAnswer(pcResponse);
 		free(pcResponse);
     }
@@ -92,6 +94,15 @@ char* pcHandleDecodedRequest(tsHttpRequest sRequest)
 		else if (strncmp(sRequest.pcURIData, acTiming_page_templateJsId, strlen(acTiming_page_templateJsId)) == 0)
 		{
 			pcResponse = prv_zReadHomePageFromFlash((char*) acTiming_page_templateJs);
+		}
+		else if (strncmp(sRequest.pcURIData, acControllerJsId, strlen(acControllerJsId)) == 0)
+		{
+			pcResponse = prv_zReadHomePageFromFlash((char*) acControllerJs);
+		}
+		else
+		{
+			pcResponse = prv_zReadHomePageFromFlash((char*) zHttpNotFound);
+			LOG_DEBUG("Not found resource [%s]", pcResponse);
 		}
 	}
 

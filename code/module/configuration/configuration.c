@@ -174,7 +174,6 @@ tsTimingEntry* psConfigurationGetTimeTable()
 {
 	if (prv_psTable != NULL)
 	{
-		vTimingPrintTable(prv_psTable);
 		return prv_psTable;
 	}
 
@@ -189,7 +188,6 @@ tsTimingEntry* psConfigurationGetTimeTable()
 	else
 	{
 		LOG_DEBUG("Retrieved table from memory");
-		vTimingPrintTable(prv_psTable);
 	}
 	return prv_psTable;
 }

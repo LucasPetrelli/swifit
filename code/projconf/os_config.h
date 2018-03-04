@@ -19,4 +19,13 @@ typedef enum {
 	N_TASKS
 } teTaskId;
 
+
+#define HTTP_TASK_PRIO 5
+#define SENSOR_TASK_PRIO 3
+#define ACTUATOR_TASK_PRIO 3
+#define PLATFORM_TASK_PRIO 2
+#define BEHAVIOR_TASK_PRIO 6
+#define TIMEKEEPER_TASK_PRIO 3
+#define WIFI_TASK_PRIO 4
+
 #endif /* CODE_PROJCONF_OS_CONFIG_H_ */

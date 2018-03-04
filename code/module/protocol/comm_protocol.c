@@ -94,6 +94,18 @@ tsProtocolMessage* psProtocolMakeAction(tsActuatorTaskRequest* psReq, uint8_t* p
 	return psMsg;
 }
 
+tsProtocolMessage* psProtocolMakeTimingParameter(tsDeviceTimingChange* psReq, uint8_t* pu8TargetIp)
+{
+	tsProtocolMessage* psMsg = (tsProtocolMessage*)zalloc(sizeof(tsProtocolMessage));
+	LOG_DEBUG("Making timing parameter");
+
+	psMsg->eType = MSG_TIMING_PARAMETER;
+	memcpy(psMsg->u8IP_, pu8TargetIp, 4);
+	memcpy(psMsg->acData_, (void*) psReq, sizeof(tsDeviceTimingChange));
+	psMsg->u32DataCount = sizeof(tsDeviceTimingChange);
+	return psMsg;
+}
+
 void vProtocolLog(tsProtocolMessage* psMsg)
 {
 	LOG_DEBUG("---- Protocol Message LOG ----");

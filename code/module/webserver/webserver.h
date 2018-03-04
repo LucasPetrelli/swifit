@@ -15,6 +15,7 @@
 
 //Webpages
 #include "welcome_config.html.h"
+#include "controller.js.h"
 #include "homepage.html.h"
 #include "homepage.css.h"
 #include "homepage.js.h"
@@ -78,7 +79,7 @@ xTaskHandle vSetupWebserver();
  *
  * Handles a HTTP request, parsing it's data and replying accordingly
  */
-void vRequestHandler(char* zRequest);
+void* vRequestHandler(char* zRequest);
 
 /**
  * @brief Parser to get data from request

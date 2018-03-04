@@ -12,7 +12,7 @@ function setupTimingPage() {
     var listOfDevices = JSON.parse(this.responseText);
     var amountOfDevices = listOfDevices.length;
     var newHtml = "";
-    var page = document.getElementById("TimingPage");
+    var page = document.getElementById("TimingPageContent");
     page.innerHTML = "";
     for (var deviceNumber = 0; deviceNumber < amountOfDevices; deviceNumber++) {
         var device = listOfDevices[deviceNumber];

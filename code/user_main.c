@@ -129,16 +129,16 @@ void user_init(void)
     xTasks[HTTP_TASK] = vSetupWebserver();
 
     // --- Sensor Task
-    xTaskCreate(&vSensorTask, "Sensor", configMINIMAL_STACK_SIZE, NULL, 3, &xTasks[SENSOR_TASK]);
+    xTaskCreate(&vSensorTask, "Sensor", configMINIMAL_STACK_SIZE, NULL, SENSOR_TASK_PRIO, &xTasks[SENSOR_TASK]);
 
     // --- Actuator Task
-    xTaskCreate(&vActuatorTask, "Actuator", 300, NULL, 3, &xTasks[ACTUATOR_TASK]);
+    xTaskCreate(&vActuatorTask, "Actuator", 300, NULL, ACTUATOR_TASK_PRIO, &xTasks[ACTUATOR_TASK]);
 
     // --- Platform Task
     tsPlatformTaskConfiguration* psPlatformTask = (tsPlatformTaskConfiguration*) zalloc (sizeof(tsPlatformTaskConfiguration));
     psPlatformTask->u32Period = 100;
     psPlatformTask->u32HeapReportPeriod = 5000;
-    xTaskCreate(&vPlatformTask, "Platform", configMINIMAL_STACK_SIZE, (void*) psPlatformTask, 2, &xTasks[PLATFORM_TASK]);
+    xTaskCreate(&vPlatformTask, "Platform", configMINIMAL_STACK_SIZE, (void*) psPlatformTask, PLATFORM_TASK_PRIO, &xTasks[PLATFORM_TASK]);
 
     // --- Behavior Task
     tsBehaviourTaskConfiguration* psBehaviourTask = (tsBehaviourTaskConfiguration*) zalloc (sizeof(tsBehaviourTaskConfiguration));
@@ -152,20 +152,20 @@ void user_init(void)
 			(void*) 1,
 			vBehaviourBroadcastCallback
 	);
-    xTaskCreate(&vBehaviorTask, "Behavior", 512, (void*) psBehaviourTask, 5, &xTasks[BEHAVIOR_TASK]);
+    xTaskCreate(&vBehaviorTask, "Behavior", 512, (void*) psBehaviourTask, BEHAVIOR_TASK_PRIO, &xTasks[BEHAVIOR_TASK]);
 
     // --- Timekeeper Task
     tsTimekeeperTaskConfiguration* psTimekeeperTask = (tsTimekeeperTaskConfiguration*) zalloc (sizeof(tsTimekeeperTaskConfiguration));
     psTimekeeperTask->u32Period = 1000;
     psTimekeeperTask->xTimekeeperQueue = xQueueCreate(10, sizeof(tsMemQueueMessage));
-    xTaskCreate(vTimekeeperTask, "Timekeeper", configMINIMAL_STACK_SIZE+64, (void*) psTimekeeperTask, 3, &xTasks[TIMEKEEPER_TASK]);
+    xTaskCreate(vTimekeeperTask, "Timekeeper", configMINIMAL_STACK_SIZE+64, (void*) psTimekeeperTask, TIMEKEEPER_TASK_PRIO, &xTasks[TIMEKEEPER_TASK]);
 
     // --- Wifi Task
     tsWifiTaskConfiguration* psWifiTaskConfiguration = (tsWifiTaskConfiguration*)zalloc(sizeof(tsWifiTaskConfiguration));
     psWifiTaskConfiguration->xWifiNotificationQueue = xQueueCreate(10, sizeof(tsMemQueueMessage));
     psWifiTaskConfiguration->xTimekeeperNotificationQueue = psTimekeeperTask->xTimekeeperQueue;
     psWifiTaskConfiguration->xBehaviorNotificationQueue = psBehaviourTask->xBehaviorQueue;
-    xTaskCreate(&vTaskWifi, "Wifi Task", 512, (void*) psWifiTaskConfiguration, 4, &xTasks[WIFI_TASK]);
+    xTaskCreate(&vTaskWifi, "Wifi Task", 512, (void*) psWifiTaskConfiguration, WIFI_TASK_PRIO, &xTasks[WIFI_TASK]);
     // --- UDP ISR
 	eUDPInit(psBehaviourTask->xBehaviorQueue);
 

@@ -10,6 +10,7 @@
 
 // Type definitions
 #include "protocol_types.h"
+#include "devices_types.h"
 
 // Directly used adapters
 #include "udp_adapter.h"
@@ -106,6 +107,14 @@ tsProtocolMessage* psProtocolMakeStatus(uint8_t* pu8TargetIp);
  * @return Pointer to the created message.
  */
 tsProtocolMessage* psProtocolMakeAction(tsActuatorTaskRequest* psReq, uint8_t* pu8TargetIp);
+
+/**
+ * @brief Allocates and populates a new timing parameter message.
+ * @param psReq Pointer to the timing change request.
+ * @param pu8TargetIp The target of the message.
+ * @return Pointer to the created message.
+ */
+tsProtocolMessage* psProtocolMakeTimingParameter(tsDeviceTimingChange* psReq, uint8_t* pu8TargetIp);
 
 /**
  * @brief Logs using LOG_DEBUG the message data in a "beautiful" manner

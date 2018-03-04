@@ -32,6 +32,7 @@ void vHTTPTask(void *pvParameters)
     {
     	// Wait for a connection
     	err_t eErr = netconn_accept(sHTTPControl.server, &sHTTPControl.client);
+    	netconn_set_sendtimeout(sHTTPControl.client, 100);
     	LOG_DEBUG("Got HTTP connection!");
     	if (eErr == ERR_OK)
     	{
@@ -46,6 +47,7 @@ void vHTTPTask(void *pvParameters)
     			netbuf_data(sNetBuffer, &vData, &u16Len);
             	LOG_DEBUG("Passing to callback [%u]!", u16Len);
     			sHTTPControl.vCallback((char*) vData);
+            	LOG_DEBUG("Callback done!", u16Len);
     		}
         	netbuf_delete(sNetBuffer);
     	}
@@ -62,6 +64,9 @@ void vHTTPSetCallback(vHTTPRequestCallback vFunc)
 
 void vHTTPSendAnswer(char* zAnswer)
 {
-	netconn_write(sHTTPControl.client, zAnswer, strlen(zAnswer), 0);
+	LOG_DEBUG("Sending answer! (%u b)", strlen(zAnswer));
+	netconn_set_sendtimeout(sHTTPControl.client, 1000);
+	s8_t s8Err = netconn_write(sHTTPControl.client, zAnswer, strlen(zAnswer), NETCONN_COPY );
+	LOG_DEBUG("answer done! [%i]", s8Err);
 }
 

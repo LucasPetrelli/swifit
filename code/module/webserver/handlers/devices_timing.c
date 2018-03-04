@@ -23,6 +23,15 @@ char* zHandlerDevicesTiming(char* pcRequestData)
 	free(psDevSelf);
 	cJSON_AddItemToArray(jsList, jsSelf);
 
+	// Get information of known devices
+	tsDevice* psKnownDevices = (tsDevice*) pxBehaviourGetListOfDevices();
+	while(psKnownDevices)
+	{
+		cJSON* jsDevTiming = psWebserverMakeJSONFromTiming(psKnownDevices);
+		cJSON_AddItemToArray(jsList, jsDevTiming);
+		psKnownDevices = (tsDevice*) psKnownDevices->pvNext;
+	}
+
 	// mount response
 	acResponseBody = cJSON_Print(jsList);
 	LOG_DEBUG("JSON Created: %s", acResponseBody);

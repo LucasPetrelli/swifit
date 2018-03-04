@@ -11,11 +11,13 @@
 
 <!-- Upper menu -->
 <div class="row">
-    <ul>
-        <li class="topMenu" id="DeviceMenuItem" onclick=changeActivePage(this)>Devices</li>
-        <li class="topMenu" id="ControlMenuItem" onclick=changeActivePage(this)>Control</li>
-        <li class="topMenu" id="TimingMenuItem" onclick=changeActivePage(this)>Timing</li>
-    </ul>
+    <div class="col-12">
+        <ul class="col-12">
+            <li class="topMenu" id="DeviceMenuItem" onclick=changeActivePage(this)>Devices</li>
+            <li class="topMenu" id="ControlMenuItem" onclick=changeActivePage(this)>Control</li>
+            <li class="topMenu" id="TimingMenuItem" onclick=changeActivePage(this)>Timing</li>
+        </ul>
+    </div>
 </div>
 
 <div id="WelcomePage" class="mainbody">
@@ -30,18 +32,23 @@
 
 <!--Device Programing page layout-->
 <div id="ProgramPage" class="mainbody">
-    <p>Control main body</p>
+    <div class="row">
+        <div class="col-3">
+            Device programming
+        </div>
+    </div>
+
 </div>
 <!--End of page -->
 
 <!--Timing Programming page layout-->
 <div id="TimingPage" class="mainbody">
+    <div class="row">
+        <div class="col-1">
+            <div id="TimingRefreshBtn" class="refreshBtn" onclick="requestSetupTimingPage()">Refresh Tables</div>
+        </div>
+    </div>
+    <div id="TimingPageContent"></div>
 </div>
-
-<script src="devices_page_template.js"></script>
-<script src="devices_page.js"></script>
-<script src="timing_page_template.js"></script>
-<script src="timing_page.js"></script>
-<script src="homepage.js"></script>
-</body>
+<script src="controller.js"></script>
 </html>

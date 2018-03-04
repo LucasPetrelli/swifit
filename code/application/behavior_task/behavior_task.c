@@ -151,6 +151,13 @@ void vBehaviorTask(void* pvParemeters)
 						prv_vBehaviourHandleActuatorReq(psTask, psReq);
 						break;
 					}
+					case MSG_TIMING_PARAMETER:
+					{
+						tsDeviceTimingChange* psReq = (tsDeviceTimingChange*)zalloc(sizeof(tsDeviceTimingChange));
+						memcpy((void*)psReq, (void*)psProtMessage->acData_, psProtMessage->u32DataCount);
+						prv_vBehaviorHandleTimingReq(psTask, psReq);
+						break;
+					}
 				}
 				break;
 			}
@@ -263,6 +270,16 @@ void prv_vBehaviorHandleTimingReq(tsBehaviourTaskConfiguration* psTask, tsDevice
 	if (psReq->u32Id == u32SelfId)
 	{
 		vConfigurationSetTimeTable(psReq->sTable_);
+	}
+	else
+	{
+		tsDevice* psTargetDev = psDeviceGetById(&psTask->xDeviceList, psReq->u32Id);
+		if (psTargetDev)
+		{
+			tsProtocolMessage* psMsg = psProtocolMakeTimingParameter(psReq, psTargetDev->u8IP_);
+			vProtocolSendMessage(psMsg);
+			free(psMsg);
+		}
 	}
 	free(psReq);
 }

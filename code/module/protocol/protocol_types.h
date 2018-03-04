@@ -32,7 +32,7 @@ typedef enum {
 	MSG_STATUS,								/**< Status message type */
 	MSG_EVENT,								/**< Event message type */
 	MSG_ACTION,								/**< Action message type */
-	MSG_PARAMETER,							/**< Parameter message type */
+	MSG_TIMING_PARAMETER,					/**< Parameter message type */
 	MSG_TYPE_N								/**< Message type count */
 } teProtocolMessageType;
 
