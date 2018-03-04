@@ -11,6 +11,7 @@
 #include "u_time.h"
 #include "mem_types.h"
 #include "wifi_types.h"
+#include "devices.h"
 
 void vTimekeeperTask(void* pvParameters)
 {
@@ -22,6 +23,8 @@ void vTimekeeperTask(void* pvParameters)
 	{
 		vTaskDelayUntil(&psTask->xLastWakeUpTick, psTask->u32Period/portTICK_RATE_MS);
 		tsMemQueueMessage sMsg;
+
+		// Check the queue for an wifi message - it indicates a connection state change
 		if (xQueueReceive(psTask->xTimekeeperQueue, (void*)&sMsg, 0) == pdTRUE)
 		{
 			LOG_DEBUG("Timekeeper received message");
@@ -41,11 +44,13 @@ void vTimekeeperTask(void* pvParameters)
 			}
 		}
 
+		// If not connected to WLAN, the task should do nothing
 		if (psTask->eState == TIMEKEEPER_WIFI_NOT_CONNECTED)
 		{
 			continue;
 		}
 
+		// Attempt to get the current timestamp. If fail, try to start the SNTP server connection
 		uint32_t u32Timestamp = u32SNTPGetTimestamp();
 		if (u32Timestamp == 0)
 		{
@@ -54,17 +59,30 @@ void vTimekeeperTask(void* pvParameters)
 			continue;
 		}
 		psTask->eState = TIMEKEEPER_SYNC;
-		struct tmElements* psTM = (struct tmElements*)zalloc(sizeof(struct tmElements*));
-		timet_to_tm((time_t) u32Timestamp, psTM);
-		LOG_DEBUG(
-				"%02u/%02u/%02u %02u:%02u:%02u",
-				psTM->Day,
-				psTM->Month,
-				psTM->Year+1970,
-				psTM->Hour,
-				psTM->Minute,
-				psTM->Second
-		);
-		free(psTM);
+
+		// Check if there is an event in the current time
+		uint32_t u32Minutes = u32TimingMinutesFromTimestamp(u32Timestamp);
+		tsDevice* psDev = psDeviceGetSelf();
+		uint8_t u8Row;
+		for (u8Row = 0; u8Row < N_TIME_ENTRIES; u8Row++)
+		{
+			tsTimingEntry* psRow = &(psDev->sTimeTable_[u8Row]);
+			if (psRow->eEnabled == TIMING_DISABLED)
+			{
+				continue;
+			}
+			if ((uint16_t) u32Minutes == psRow->u16Minutes)
+			{
+				if (psRow->eAction == TIMING_ACTIVATE)
+				{
+					vActuatorTaskActivate(MAIN_RELAY);
+				}
+				else
+				{
+					vActuatorTaskDeactivate(MAIN_RELAY);
+				}
+			}
+		}
+		free(psDev);
 	}
 }

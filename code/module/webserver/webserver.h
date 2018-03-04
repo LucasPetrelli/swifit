@@ -71,7 +71,7 @@
  * Setups webserver functionality, starting the HTTP handler task and
  * assigning a callback to the HTTP control structure to
  */
-void vSetupWebserver();
+xTaskHandle vSetupWebserver();
 
 /**
  * @brief HTTP request handler

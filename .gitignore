@@ -48,6 +48,7 @@ Temporary Items
 /firmware/
 /build/
 /doxygen/
+/code/web/
 *.a
 *.o
 *.o
@@ -57,3 +58,5 @@ Temporary Items
 .settings/language.settings.xml
 script/.idea/workspace.xml
 web/.idea/workspace.xml
+code/web/homepage.html.c
+code/web/welcome_config.html.c

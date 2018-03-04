@@ -38,11 +38,13 @@ void vHTTPTask(void *pvParameters)
     		// Read the incoming data
     		struct netbuf* sNetBuffer;
     		eErr = netconn_recv(sHTTPControl.client, &sNetBuffer);
+        	LOG_DEBUG("Read data [%u]!", eErr);
     		if (eErr == ERR_OK)
     		{
     			void* vData;
     			uint16 u16Len;
     			netbuf_data(sNetBuffer, &vData, &u16Len);
+            	LOG_DEBUG("Passing to callback [%u]!", u16Len);
     			sHTTPControl.vCallback((char*) vData);
     		}
         	netbuf_delete(sNetBuffer);

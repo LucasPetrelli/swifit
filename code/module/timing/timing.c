@@ -25,7 +25,9 @@ uint32_t u32TimingMinutes(tsTime* psTime)
 uint32_t u32TimingMinutesFromTimestamp(uint32_t u32Timestamp)
 {
 	tsTime* psTime = psTimingTimestampToStruct(u32Timestamp);
-	return u32TimingMinutes(psTime);
+	uint32_t u32Minutes = u32TimingMinutes(psTime);
+	free(psTime);
+	return u32Minutes;
 }
 
 

@@ -21,14 +21,16 @@ cJSON_Hooks sJSONHooks ;
 char* prv_pcHandleCGIRequest(const tsHttpRequest* sRequest, char* pcResponse);
 char* prv_zReadHomePageFromFlash(char* address);
 
-void vSetupWebserver()
+xTaskHandle vSetupWebserver()
 {
 	// Set the callback that handles an received HTTP request
 	vHTTPSetCallback((vHTTPRequestCallback) vRequestHandler);
 
 	// Launch the HTTP listener task
 	// It calls the callback configured above when an HTTP request is received
-    xTaskCreate(&vHTTPTask, "http_server", 256, NULL, 4, NULL);
+	xTaskHandle xCreatedTask;
+    xTaskCreate(&vHTTPTask, "http_server", 256+64, NULL, 4, &xCreatedTask);
+    return xCreatedTask;
 }
 
 void vRequestHandler(char* zRequest)

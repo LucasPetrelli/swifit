@@ -145,7 +145,7 @@ void vWifiStartAP()
 	config->max_connection = 3;
 
 	wifi_softap_set_config_current(config);
-	free(config);
+	//free(config);
 }
 
 void vWifiSetHostname(char* zHostname)
