@@ -29,54 +29,6 @@ function setupDevicePage() {
         return;
     }
     var element = document.getElementById("DevicesPage");
-
-    var htmlForDeviceTemplate = "" +
-        "        <div class=\"col-2\">\n" +
-        "            <div class=\"deviceInfo\">\n" +
-        "\n" +
-        "                <div class=\"device row slightMargin\">\n" +
-        "                    <div class=\"device labelNormal\">Name:</div>\n" +
-        "                    <div id=\"NameValue\" class=\"device valueNormal\">Switch</div>\n" +
-        "                    <br>\n" +
-        "                </div>\n" +
-        "\n" +
-        "                <div class=\"device row slightMargin\">\n" +
-        "                    <div class=\"device labelNormal\">Type:</div>\n" +
-        "                    <div id=\"TypeValue\" class=\"device valueNormal\">Switch</div>\n" +
-        "                    <br>\n" +
-        "                </div>\n" +
-        "\n" +
-        "                <div class=\"device row slightMargin\">\n" +
-        "                    <div class=\"device labelNormal\">ID:</div>\n" +
-        "                    <div id=\"IdValue\" class=\"device valueNormal\">Switch</div>\n" +
-        "                </div>\n" +
-        "\n" +
-        "                <div id=\"PlugInfo\" class=\"device row slightMargin\">\n" +
-        "                    <div class=\"device labelNormal\">Power status:</div>\n" +
-        "                    <!-- Rounded switch -->\n" +
-        "                    <div class=\"device valueNormal\">\n" +
-        "                        <label class=\"switch\"><input id=\"RelayStatus\" type=\"checkbox\"><span class=\"slider round\"></span></label>\n" +
-        "                    </div>\n" +
-        "                </div>\n" +
-        "\n" +
-        "                <div id=\"SwitchInfo\" class=\"device row slightMargin\">\n" +
-        "                    <div class=\"device labelNormal\">Switch status:</div>\n" +
-        "                    <!-- Rounded switch -->\n" +
-        "                    <div class=\"device valueNormal\">\n" +
-        "                        <label class=\"switch\"><input id=\"SwitchStatus\" type=\"checkbox\"><span class=\"slider round\"></span></label>\n" +
-        "                    </div>\n" +
-        "                </div>\n" +
-        "\n" +
-        "                <div id=\"PIRInfo\" class=\"device row slightMargin\">\n" +
-        "                    <div class=\"device labelNormal\">Infrared status:</div>\n" +
-        "                    <!-- Rounded switch -->\n" +
-        "                    <div class=\"device valueNormal\">\n" +
-        "                        <label id=\"PIRStatus\" class=\"pir \"></label>\n" +
-        "                    </div>\n" +
-        "                </div>\n" +
-        "            </div>\n" +
-        "        </div>";
-
     var requestForDevices = new XMLHttpRequest();
     requestForDevices.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
@@ -134,6 +86,6 @@ function setupDevicePage() {
             }
         }
     };
-    requestForDevices.open("GET", "/cgi/devices", true);
+    requestForDevices.open("GET", "/cgi/devices_list", true);
     requestForDevices.send();
 }

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+    <meta charset="UTF-8">
+    <title>Swifit Control Panel</title>
+    <link rel="stylesheet" type="text/css" href="homepage.css">
+    <link rel="stylesheet" type="text/css" href="timing_page.css">
+</head>
+<body>
+
+<!-- Upper menu -->
+<div class="row">
+    <ul>
+        <li class="topMenu" id="DeviceMenuItem" onclick=changeActivePage(this)>Devices</li>
+        <li class="topMenu" id="ControlMenuItem" onclick=changeActivePage(this)>Control</li>
+        <li class="topMenu" id="TimingMenuItem" onclick=changeActivePage(this)>Timing</li>
+    </ul>
+</div>
+
+<div id="WelcomePage" class="mainbody">
+    <p>Welcome main body</p>
+</div>
+<!--End of page -->
+
+<!--Device information page layout-->
+<div id="DevicesPage" class="mainbody">
+    <div class="row">
+
+        <div class="col-2">
+            <div class="deviceInfo">
+                <div class="device row slightMargin">
+                    <div class="device labelNormal">Name:</div>
+                    <div id="NameValue" class="device valueNormal">Switch</div>
+                    <br>
+                </div>
+                <div class="device row slightMargin">
+                    <div class="device labelNormal">Type:</div>
+                    <div id="TypeValue" class="device valueNormal">Switch</div>
+                    <br>
+                </div>
+
+                <div class="device row slightMargin">
+                    <div class="device labelNormal">ID:</div>
+                    <div id="IdValue" class="device valueNormal">Switch</div>
+                </div>
+
+                <div id="PlugStatus" class="device row slightMargin">
+                    <div class="device labelNormal">Power status:</div>
+                    <!-- Rounded switch -->
+                    <div class="device valueNormal">
+                        <label class="switch"><input id="RelayStatus" type="checkbox"><span class="slider round"></span></label>
+                    </div>
+                </div>
+
+                <div id="SwitchStatus" class="device row slightMargin">
+                    <div class="device labelNormal">Switch status:</div>
+                    <!-- Rounded switch -->
+                    <div class="device valueNormal">
+                        <label class="switch"><input id="SwitchStatus" type="checkbox"><span class="slider round"></span></label>
+                    </div>
+                </div>
+
+                <div id="PIRStatus" class="device row slightMargin">
+                    <div class="device labelNormal">Infrared status:</div>
+                    <!-- Rounded switch -->
+                    <div class="device valueNormal">
+                        <label class="pir pirActive"></label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!--End of page -->
+
+<!--Device Programing page layout-->
+<div id="ProgramPage" class="mainbody">
+    <p>Control main body</p>
+</div>
+<!--End of page -->
+
+<!--Timing Programming page layout-->
+<div id="TimingPage" class="mainbody">
+    <div class="row">
+
+        <div class="col-4">
+            <!-- Rounded switch -->
+            <div class="deviceTiming">
+                <p>Timing for <span id="deviceName">Device 1</span></p>
+
+                <div class="timingEntry row">
+                    <div class="timingSwitch">
+                        <label class="switch"><input id="SwitchStatus" type="checkbox"><span class="slider round"></span></label> Enable
+                    </div>
+                    <div class="timingTime">
+                        <input id="Hour1" class="timeInput"> h
+                        <input id="Minute1" class="timeInput"> min
+                    </div>
+                    <div class="timingAction">
+                        <label class="container">ON
+                            <input type="radio" name="action1" id="deactivate1">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="container">OFF
+                            <input type="radio" name="action1" checked="checked" id="activate1">
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="timingEntry row">
+                    <div class="timingSwitch">
+                        <label class="switch"><input id="SwitchStatus" type="checkbox"><span class="slider round"></span></label> Enable
+                    </div>
+                    <div class="timingTime">
+                        <input id="Hour1" class="timeInput"> h
+                        <input id="Minute1" class="timeInput"> min
+                    </div>
+                    <div class="timingAction">
+                        <label class="container">ON
+                            <input type="radio" name="action2" id="deactivate2">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="container">OFF
+                            <input type="radio" name="action2" checked="checked" id="activate2">
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="timingEntry row">
+                    <div class="timingSwitch">
+                        <label class="switch"><input id="SwitchStatus" type="checkbox"><span class="slider round"></span></label> Enable
+                    </div>
+                    <div class="timingTime">
+                        <input id="Hour1" class="timeInput"> h
+                        <input id="Minute1" class="timeInput"> min
+                    </div>
+                    <div class="timingAction">
+                        <label class="container">ON
+                            <input type="radio" name="action3" id="deactivate3">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="container">OFF
+                            <input type="radio" name="action3" checked="checked" id="activate3">
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="timingEntry row">
+                    <div class="timingSwitch">
+                        <label class="switch"><input id="SwitchStatus" type="checkbox"><span class="slider round"></span></label> Enable
+                    </div>
+                    <div class="timingTime">
+                        <input id="Hour1" class="timeInput"> h
+                        <input id="Minute1" class="timeInput"> min
+                    </div>
+                    <div class="timingAction">
+                        <label class="container">ON
+                            <input type="radio" name="action4" id="deactivate4">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="container">OFF
+                            <input type="radio" name="action4" checked="checked" id="activate4">
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="timingEntry submit">Submit</div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script src="devices_page_template.js"></script>
+<script src="devices_page.js"></script>
+<script src="timing_page_template.js"></script>
+<script src="timing_page.js"></script>
+<script src="homepage.js"></script>
+</body>
+</html>
