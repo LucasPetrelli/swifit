@@ -9,6 +9,7 @@
 #define CODE_MODULE_CONFIGURATION_CONFIGURATION_H_
 
 #include "configuration_types.h"
+#include "timing_types.h"
 
 /**
  * \defgroup module Functional Modules
@@ -82,6 +83,18 @@ uint8_t u8ConfigurationGetActuatorState();
  * @param u8State The actuator state (0 - DEACTIVATED, 1 - ACTIVATED)
  */
 void vConfigurationSetActuatorState(uint8_t u8State);
+
+/**
+ * @brief Gets the device time table from the flash
+ * @return Pointer to the table (N_TIME_ENTRIES length)
+ */
+tsTimingEntry* psConfigurationGetTimeTable();
+
+/**
+ * @brief Sets the device time table in the flash
+ */
+void vConfigurationSetTimeTable(tsTimingEntry* psTable);
+
 
 
 /**

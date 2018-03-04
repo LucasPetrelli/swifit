@@ -8,6 +8,7 @@
 #include "wifi_adapter.h"
 #include "system_adapter.h"
 #include "product_config.h"
+#include "configuration.h"
 void vDeviceAppend(xListOfDevices* pxDevList, tsDevice* psDev)
 {
 	psDev->pvNext = NULL;
@@ -96,6 +97,9 @@ tsDevice* psDeviceGetSelf()
         psDev->eSensorState = eSensorGetState(SWITCH);
     }
     psDev->eActuatorState = eActuatorGetStateById(RELAY);
+
+    memcpy((void*) psDev->sTimeTable_, (void*) psConfigurationGetTimeTable(), sizeof(tsTimingEntry)*N_TIME_ENTRIES);
+
 	return psDev;
 }
 

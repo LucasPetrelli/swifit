@@ -14,13 +14,19 @@
 const char * zIssueActionCGI =  "issue_action";
 char* zHandlerIssueAction(char* pcRequestData)
 {
+	char* pcResponse;
 	cJSON* jsAct = cJSON_Parse(pcRequestData);
+
+	if (jsAct == NULL)
+	{
+		LOG_DEBUG("Failed issue_action request received");
+		goto zHandlerIssueAction_end;
+	}
+
 	cJSON* jsTargetId = cJSON_GetObjectItem(jsAct, "target");
 	cJSON* jsNewStatus = cJSON_GetObjectItem(jsAct, "status");
 	uint32_t u32TargetId = strtoul(jsTargetId->valuestring, NULL, 10);
 	tsActuatorTaskRequest* psReq;
-
-
 
 	if (jsNewStatus->type == cJSON_True)
 	{
@@ -39,7 +45,8 @@ char* zHandlerIssueAction(char* pcRequestData)
 
 	cJSON_Delete(jsAct);
 
-	char* pcResponse = (char*)zalloc(strlen(zHttpHeaderOK));
+zHandlerIssueAction_end:
+	pcResponse = (char*)zalloc(strlen(zHttpHeaderOK));
 	strcat(pcResponse, zHttpHeaderOK);
 	return pcResponse;
 }

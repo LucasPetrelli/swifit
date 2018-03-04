@@ -11,7 +11,8 @@
 #include "actuator_types.h"
 #include "sensor_types.h"
 #include "basictypes.h"
-#include "configuration.h"
+#include "configuration_types.h"
+#include "timing_types.h"
 
 /**
  * \defgroup module Functional Modules
@@ -28,6 +29,8 @@
  * @addtogroup devices_types
  * @{
  */
+
+#define N_TIME_ENTRIES 4
 
 /**
  * @brief Device type enumeration
@@ -54,7 +57,14 @@ typedef struct {
 
 	uint8_t u8Countdown;
 
+	tsTimingEntry sTimeTable_[N_TIME_ENTRIES];
 } tsDevice;
+
+typedef struct {
+	uint32_t u32Id;
+	tsTimingEntry sTable_[N_TIME_ENTRIES];
+}tsDeviceTimingChange;
+
 
 /**
  * @brief Mask definition for a list of devices

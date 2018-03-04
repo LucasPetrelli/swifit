@@ -19,6 +19,10 @@
 #include "homepage.css.h"
 #include "homepage.js.h"
 #include "devices_page.js.h"
+#include "devices_page_template.js.h"
+#include "timing_page.js.h"
+#include "timing_page_template.js.h"
+#include "timing_page.css.h"
 
 //Used adapters
 #include "http_adapter.h"
@@ -95,6 +99,15 @@ char* pcHandleDecodedRequest(tsHttpRequest sRequest);
  * @return a pointer to the JSON object
  */
 cJSON* psWebserverMakeJSONFromDevice(tsDevice* psDev);
+
+
+/**
+ * @brief generates a JSON representation of the timing table of the device
+ * @param psDev a pointer to the device whose time table is to be transformed into JSON
+ * @return a pointer to the JSON object
+ */
+cJSON* psWebserverMakeJSONFromTiming(tsDevice* psDev);
+
 
 /**
  * @brief deletes a JSON object

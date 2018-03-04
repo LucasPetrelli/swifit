@@ -42,6 +42,7 @@ typedef enum {
 	ACTUATOR_MESSAGE,		/**< Actuator request message */
 	RESTART_MESSAGE,		/**< Device restart messa */
 	WIFI_MESSAGE,			/**< Wifi status change notification */
+	TIMING_PARAMETER,
 	N_QUEUE_MSG_TYPES		/**< Queue item types count */
 } teMemQueueMessageType;
 

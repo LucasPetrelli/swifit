@@ -13,6 +13,7 @@
 #include "actuator.h"
 #include "sensor.h"
 #include "devices.h"
+#include "timing.h"
 #include "cJSON.h"
 
 cJSON_Hooks sJSONHooks ;
@@ -74,6 +75,22 @@ char* pcHandleDecodedRequest(tsHttpRequest sRequest)
 		{
 			pcResponse = prv_zReadHomePageFromFlash((char*) acDevices_pageJs);
 		}
+		else if (strncmp(sRequest.pcURIData, acTiming_pageJsId, strlen(acTiming_pageJsId)) == 0)
+		{
+			pcResponse = prv_zReadHomePageFromFlash((char*) acTiming_pageJs);
+		}
+		else if (strncmp(sRequest.pcURIData, acTiming_pageCssId, strlen(acTiming_pageCssId)) == 0)
+		{
+			pcResponse = prv_zReadHomePageFromFlash((char*) acTiming_pageCss);
+		}
+		else if (strncmp(sRequest.pcURIData, acDevices_page_templateJsId, strlen(acDevices_page_templateJsId)) == 0)
+		{
+			pcResponse = prv_zReadHomePageFromFlash((char*) acDevices_page_templateJs);
+		}
+		else if (strncmp(sRequest.pcURIData, acTiming_page_templateJsId, strlen(acTiming_page_templateJsId)) == 0)
+		{
+			pcResponse = prv_zReadHomePageFromFlash((char*) acTiming_page_templateJs);
+		}
 	}
 
 pcHandleDecodedRequest_exit:
@@ -88,7 +105,8 @@ char* prv_pcHandleCGIRequest(const tsHttpRequest* sRequest, char* pcResponse)
 	char* data = (char*) zalloc(sRequest->u16PostLen + 1);
 	strncpy(zCGI, p, sRequest->u16URILen - strlen(URI_CGI));
 	strncpy(data, sRequest->pcPostData, sRequest->u16PostLen);
-	LOG_WEB("%s requested\nData: %s", zCGI, data);
+	LOG_DEBUG("%s requested\nData: %s", zCGI, data);
+
 	if (strncmp(p, zConfigWlanCGI, strlen(zConfigWlanCGI)) == 0)
 	{
 		pcResponse = zHandlerConfigWlan(data);
@@ -112,6 +130,14 @@ char* prv_pcHandleCGIRequest(const tsHttpRequest* sRequest, char* pcResponse)
 	else if (strncmp(p, zIssueActionCGI, strlen(zIssueActionCGI)) == 0)
 	{
 		pcResponse = zHandlerIssueAction(data);
+	}
+	else if (strncmp(p, zDevicesTimingCGI, strlen(zDevicesTimingCGI)) == 0)
+	{
+		pcResponse = zHandlerDevicesTiming(data);
+	}
+	else if (strncmp(p, zUpdateTimingCGI, strlen(zUpdateTimingCGI)) == 0)
+	{
+		pcResponse = zHandlerUpdateTiming(data);
 	}
 
 	free(zCGI);
@@ -181,46 +207,92 @@ char* zGetHomepage()
 cJSON* psWebserverMakeJSONFromDevice(tsDevice* psDev)
 {
 	// create object to represent self
-	cJSON* psJSONSelf = cJSON_CreateObject();
+	cJSON* psJSONDevice = cJSON_CreateObject();
 
 	// create itens for represent self information
 	char cId_[11];
 	sprintf(cId_, "%u", psDev->u32ID);
 
-	cJSON_AddStringToObject(psJSONSelf, "name", psDev->cName_);
-	cJSON_AddStringToObject(psJSONSelf, "id", cId_);
+	cJSON_AddStringToObject(psJSONDevice, "name", psDev->cName_);
+	cJSON_AddStringToObject(psJSONDevice, "id", cId_);
 	if (psDev->eType == DEVICE_SWITCH)
 	{
-		cJSON_AddStringToObject(psJSONSelf, "type", "Switch");
-		cJSON_AddFalseToObject(psJSONSelf, "hasPir");
+		cJSON_AddStringToObject(psJSONDevice, "type", "Switch");
+		cJSON_AddFalseToObject(psJSONDevice, "hasPir");
 	}
 	else if (psDev->eType == DEVICE_SOCKET)
 	{
-		cJSON_AddStringToObject(psJSONSelf, "type", "Plug");
-		cJSON_AddTrueToObject(psJSONSelf, "hasPir");
+		cJSON_AddStringToObject(psJSONDevice, "type", "Plug");
+		cJSON_AddTrueToObject(psJSONDevice, "hasPir");
 
 		teSensorState ePIRState = psDev->eSensorState;
 		if (ePIRState == TRIGGERED)
 		{
-			cJSON_AddTrueToObject(psJSONSelf, "pirStatus");
+			cJSON_AddTrueToObject(psJSONDevice, "pirStatus");
 		}
 		else
 		{
-			cJSON_AddFalseToObject(psJSONSelf, "pirStatus");
+			cJSON_AddFalseToObject(psJSONDevice, "pirStatus");
 		}
 
 		teActuatorState eRelayState = psDev->eActuatorState;
 		if (eRelayState == ACTIVATED)
 		{
-			cJSON_AddTrueToObject(psJSONSelf, "relayStatus");
+			cJSON_AddTrueToObject(psJSONDevice, "relayStatus");
 		}
 		else
 		{
-			cJSON_AddFalseToObject(psJSONSelf, "relayStatus");
+			cJSON_AddFalseToObject(psJSONDevice, "relayStatus");
 		}
 
 	}
-	return psJSONSelf;
+	return psJSONDevice;
+}
+
+cJSON* psWebserverMakeJSONFromTiming(tsDevice* psDev)
+{
+	// create object to represent psDev
+	cJSON* psJSONDevice = cJSON_CreateObject();
+
+	// create itens for represent self information
+	char cId_[11];
+	sprintf(cId_, "%u", psDev->u32ID);
+	cJSON_AddStringToObject(psJSONDevice, "name", psDev->cName_);
+	cJSON_AddStringToObject(psJSONDevice, "id", cId_);
+	cJSON* psJSONTimeTable = cJSON_CreateArray();
+
+	uint8_t u8TableEntryN = 0;
+	for (;u8TableEntryN < N_TIME_ENTRIES; u8TableEntryN++)
+	{
+		cJSON* psNewEntry = cJSON_CreateObject();
+		tsTimingEntry* psEntry = &(psDev->sTimeTable_[u8TableEntryN]);
+		char cMinutes_[5];
+		sprintf(cMinutes_, "%u", psEntry->u16Minutes);
+
+		cJSON_AddStringToObject(psNewEntry, "time", cMinutes_);
+		if (psEntry->eEnabled)
+		{
+			cJSON_AddTrueToObject(psNewEntry, "enabled");
+		}
+		else
+		{
+			cJSON_AddFalseToObject(psNewEntry, "enabled");
+		}
+
+		if (psEntry->eAction)
+		{
+			cJSON_AddTrueToObject(psNewEntry, "action");
+		}
+		else
+		{
+			cJSON_AddFalseToObject(psNewEntry, "action");
+		}
+		cJSON_AddItemToArray(psJSONTimeTable, psNewEntry);
+	}
+	cJSON_AddItemToObject(psJSONDevice, "times", psJSONTimeTable);
+	return psJSONDevice;
+
+
 }
 
 void vWebserverDeleteJSON(cJSON* psJSON)
@@ -261,7 +333,6 @@ tsHttpRequest sGetRequest(char* zRequest)
 
 	if (sParsedRequest.eType == HTTP_POST)
 	{
-		LOG_DEBUG("\n%s", zRequest);
 		pcAux1=strstr(zRequest, "{");
 		if (pcAux1 == NULL)
 		{

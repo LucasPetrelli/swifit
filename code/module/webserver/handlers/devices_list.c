@@ -13,7 +13,7 @@
 #include "behavior_task.h"
 #include "cJSON.h"
 
-const char* zDeviceListCGI = "devices";
+const char* zDeviceListCGI = "devices_list";
 char* zHandlerDeviceList(char* pcRequestData)
 {
 	char* acResponseBody = NULL;

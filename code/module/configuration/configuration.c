@@ -6,6 +6,7 @@
  */
 
 #include "configuration.h"
+#include "devices_types.h"
 #include "filesystem.h"
 
 #define CONFIG_FILE_LENGTH 255
@@ -25,6 +26,7 @@ const char zDefaultConfigurationContent[CONFIG_FILE_LENGTH] = "0\n"
 
 tsConfiguration prv_sConfig;
 char prv_acName_[NAME_LENGTH];
+tsTimingEntry* prv_psTable = NULL;
 
 
 void vConfigurationRead()
@@ -87,8 +89,13 @@ vReadConfiguration_end:
 		}
 	}
 
+	if (psConfigurationGetTimeTable() == NULL)
+	{
+		tsTimingEntry* psTable = (tsTimingEntry*)zalloc(sizeof(tsTimingEntry)*N_TIME_ENTRIES);
+		vConfigurationSetTimeTable(psTable);
+		free(psTable);
+	}
 	LOG_DEBUG("Device Name: [ %s ]", prv_acName_);
-
 	return;
 }
 
@@ -161,4 +168,40 @@ void vConfigurationSetActuatorState(uint8_t u8State)
 	sprintf(zActuator, "%u", u8State%2);
 	LOG_DEBUG("Write actuator state (%s)(%u)", zActuator, strlen(zActuator));
 	eWriteToFile("act", zActuator, strlen(zActuator));
+}
+
+tsTimingEntry* psConfigurationGetTimeTable()
+{
+	if (prv_psTable != NULL)
+	{
+		vTimingPrintTable(prv_psTable);
+		return prv_psTable;
+	}
+
+	prv_psTable = (tsTimingEntry*)zalloc(sizeof(tsTimingEntry)*N_TIME_ENTRIES);
+	teException eException = eReadFromFile("timetable", (char*) prv_psTable, sizeof(tsTimingEntry)*N_TIME_ENTRIES);
+	if (eException != EX_SUCCESSFUL)
+	{
+		free(prv_psTable);
+		prv_psTable = NULL;
+		LOG_DEBUG("Failed to read table from memory!");
+	}
+	else
+	{
+		LOG_DEBUG("Retrieved table from memory");
+		vTimingPrintTable(prv_psTable);
+	}
+	return prv_psTable;
+}
+
+void vConfigurationSetTimeTable(tsTimingEntry* psTable)
+{
+	if (prv_psTable == NULL)
+	{
+		prv_psTable = (tsTimingEntry*)zalloc(sizeof(tsTimingEntry)*N_TIME_ENTRIES);
+	}
+	LOG_DEBUG("Setting table to:");
+	vTimingPrintTable(psTable);
+	memcpy((void*) prv_psTable, (void*) psTable, sizeof(tsTimingEntry)*N_TIME_ENTRIES);
+	eWriteToFile("timetable", (char*) psTable, sizeof(tsTimingEntry)*N_TIME_ENTRIES);
 }

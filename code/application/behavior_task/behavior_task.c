@@ -16,6 +16,7 @@
 
 void prv_vBehaviourDoCountdownOnDevices(tsBehaviourTaskConfiguration* psTask);
 void prv_vBehaviourHandleActuatorReq(tsBehaviourTaskConfiguration* psTask, tsActuatorTaskRequest* psReq);
+void prv_vBehaviorHandleTimingReq(tsBehaviourTaskConfiguration* psTask, tsDeviceTimingChange* psReq);
 
 tsBehaviourTaskConfiguration* prv_psTaskConfig;
 
@@ -67,6 +68,12 @@ void vBehaviorTask(void* pvParemeters)
 					// Lost connection, set back to disconnected
 					psTask->eMode = NOT_CONNECTED;
 				}
+				break;
+			}
+			case TIMING_PARAMETER:
+			{
+				tsDeviceTimingChange* psReq = (tsDeviceTimingChange*) psQueueMsg->pvData;
+				prv_vBehaviorHandleTimingReq(psTask, psReq);
 				break;
 			}
 			}
@@ -250,3 +257,12 @@ void prv_vBehaviourHandleActuatorReq(tsBehaviourTaskConfiguration* psTask, tsAct
 	}
 }
 
+void prv_vBehaviorHandleTimingReq(tsBehaviourTaskConfiguration* psTask, tsDeviceTimingChange* psReq)
+{
+	uint32_t u32SelfId = u32SystemGetId();
+	if (psReq->u32Id == u32SelfId)
+	{
+		vConfigurationSetTimeTable(psReq->sTable_);
+	}
+	free(psReq);
+}
