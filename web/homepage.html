@@ -31,13 +31,73 @@
 <!--End of page -->
 
 <!--Device Programing page layout-->
-<div id="ProgramPage" class="mainbody">
+<div id="ProgramPage" class="mainbody programPage">
     <div class="row">
-        <div class="col-3">
-            Device programming
+        <div class="col-4 programInfo">
+            <h1> Device programming </h1>
+            <p> Use this page to program the network behavior using the inputs available from the connected devices</p>
+        </div>
+        <div class="col-2">
+            <div id="RefreshRulesBtn" class="programBtn" onclick="refreshRules()">Refresh information</div>
+        </div>
+        <div class="col-2">
+            <div id="AddRulesBtn" class="programBtn" onclick="createNewRuleHtml()">Add rule</div>
+        </div>
+        <div class="col-2">
+            <div id="ClearRulesBtn" class="programBtn" onclick="clearAllRules()">Clear rules</div>
+        </div>
+        <div class="col-2">
+            <div id="ProgramRulesBtn" class="programBtn" onclick="sendRules()">Program network</div>
         </div>
     </div>
-
+    <!--<div class="col-4 ruleContainer">-->
+        <!--<div class="ruleArea">-->
+            <!--<div class="row">-->
+                <!--<div class="labelNormal">Trigger device</div>-->
+                <!--<div class="dropdown">-->
+                    <!--<span>Selected device</span>-->
+                    <!--<div class="dropdown-content">-->
+                        <!--<p>device1</p>-->
+                        <!--<p>device2</p>-->
+                        <!--<p>device3</p>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="row">-->
+                <!--<div class="labelNormal">Trigger event</div>-->
+                <!--<label class="container">ON-->
+                    <!--<input type="radio" name="action4" id="deactivate4">-->
+                    <!--<span class="checkmark"></span>-->
+                <!--</label>-->
+                <!--<label class="container">OFF-->
+                    <!--<input type="radio" name="action4" checked="checked" id="activate4">-->
+                    <!--<span class="checkmark"></span>-->
+                <!--</label>-->
+            <!--</div>-->
+            <!--<div class="row">-->
+                <!--<div class="labelNormal">Target device</div>-->
+                    <!--<div class="dropdown">-->
+                        <!--<span>Selected device</span>-->
+                        <!--<div class="dropdown-content">-->
+                            <!--<p>device1</p>-->
+                            <!--<p>device2</p>-->
+                            <!--<p>device3</p>-->
+                        <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="row">-->
+                <!--<div class="labelNormal">Target action</div>-->
+                <!--<label class="container">ON-->
+                    <!--<input type="radio" name="action4" id="deactivate4">-->
+                    <!--<span class="checkmark"></span>-->
+                <!--</label>-->
+                <!--<label class="container">OFF-->
+                    <!--<input type="radio" name="action4" checked="checked" id="activate4">-->
+                    <!--<span class="checkmark"></span>-->
+                <!--</label>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
 </div>
 <!--End of page -->
 
@@ -51,4 +111,5 @@
     <div id="TimingPageContent"></div>
 </div>
 <script src="controller.js"></script>
+</body>
 </html>

@@ -20,7 +20,7 @@ typedef enum {
 } teTaskId;
 
 
-#define HTTP_TASK_PRIO 5
+#define HTTP_TASK_PRIO 7
 #define SENSOR_TASK_PRIO 3
 #define ACTUATOR_TASK_PRIO 3
 #define PLATFORM_TASK_PRIO 2

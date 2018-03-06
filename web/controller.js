@@ -19,4 +19,6 @@ setTimeout(function(){loadFile("timing_page_template.js", "js")} , 3*tDelay);
 setTimeout(function(){loadFile("timing_page.js", "js")} , 4*tDelay);
 setTimeout(function(){loadFile("homepage.js", "js")} , 5*tDelay);
 setTimeout(function(){loadFile("timing_page.css", "css")} , 6*tDelay);
-setTimeout(function(){loadFile("homepage.css", "css")} , 6*tDelay);
+setTimeout(function(){loadFile("program_page.css", "css")} , 7*tDelay);
+setTimeout(function(){loadFile("homepage.css", "css")} , 8*tDelay);
+setTimeout(function(){loadFile("program_page.js", "js")} , 9*tDelay);
