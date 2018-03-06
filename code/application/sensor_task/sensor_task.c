@@ -25,9 +25,15 @@ void vSensorTask(void* pvParameters)
 				psEvent->u8Id,
 				(uint8)psEvent->eState
 			);
-			free(psQueueMesssage->pvData);
-		}
+			// Redirect event to behavior task
 
+			tsNetworkEvent* psNetEvent = (tsNetworkEvent*)zalloc(sizeof(tsNetworkEvent));
+			psNetEvent->eState = psEvent->eState;
+			psNetEvent->u32Id = u32SystemGetId();
+			free(psEvent);
+			psQueueMesssage->pvData = (void*) psNetEvent;
+			vBehaviourPutInQueue(psQueueMesssage);
+		}
 		free(psQueueMesssage);
 	}
 	vTaskDelay(portMAX_DELAY);

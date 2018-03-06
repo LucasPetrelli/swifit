@@ -106,6 +106,17 @@ tsProtocolMessage* psProtocolMakeTimingParameter(tsDeviceTimingChange* psReq, ui
 	return psMsg;
 }
 
+tsProtocolMessage* psProtocolMakeEvent(tsNetworkEvent* psEvent, uint8_t* pu8TargetIp)
+{
+	tsProtocolMessage* psMsg = (tsProtocolMessage*)zalloc(sizeof(tsProtocolMessage));
+	psMsg->eType = MSG_EVENT;
+	memcpy(psMsg->u8IP_, pu8TargetIp, 4);
+	memcpy(psMsg->acData_, (void*) psEvent, sizeof(tsNetworkEvent));
+	psMsg->u32DataCount = sizeof(tsNetworkEvent);
+	return psMsg;
+
+}
+
 void vProtocolLog(tsProtocolMessage* psMsg)
 {
 	LOG_DEBUG("---- Protocol Message LOG ----");

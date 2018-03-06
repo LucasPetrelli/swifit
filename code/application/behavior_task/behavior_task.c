@@ -10,6 +10,7 @@
 #include "comm_protocol.h"
 #include "devices.h"
 #include "wifi_types.h"
+#include "sensor_types.h"
 
 #include "freertos/FreeRTOS.h"
 #include "freertos/timers.h"
@@ -17,6 +18,7 @@
 void prv_vBehaviourDoCountdownOnDevices(tsBehaviourTaskConfiguration* psTask);
 void prv_vBehaviourHandleActuatorReq(tsBehaviourTaskConfiguration* psTask, tsActuatorTaskRequest* psReq);
 void prv_vBehaviorHandleTimingReq(tsBehaviourTaskConfiguration* psTask, tsDeviceTimingChange* psReq);
+void prv_vBehaviorHandleEvent(tsBehaviourTaskConfiguration* psTask, tsNetworkEvent* psEvent);
 
 tsBehaviourTaskConfiguration* prv_psTaskConfig;
 
@@ -76,6 +78,12 @@ void vBehaviorTask(void* pvParemeters)
 				prv_vBehaviorHandleTimingReq(psTask, psReq);
 				break;
 			}
+			case SENSOR_MESSAGE:
+			{
+				tsNetworkEvent* psEvent = (tsNetworkEvent*) psQueueMsg->pvData;
+				prv_vBehaviorHandleEvent(psTask, psEvent);
+				break;
+			}
 			}
 		}
 		free(psQueueMsg);
@@ -118,7 +126,16 @@ void vBehaviorTask(void* pvParemeters)
 							vDeviceUpdate(psDeviceInList, psDeviceInfo);
 							free(psDeviceInfo);
 						}
+						break;
 					}
+					case MSG_EVENT:
+					{
+						tsNetworkEvent* psEvent = (tsNetworkEvent*)zalloc(sizeof(tsNetworkEvent));
+						memcpy((void*)psEvent, (void*)psProtMessage->acData_, sizeof(tsNetworkEvent));
+						prv_vBehaviorHandleEvent(psTask, psEvent);
+						break;
+					}
+
 				}
 				break;
 			}
@@ -156,6 +173,13 @@ void vBehaviorTask(void* pvParemeters)
 						tsDeviceTimingChange* psReq = (tsDeviceTimingChange*)zalloc(sizeof(tsDeviceTimingChange));
 						memcpy((void*)psReq, (void*)psProtMessage->acData_, psProtMessage->u32DataCount);
 						prv_vBehaviorHandleTimingReq(psTask, psReq);
+						break;
+					}
+					case MSG_EVENT:
+					{
+						tsNetworkEvent* psEvent = (tsNetworkEvent*)zalloc(sizeof(tsNetworkEvent));
+						memcpy((void*)psEvent, (void*)psProtMessage->acData_, sizeof(tsNetworkEvent));
+						prv_vBehaviorHandleEvent(psTask, psEvent);
 						break;
 					}
 				}
@@ -282,4 +306,38 @@ void prv_vBehaviorHandleTimingReq(tsBehaviourTaskConfiguration* psTask, tsDevice
 		}
 	}
 	free(psReq);
+}
+
+void prv_vBehaviorHandleEvent(tsBehaviourTaskConfiguration* psTask, tsNetworkEvent* psEvent)
+{
+	uint32_t u32Id = psEvent->u32Id;
+	if (psTask->eMode == HEAD)
+	{
+		/* propagate to the rest of the network */
+		tsDevice* psTargetDev =  (tsDevice*) psTask->xDeviceList;
+		while (psTargetDev)
+		{
+			if (psTargetDev->u32ID != u32Id)
+			{
+				tsProtocolMessage* psMsg = psProtocolMakeEvent(psEvent, psTargetDev->u8IP_);
+				vProtocolSendMessage(psMsg);
+				free(psMsg);
+			}
+			psTargetDev = (tsDevice*) psTargetDev->pvNext;
+		}
+	}
+	else
+	{
+		/* if event is from self. propagate to head */
+		if (u32SystemGetId() == u32Id)
+		{
+			tsProtocolMessage* psMsg = psProtocolMakeEvent(psEvent, psTask->u8MasterIP_);
+			vProtocolSendMessage(psMsg);
+			free(psMsg);
+
+		}
+	}
+	LOG_DEBUG("Received event [%u] from [%u]", psEvent->eState, psEvent->u32Id);
+	// TODO: Check action
+	free(psEvent);
 }

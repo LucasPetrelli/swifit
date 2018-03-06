@@ -86,6 +86,11 @@ typedef struct {
 	uint8 __reserved[2];				//!< Allignment
 } tsSensorEvent;
 
+typedef struct {
+	teSensorState eState;				//!< New state of sensor
+	uint32_t u32Id;						//!< ID of the triggered device
+} tsNetworkEvent;
+
 /**
  * @}
  * @}

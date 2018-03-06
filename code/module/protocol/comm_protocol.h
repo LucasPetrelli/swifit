@@ -15,6 +15,9 @@
 // Directly used adapters
 #include "udp_adapter.h"
 
+// Referenced modules
+#include "sensor_types.h"
+
 // Relationed tasks
 #include "actuator_task.h"
 
@@ -115,6 +118,14 @@ tsProtocolMessage* psProtocolMakeAction(tsActuatorTaskRequest* psReq, uint8_t* p
  * @return Pointer to the created message.
  */
 tsProtocolMessage* psProtocolMakeTimingParameter(tsDeviceTimingChange* psReq, uint8_t* pu8TargetIp);
+
+/**
+ * @brief Allocates and populates a new event message.
+ * @param psEvent Pointer to the sensor event.
+ * @param pu8TargetIp The target of the message.
+ * @return Pointer to the created message.
+ */
+tsProtocolMessage* psProtocolMakeEvent(tsNetworkEvent* psEvent, uint8_t* pu8TargetIp);
 
 /**
  * @brief Logs using LOG_DEBUG the message data in a "beautiful" manner
