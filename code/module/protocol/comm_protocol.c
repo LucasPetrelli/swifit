@@ -37,6 +37,7 @@ void vProtocolSendMessage(tsProtocolMessage* psProtMessage)
 	memcpy(psUDPMessage->acData_ + DATA_OFFSET, psProtMessage->acData_, psProtMessage->u32DataCount);
 	memcpy(psUDPMessage->u8IP_, psProtMessage->u8IP_, 4);
 	psUDPMessage->u32Len = 4 + 1 + 4 + psProtMessage->u32DataCount;
+	LOG_DEBUG("UDP Msg made");
 	eUDPSendData(psProtMessage->u8IP_, PROT_PORT, psUDPMessage);
 	free(psUDPMessage);
 }
@@ -75,7 +76,6 @@ tsProtocolMessage* psProtocolMakeStatus(uint8_t* pu8TargetIp)
 
 	LOG_DEBUG("Making status");
 	tsDevice* psSelfInfo = psDeviceGetSelf();
-	LOG_DEV(psSelfInfo);
 	memcpy(psMsg->acData_, (void*)(((uint8_t*)psSelfInfo)+4), sizeof(tsDevice)-4);
 	psMsg->u32DataCount = sizeof(tsDevice)-4;
 	free(psSelfInfo);
@@ -115,6 +115,18 @@ tsProtocolMessage* psProtocolMakeEvent(tsNetworkEvent* psEvent, uint8_t* pu8Targ
 	psMsg->u32DataCount = sizeof(tsNetworkEvent);
 	return psMsg;
 
+}
+
+tsProtocolMessage* psProtocolMakeRuleParameter(tsNetworkRule* psTable, uint8_t* pu8TargetIp)
+{
+	tsProtocolMessage* psMsg = (tsProtocolMessage*)zalloc(sizeof(tsProtocolMessage));
+	LOG_DEBUG("Making rule parameter");
+
+	psMsg->eType = MSG_RULE_PARAMETER;
+	memcpy(psMsg->u8IP_, pu8TargetIp, 4);
+	memcpy(psMsg->acData_, (void*) psTable, sizeof(tsNetworkRule)*N_RULE_ENTRIES);
+	psMsg->u32DataCount = sizeof(tsNetworkRule)*N_RULE_ENTRIES;
+	return psMsg;
 }
 
 void vProtocolLog(tsProtocolMessage* psMsg)

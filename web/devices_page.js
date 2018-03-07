@@ -21,6 +21,7 @@ function Requisition(type, newStatus, targetId) {
 
 /* Device refresh timer */
 var deviceRefreshTimer;
+var retrievedDevices;
 var ignoreCheck = false;
 
 /* Device page setup function */
@@ -34,6 +35,7 @@ function setupDevicePage() {
         if (this.readyState === 4 && this.status === 200) {
             element.innerHTML = "";
             var listOfDevices = JSON.parse(this.responseText);
+            retrievedDevices=listOfDevices.devices;
             var amountOfDevices = listOfDevices.devices.length;
             var htmlForNewDevice;
             var device;

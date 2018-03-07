@@ -20,7 +20,7 @@
 typedef struct {
 	uint32 u32Len;				/**< The valid length of the data field */
 	uint8 u8IP_[4];				/**< The IP assigned to the message (sender when msg received, self when msg tx) */
-	char acData_[128];			/**< Buffer for the message data */
+	char acData_[512];			/**< Buffer for the message data */
 } tsUDPMessage;
 
 /**

@@ -33,6 +33,7 @@ typedef enum {
 	MSG_EVENT,								/**< Event message type */
 	MSG_ACTION,								/**< Action message type */
 	MSG_TIMING_PARAMETER,					/**< Parameter message type */
+	MSG_RULE_PARAMETER,						/**< Network rule message type */
 	MSG_TYPE_N								/**< Message type count */
 } teProtocolMessageType;
 
@@ -46,7 +47,7 @@ typedef struct {
 	teProtocolMessageType eType;			/**< Message type */
 	uint8_t u8IP_[4];						/**< IP from the message sender */
 	uint32_t u32DataCount;					/**< Amount of bytes in the buffer pointed by pu8Data */
-	uint8_t acData_[128];					/**< Pointer to the message data buffer */
+	uint8_t acData_[450];					/**< Pointer to the message data buffer */
 } tsProtocolMessage;
 
 /**

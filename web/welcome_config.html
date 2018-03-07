@@ -110,11 +110,13 @@
         function sendAPData()
         {
             var xhttp = new XMLHttpRequest();
-            wlan = document.getElementById("WlanName").value;
-            pswd = document.getElementById("WlanPSWD").value;
+            var wlan = document.getElementById("WlanName").value;
+            var pswd = document.getElementById("WlanPSWD").value;
+            var devname = document.getElementById("DevName").value;
             var data = {
                 "WLAN": wlan,
-                "PSWD": pswd
+                "PSWD": pswd,
+                "name": devname
             };
             content = JSON.stringify(data);
             xhttp.onreadystatechange = function () {
@@ -186,6 +188,8 @@
             <input class="txtinput" type="text" name="WlanName" id="WlanName" ><br>
             <label class="inputlbl" for="WlanPassword">Password</label>
             <input class="txtinput" type="password" name="WlanPassword" id="WlanPSWD" >
+            <label class="inputlbl" for="WlanPassword">Device name</label>
+            <input class="txtinput" type="text" name="DeviceName" id="DevName" >
         </form>
         <button class="button" type="submit" onclick="sendAPData()">Submit</button>
     </div>

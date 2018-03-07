@@ -31,53 +31,12 @@ var knownRules = [rule1, rule2, rule3];
 var ruleElementList = [];
 var rulesOnDisplay = [];
 
-var htmlModelForRule = "<div class=\"col-4 ruleContainer\" id=\"newContainer\">\n" +
-    "        <div class=\"ruleArea\">\n" +
-    "            <div class=\"row\">\n" +
-    "                <div class=\"labelNormal\">Trigger device</div>\n" +
-    "                <div class=\"dropdown\" id=\"triggerDrp\">\n" +
-    "                    <span id=\"triggerSelected\" class=\"selectedDevice\">Selected device</span>\n" +
-    "                    <div class=\"dropdown-content\">\n" +
-    "                    </div>\n" +
-    "                </div>\n" +
-    "            </div>\n" +
-    "            <div class=\"row\">\n" +
-    "                <div class=\"labelNormal\">Trigger event</div>\n" +
-    "                <label class=\"container\">ON\n" +
-    "                    <input class=\"programradio\" type=\"radio\" name=\"trigger\" id=\"triggered\">\n" +
-    "                    <span class=\"checkmark\"></span>\n" +
-    "                </label>\n" +
-    "                <label class=\"container\">OFF\n" +
-    "                    <input class=\"programradio\" type=\"radio\" name=\"trigger\" checked=\"checked\" id=\"untriggered\">\n" +
-    "                    <span class=\"checkmark\"></span>\n" +
-    "                </label>\n" +
-    "            </div>\n" +
-    "            <div class=\"row\">\n" +
-    "                <div class=\"labelNormal\">Target device</div>\n" +
-    "                    <div class=\"dropdown\" id=\"actionDrp\">\n" +
-    "                        <span id=\"targetSelected\" class=\"selectedDevice\">Selected device</span>\n" +
-    "                        <div class=\"dropdown-content\">\n" +
-    "                        </div>\n" +
-    "                </div>\n" +
-    "            </div>\n" +
-    "            <div class=\"row\">\n" +
-    "                <div class=\"labelNormal\">Target action</div>\n" +
-    "                <label class=\"container\">ON\n" +
-    "                    <input class=\"programradio\" type=\"radio\" name=\"action\" id=\"activate\">\n" +
-    "                    <span class=\"checkmark\"></span>\n" +
-    "                </label>\n" +
-    "                <label class=\"container\">OFF\n" +
-    "                    <input  class=\"programradio\" type=\"radio\" name=\"action\" checked=\"checked\" id=\"deactivate\">\n" +
-    "                    <span class=\"checkmark\"></span>\n" +
-    "                </label>\n" +
-    "            </div>\n" +
-    "        </div>\n" +
-    "    </div>";
+
 
 function getDeviceById(id) {
-    for (var i = 0; i < knownDevicesList.length; i++)
+    for (var i = 0; i < retrievedDevices.length; i++)
     {
-        var device = knownDevicesList[i];
+        var device = retrievedDevices[i];
         if (device.id === id)
         {
             return device;
@@ -86,9 +45,9 @@ function getDeviceById(id) {
 }
 
 function getIdByName(name) {
-    for (var i = 0; i < knownDevicesList.length; i++)
+    for (var i = 0; i < retrievedDevices.length; i++)
     {
-        var device = knownDevicesList[i];
+        var device = retrievedDevices[i];
         if (device.name === name)
         {
             return device.id;
@@ -124,9 +83,9 @@ function createNewRuleHtml() {
     for (var drpIndex = 0; drpIndex < drpdowns.length; drpIndex++){
         var drpdown = drpdowns[drpIndex];
         drpdown.parentNode.getElementsByTagName("span")[0].id += currentId;
-        for (var devIndex = 0; devIndex < knownDevicesList.length; devIndex++) {
+        for (var devIndex = 0; devIndex < retrievedDevices.length; devIndex++) {
             var devP = document.createElement("p");
-            devP.innerText = knownDevicesList[devIndex].name;
+            devP.innerText = retrievedDevices[devIndex].name;
             devP.onclick = function(elem, name) {
                 return function () {
                     elem.parentNode.getElementsByTagName("span")[0].innerText = name;
@@ -152,20 +111,29 @@ function clearAllRules() {
 }
 
 function refreshRules() {
-    clearAllRules();
-    knownRules.forEach(
-        function (value, index) {
-            createNewRuleHtml();
-            document.getElementById("triggerSelected"+index).innerText = getDeviceById(value.triggerid).name;
-            document.getElementById("targetSelected"+index).innerText = getDeviceById(value.targetid).name;
-
-            document.getElementById("triggered"+index).checked = value.triggerevent;
-            document.getElementById("untriggered"+index).checked = !value.triggerevent;
-            document.getElementById("activate"+index).checked = value.targetact;
-            document.getElementById("deactivate"+index).checked = !value.targetact;
-
+    var rulesReq = new XMLHttpRequest();
+    rulesReq.onreadystatechange = function (ev) {
+        if (this.readyState !== 4 || this.status !== 200) {
+            return;
         }
-    )
+        var receivedRules = JSON.parse(this.responseText);
+        clearAllRules();
+        receivedRules.forEach(
+            function (value, index) {
+                createNewRuleHtml();
+                document.getElementById("triggerSelected"+index).innerText = getDeviceById(value.triggerid).name;
+                document.getElementById("targetSelected"+index).innerText = getDeviceById(value.targetid).name;
+
+                document.getElementById("triggered"+index).checked = value.triggerevent;
+                document.getElementById("untriggered"+index).checked = !value.triggerevent;
+                document.getElementById("activate"+index).checked = value.targetact;
+                document.getElementById("deactivate"+index).checked = !value.targetact;
+
+            }
+        )
+    };
+    rulesReq.open("GET", "/cgi/request_rules", true);
+    rulesReq.send();
 }
 
 function ruleObject(trigger_id, trigger, target_id, action){
@@ -194,5 +162,14 @@ function sendRules() {
         var newRule = new ruleObject(trigger_id, triggerevt, target_id, action);
         rules.push(newRule)
     }
-    console.log(JSON.stringify(rules));
+    var rulesPost = new XMLHttpRequest();
+    rulesPost.onreadystatechange = function () {
+        if (this.readyState === 4 && this.status === 20) {
+            console.log("Sent rules successfully");
+        }
+    };
+    rulesPost.open("POST", "/cgi/update_rules", true);
+    var jsonstring = JSON.stringify(rules);
+    console.log(jsonstring);
+    rulesPost.send(jsonstring);
 }

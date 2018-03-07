@@ -31,6 +31,7 @@
  */
 
 #define N_TIME_ENTRIES 4
+#define N_RULE_ENTRIES 16
 
 /**
  * @brief Device type enumeration
@@ -39,6 +40,26 @@ typedef enum {
 	DEVICE_SOCKET, 	//!< The device is a wall socket
 	DEVICE_SWITCH	//!< The device is a wall switch
 } teDeviceType;
+
+/**
+ * @brief Network rule status
+ */
+typedef enum {
+	RULE_DISABLED,	//!< RULE_DISABLED
+	RULE_ENABLED  	//!< RULE_ENABLED
+} teRuleState;
+
+/**
+ * @brief Network rule
+ */
+typedef struct {
+	uint32_t u32TriggerId;				//!< The device ID that the trigger should come from
+	uint32_t u32TargetId;				//!< The device ID that should change
+	teSensorState eTriggerState;		//!< The trigger level
+	teActuatorState eTargetState;		//!< The change level
+	teRuleState eEnabled;				//!< If the rule should be taken into account or not
+} tsNetworkRule;
+
 
 /**
  * @brief Device information structure

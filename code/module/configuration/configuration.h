@@ -10,6 +10,8 @@
 
 #include "configuration_types.h"
 #include "timing_types.h"
+#include "devices_types.h"
+
 
 /**
  * \defgroup module Functional Modules
@@ -95,7 +97,17 @@ tsTimingEntry* psConfigurationGetTimeTable();
  */
 void vConfigurationSetTimeTable(tsTimingEntry* psTable);
 
+/**
+ * @brief Gets the device rule table from the flash
+ * @return Pointer to the table (N_RULE_ENTRIES length)
+ */
+tsNetworkRule* psConfigurationGetRuleTable();
 
+/**
+ * @brief Sets the device rule table in the flash
+ * @param psTable Pointer to the table to be saved
+ */
+void vConfigurationSetRuleTable(tsNetworkRule* psTable);
 
 /**
  * @}

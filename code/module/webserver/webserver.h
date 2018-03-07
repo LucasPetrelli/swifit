@@ -24,6 +24,9 @@
 #include "timing_page.js.h"
 #include "timing_page_template.js.h"
 #include "timing_page.css.h"
+#include "program_page.js.h"
+#include "program_page_template.js.h"
+#include "program_page.css.h"
 
 //Used adapters
 #include "http_adapter.h"

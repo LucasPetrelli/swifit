@@ -37,6 +37,8 @@
 #include "change_name.h"
 #include "devices_timing.h"
 #include "update_timing.h"
+#include "request_rules.h"
+#include "update_rules.h"
 #endif /* CODE_MODULE_WEBSERVER_HANDLERS_HANDLER_TYPES_H_ */
 
 /**

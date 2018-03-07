@@ -24,6 +24,7 @@ char* zHandlerConfigWlan(char* pcRequestData)
 
 	cJSON* jsonAP = cJSON_GetObjectItem(sObj, "WLAN");
 	cJSON* jsonPSWD = cJSON_GetObjectItem(sObj, "PSWD");
+	cJSON* jsonName = cJSON_GetObjectItem(sObj, "name");
 	if (!jsonAP)
 	{
 		acResponseBody = "Error parsing AP received!";
@@ -32,6 +33,11 @@ char* zHandlerConfigWlan(char* pcRequestData)
 	if (!jsonPSWD)
 	{
 		acResponseBody = "Error parsing PSWD received!";
+		LOG_DEBUG("%s", acResponseBody);
+	}
+	if (!jsonName)
+	{
+		acResponseBody = "Error parsing NAME received!";
 		LOG_DEBUG("%s", acResponseBody);
 	}
 
@@ -51,10 +57,11 @@ char* zHandlerConfigWlan(char* pcRequestData)
 		sNewConfig.acPassword_
 	);
 	vConfigurationSet(&sNewConfig);
+	vConfigurationSetName(jsonName->valuestring);
 
 
 	acResponseBody = "Response ok!";
-
+	cJSON_Delete(sObj);
 
 end_zHandlerConfigWlan:
 	u32ResponseLen = strlen(zHttpHeaderOK)+strlen(acResponseBody)+1;

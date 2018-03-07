@@ -44,6 +44,7 @@ typedef enum {
 	WIFI_MESSAGE,			/**< Wifi status change notification */
 	TIMING_PARAMETER,
 	PENDING_HTTP_REQ,
+	RULES_MESSAGE,
 	N_QUEUE_MSG_TYPES		/**< Queue item types count */
 } teMemQueueMessageType;
 

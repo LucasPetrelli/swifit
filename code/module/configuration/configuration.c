@@ -6,7 +6,6 @@
  */
 
 #include "configuration.h"
-#include "devices_types.h"
 #include "filesystem.h"
 
 #define CONFIG_FILE_LENGTH 255
@@ -27,6 +26,7 @@ const char zDefaultConfigurationContent[CONFIG_FILE_LENGTH] = "0\n"
 tsConfiguration prv_sConfig;
 char prv_acName_[NAME_LENGTH];
 tsTimingEntry* prv_psTable = NULL;
+tsNetworkRule* prv_psRuleTable = NULL;
 
 
 void vConfigurationRead()
@@ -96,6 +96,13 @@ vReadConfiguration_end:
 		free(psTable);
 	}
 	LOG_DEBUG("Device Name: [ %s ]", prv_acName_);
+
+	if (psConfigurationGetRuleTable() == NULL)
+	{
+		tsNetworkRule* psTable = (tsNetworkRule*)zalloc(sizeof(tsNetworkRule)*N_RULE_ENTRIES);
+		vConfigurationSetRuleTable(psTable);
+		free(psTable);
+	}
 	return;
 }
 
@@ -141,9 +148,9 @@ char* zConfigurationGetName()
 
 void vConfigurationSetName(char* zName)
 {
-	memset(prv_acName_, '\0', strlen(prv_acName_));
+	memset(prv_acName_, 0, NAME_LENGTH);
 	strncpy(prv_acName_, zName, strlen(zName));
-	eWriteToFile("name", prv_acName_, strlen(prv_acName_));
+	eWriteToFile("name", prv_acName_, NAME_LENGTH);
 }
 
 uint8_t u8ConfigurationGetActuatorState()
@@ -202,4 +209,39 @@ void vConfigurationSetTimeTable(tsTimingEntry* psTable)
 	vTimingPrintTable(psTable);
 	memcpy((void*) prv_psTable, (void*) psTable, sizeof(tsTimingEntry)*N_TIME_ENTRIES);
 	eWriteToFile("timetable", (char*) psTable, sizeof(tsTimingEntry)*N_TIME_ENTRIES);
+}
+
+
+tsNetworkRule* psConfigurationGetRuleTable()
+{
+	if (prv_psRuleTable != NULL)
+	{
+		return prv_psRuleTable;
+	}
+
+	prv_psRuleTable = (tsNetworkRule*)zalloc(sizeof(tsNetworkRule)*N_RULE_ENTRIES);
+	teException eException = eReadFromFile("ruletable", (char*) prv_psRuleTable, sizeof(tsTimingEntry)*N_RULE_ENTRIES);
+	if (eException != EX_SUCCESSFUL)
+	{
+		free(prv_psRuleTable);
+		prv_psRuleTable = NULL;
+		LOG_DEBUG("Failed to read table from memory!");
+	}
+	else
+	{
+		LOG_DEBUG("Retrieved table from memory");
+	}
+	return prv_psRuleTable;
+}
+
+void vConfigurationSetRuleTable(tsNetworkRule* psTable)
+{
+	if (prv_psRuleTable == NULL)
+	{
+		prv_psRuleTable = (tsNetworkRule*)zalloc(sizeof(tsNetworkRule)*N_RULE_ENTRIES);
+	}
+	LOG_DEBUG("Setting table to:");
+	vDeviceLogRuleTable(psTable);
+	memcpy((void*) prv_psRuleTable, (void*) psTable, sizeof(tsNetworkRule)*N_RULE_ENTRIES);
+	eWriteToFile("ruletable", (char*) psTable, sizeof(tsNetworkRule)*N_RULE_ENTRIES);
 }

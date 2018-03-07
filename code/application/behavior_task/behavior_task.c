@@ -19,6 +19,7 @@ void prv_vBehaviourDoCountdownOnDevices(tsBehaviourTaskConfiguration* psTask);
 void prv_vBehaviourHandleActuatorReq(tsBehaviourTaskConfiguration* psTask, tsActuatorTaskRequest* psReq);
 void prv_vBehaviorHandleTimingReq(tsBehaviourTaskConfiguration* psTask, tsDeviceTimingChange* psReq);
 void prv_vBehaviorHandleEvent(tsBehaviourTaskConfiguration* psTask, tsNetworkEvent* psEvent);
+void prv_vBehaviourHandleNewRules(tsBehaviourTaskConfiguration* psTask, tsNetworkRule* psNewRules);
 
 tsBehaviourTaskConfiguration* prv_psTaskConfig;
 
@@ -38,13 +39,14 @@ void vBehaviorTask(void* pvParemeters)
 		// If There is a new message, process it
 		if (xNewMessage == pdTRUE)
 		{
-			LOG_DEBUG("Got message");
+			LOG_DEBUG("Got queue message");
 			switch (psQueueMsg->eType)
 			{
 			case UDP_MESSAGE_RX:
 			{
 				psProtMessage = (tsProtocolMessage*)zalloc(sizeof(tsProtocolMessage));
 				vProtocolDecodeUDP((tsUDPMessage*)psQueueMsg->pvData, psProtMessage);
+				LOG_DEBUG("UDP Decoded");
 				LOG_UDP(psQueueMsg->pvData);
 				free(psQueueMsg->pvData);
 				break;
@@ -82,6 +84,12 @@ void vBehaviorTask(void* pvParemeters)
 			{
 				tsNetworkEvent* psEvent = (tsNetworkEvent*) psQueueMsg->pvData;
 				prv_vBehaviorHandleEvent(psTask, psEvent);
+				break;
+			}
+			case RULES_MESSAGE:
+			{
+				tsNetworkRule* psNewRules = (tsNetworkRule*) psQueueMsg->pvData;
+				prv_vBehaviourHandleNewRules(psTask, psNewRules);
 				break;
 			}
 			}
@@ -152,12 +160,14 @@ void vBehaviorTask(void* pvParemeters)
 					continue;
 				}
 				psTask->u32DeviceTimeoutCounter = 0;
+				LOG_DEBUG("Processing msg [%u]", psProtMessage->eType);
 				switch (psProtMessage->eType)
 				{
 					case MSG_BROADCAST:
 					{
 						tsProtocolMessage* psStatusMsg = psProtocolMakeStatus(psTask->u8MasterIP_);
 						vProtocolSendMessage(psStatusMsg);
+						LOG_DEBUG("Status sent");
 						free(psStatusMsg);
 						break;
 					}
@@ -180,6 +190,16 @@ void vBehaviorTask(void* pvParemeters)
 						tsNetworkEvent* psEvent = (tsNetworkEvent*)zalloc(sizeof(tsNetworkEvent));
 						memcpy((void*)psEvent, (void*)psProtMessage->acData_, sizeof(tsNetworkEvent));
 						prv_vBehaviorHandleEvent(psTask, psEvent);
+						break;
+					}
+					case MSG_RULE_PARAMETER:
+					{
+						LOG_DEBUG("New parameter");
+						tsNetworkRule* psNewRules = (tsNetworkRule*)zalloc(sizeof(tsNetworkRule)*N_RULE_ENTRIES);
+						LOG_DEBUG("Allocated memory");
+						memcpy((void*)psNewRules, (void*)psProtMessage->acData_, psProtMessage->u32DataCount);
+						LOG_DEBUG("Copied table");
+						prv_vBehaviourHandleNewRules(psTask, psNewRules);
 						break;
 					}
 				}
@@ -340,4 +360,24 @@ void prv_vBehaviorHandleEvent(tsBehaviourTaskConfiguration* psTask, tsNetworkEve
 	LOG_DEBUG("Received event [%u] from [%u]", psEvent->eState, psEvent->u32Id);
 	// TODO: Check action
 	free(psEvent);
+}
+
+void prv_vBehaviourHandleNewRules(tsBehaviourTaskConfiguration* psTask, tsNetworkRule* psNewRules)
+{
+	vConfigurationSetRuleTable(psNewRules);
+	if (psTask->eMode == HEAD)
+	{
+		tsDevice* psDev = (tsDevice*) psTask->xDeviceList;
+		while (psDev)
+		{
+			tsProtocolMessage* psMsg = psProtocolMakeRuleParameter(psNewRules, psDev->u8IP_);
+			LOG_DEBUG("Msg done [%u]", psMsg->u32DataCount);
+			vProtocolSendMessage(psMsg);
+			LOG_DEBUG("Msg sent");
+			vProtocolFreeMessage(psMsg);
+			LOG_DEBUG("Msg freed");
+			psDev = (tsDevice*) psDev->pvNext;
+		}
+	}
+	free(psNewRules);
 }

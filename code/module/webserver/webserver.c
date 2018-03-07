@@ -99,6 +99,18 @@ char* pcHandleDecodedRequest(tsHttpRequest sRequest)
 		{
 			pcResponse = prv_zReadHomePageFromFlash((char*) acControllerJs);
 		}
+		else if (strncmp(sRequest.pcURIData, acProgram_pageJsId, strlen(acProgram_pageJsId)) == 0)
+		{
+			pcResponse = prv_zReadHomePageFromFlash((char*) acProgram_pageJs);
+		}
+		else if (strncmp(sRequest.pcURIData, acProgram_page_templateJsId, strlen(acProgram_page_templateJsId)) == 0)
+		{
+			pcResponse = prv_zReadHomePageFromFlash((char*) acProgram_page_templateJs);
+		}
+		else if (strncmp(sRequest.pcURIData, acProgram_pageCssId, strlen(acProgram_pageCssId)) == 0)
+		{
+			pcResponse = prv_zReadHomePageFromFlash((char*) acProgram_pageCss);
+		}
 		else
 		{
 			pcResponse = prv_zReadHomePageFromFlash((char*) zHttpNotFound);
@@ -151,6 +163,14 @@ char* prv_pcHandleCGIRequest(const tsHttpRequest* sRequest, char* pcResponse)
 	else if (strncmp(p, zUpdateTimingCGI, strlen(zUpdateTimingCGI)) == 0)
 	{
 		pcResponse = zHandlerUpdateTiming(data);
+	}
+	else if (strncmp(p, zUpdateRulesCGI, strlen(zUpdateRulesCGI)) == 0)
+	{
+		pcResponse = zHandlerUpdateRules(data);
+	}
+	else if (strncmp(p, zRequestRulesCGI, strlen(zRequestRulesCGI)) == 0)
+	{
+		pcResponse = zHandlerRequestRules(data);
 	}
 
 	free(zCGI);
@@ -346,7 +366,9 @@ tsHttpRequest sGetRequest(char* zRequest)
 
 	if (sParsedRequest.eType == HTTP_POST)
 	{
-		pcAux1=strstr(zRequest, "{");
+		//pcAux1=strstr(zRequest, "{");
+		pcAux1=strstr(zRequest, "\r\n\r\n");
+		pcAux1 =(char*)((uint32)pcAux1 + 4);
 		if (pcAux1 == NULL)
 		{
 			LOG_DEBUG("Didn't find post data");

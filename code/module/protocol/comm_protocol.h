@@ -127,6 +127,15 @@ tsProtocolMessage* psProtocolMakeTimingParameter(tsDeviceTimingChange* psReq, ui
  */
 tsProtocolMessage* psProtocolMakeEvent(tsNetworkEvent* psEvent, uint8_t* pu8TargetIp);
 
+
+/**
+ * @brief Allocates and populates a new rule message.
+ * @param psEvent Pointer to the rule table.
+ * @param pu8TargetIp The target of the message.
+ * @return Pointer to the created message.
+ */
+tsProtocolMessage* psProtocolMakeRuleParameter(tsNetworkRule* psTable, uint8_t* pu8TargetIp);
+
 /**
  * @brief Logs using LOG_DEBUG the message data in a "beautiful" manner
  * @param psMsg The message to be logged

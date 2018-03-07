@@ -135,3 +135,20 @@ void vDeviceLogList(xListOfDevices psDevList)
 	}
 	LOG_DEBUG("---- ----------- ----");
 }
+
+void vDeviceLogRuleTable(tsNetworkRule* psTable)
+{
+	LOG_DEBUG("---- --RULE TABLE-- ----");
+	uint8_t i = 0;
+	for (;i < N_RULE_ENTRIES; i++)
+	{
+		LOG_DEBUG(
+			"%u\t%u\t%u\t%u",
+			psTable[i].u32TriggerId,
+			psTable[i].eTriggerState,
+			psTable[i].u32TargetId,
+			psTable[i].eTargetState
+		);
+	}
+	LOG_DEBUG("---- ------ ------ ----");
+}
