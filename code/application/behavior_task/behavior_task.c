@@ -11,6 +11,7 @@
 #include "devices.h"
 #include "wifi_types.h"
 #include "sensor_types.h"
+#include "configuration.h"
 
 #include "freertos/FreeRTOS.h"
 #include "freertos/timers.h"
@@ -160,7 +161,7 @@ void vBehaviorTask(void* pvParemeters)
 					continue;
 				}
 				psTask->u32DeviceTimeoutCounter = 0;
-				LOG_DEBUG("Processing msg [%u]", psProtMessage->eType);
+				LOG_DEBUG("Processing msg [%u] [size %u b]", psProtMessage->eType, psProtMessage->u32DataCount);
 				switch (psProtMessage->eType)
 				{
 					case MSG_BROADCAST:
@@ -358,7 +359,38 @@ void prv_vBehaviorHandleEvent(tsBehaviourTaskConfiguration* psTask, tsNetworkEve
 		}
 	}
 	LOG_DEBUG("Received event [%u] from [%u]", psEvent->eState, psEvent->u32Id);
+
 	// TODO: Check action
+	uint8_t u8RuleIndex = 0;
+	tsNetworkRule* psRuleTable = psConfigurationGetRuleTable();
+	uint32_t u32SelfId = u32SystemGetId();
+	for (;u8RuleIndex < N_RULE_ENTRIES; u8RuleIndex++)
+	{
+		tsNetworkRule* psRule = &psRuleTable[u8RuleIndex];
+		if (psRule->eEnabled == RULE_DISABLED)
+		{
+			continue;
+		}
+		if (psRule->u32TargetId != u32SelfId)
+		{
+			continue;
+		}
+		if (psRule->u32TriggerId != psEvent->u32Id || psRule->eTriggerState != psEvent->eState)
+		{
+			continue;
+		}
+		if (psRule->eTargetState == ACTIVATED)
+		{
+			vActuatorTaskActivate(MAIN_RELAY);
+		}
+		else
+		{
+			vActuatorTaskDeactivate(MAIN_RELAY);
+		}
+		break;
+	}
+
+
 	free(psEvent);
 }
 

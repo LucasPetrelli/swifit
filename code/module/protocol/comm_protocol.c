@@ -22,7 +22,7 @@ void vProtocolDecodeUDP(tsUDPMessage* psUDPMessage, tsProtocolMessage* psProtMes
 	memcpy(psProtMessage->u8IP_, psUDPMessage->u8IP_, 4);
 	memcpy(&psProtMessage->u32Sequential, psUDPMessage->acData_ + SEQ_OFFSET, 4);
 	memcpy(&psProtMessage->eType, psUDPMessage->acData_ + TYPE_OFFSET, 1);
-	memcpy(&psProtMessage->u32DataCount, psUDPMessage->acData_ + DCOUNT_OFFSET, 1);
+	memcpy(&psProtMessage->u32DataCount, psUDPMessage->acData_ + DCOUNT_OFFSET, 4);
 	memcpy(psProtMessage->acData_, psUDPMessage->acData_ + DATA_OFFSET, psProtMessage->u32DataCount);
 }
 

@@ -26,6 +26,6 @@ typedef enum {
 #define PLATFORM_TASK_PRIO 2
 #define BEHAVIOR_TASK_PRIO 6
 #define TIMEKEEPER_TASK_PRIO 3
-#define WIFI_TASK_PRIO 4
+#define WIFI_TASK_PRIO 8
 
 #endif /* CODE_PROJCONF_OS_CONFIG_H_ */
