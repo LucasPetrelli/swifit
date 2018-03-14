@@ -1,0 +1,16 @@
+<map id="module/timing/timing.c" name="module/timing/timing.c">
+<area shape="rect" id="node2" href="$timing_8h.html" title="timing.h" alt="" coords="79,80,147,107"/>
+<area shape="rect" id="node8" href="$debug__adapter_8h.html" title="Debug and logging tools implementation. " alt="" coords="215,453,334,480"/>
+<area shape="rect" id="node15" href="$devices__types_8h.html" title="devices_types.h" alt="" coords="364,80,479,107"/>
+<area shape="rect" id="node3" href="$sntp__adapter_8h.html" title="sntp_adapter.h" alt="" coords="147,229,255,256"/>
+<area shape="rect" id="node11" href="$timing__types_8h.html" title="timing_types.h" alt="" coords="60,155,167,181"/>
+<area shape="rect" id="node4" href="$basictypes_8h.html" title="basictypes.h" alt="" coords="293,304,389,331"/>
+<area shape="rect" id="node5" href="$product__config_8h.html" title="../../projconf/product\l_config.h" alt="" coords="5,528,144,569"/>
+<area shape="rect" id="node7" href="$exceptions_8h.html" title="Definitions of exception type and macros for handling. " alt="" coords="208,379,304,405"/>
+<area shape="rect" id="node12" href="$u__time_8h.html" title="u_time.h" alt="" coords="51,229,123,256"/>
+<area shape="rect" id="node16" href="$actuator__types_8h.html" title="actuator_types.h" alt="" coords="547,155,666,181"/>
+<area shape="rect" id="node21" href="$sensor__types_8h.html" title="sensor_types.h" alt="" coords="413,155,523,181"/>
+<area shape="rect" id="node23" href="$configuration__types_8h.html" title="configuration_types.h" alt="" coords="191,155,337,181"/>
+<area shape="rect" id="node17" href="$gpio__adapter_8h.html" title="ESP8266 GPIO adapter implementation header file. " alt="" coords="621,229,728,256"/>
+<area shape="rect" id="node18" href="$gpio_8h.html" title="gpio.h" alt="" coords="646,304,703,331"/>
+</map>

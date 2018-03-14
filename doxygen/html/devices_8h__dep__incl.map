@@ -1,0 +1,11 @@
+<map id="module/devices/devices.h" name="module/devices/devices.h">
+<area shape="rect" id="node2" href="$behavior__task_8c.html" title="application/behavior\l_task/behavior_task.c" alt="" coords="5,80,153,121"/>
+<area shape="rect" id="node3" href="$timekeeper__task_8c.html" title="application/timekeeper\l_task/timekeeper_task.c" alt="" coords="178,80,343,121"/>
+<area shape="rect" id="node4" href="$devices_8c.html" title="module/devices/devices.c" alt="" coords="368,87,537,114"/>
+<area shape="rect" id="node5" href="$comm__protocol_8c.html" title="module/protocol/comm\l_protocol.c" alt="" coords="562,80,717,121"/>
+<area shape="rect" id="node6" href="$devices__list_8c.html" title="module/webserver/handlers\l/devices_list.c" alt="" coords="741,80,919,121"/>
+<area shape="rect" id="node7" href="$devices__timing_8c.html" title="module/webserver/handlers\l/devices_timing.c" alt="" coords="943,80,1122,121"/>
+<area shape="rect" id="node8" href="$request__rules_8c.html" title="module/webserver/handlers\l/request_rules.c" alt="" coords="1146,80,1325,121"/>
+<area shape="rect" id="node9" href="$update__rules_8c.html" title="module/webserver/handlers\l/update_rules.c" alt="" coords="1349,80,1527,121"/>
+<area shape="rect" id="node10" href="$webserver_8c.html" title="module/webserver/webserver.c" alt="" coords="1551,87,1749,114"/>
+</map>

@@ -47,7 +47,6 @@ Temporary Items
 .apdisk
 /firmware/
 /build/
-/doxygen/
 /code/web/
 *.a
 *.o

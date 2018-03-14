@@ -1,0 +1,6 @@
+<map id="vGPIOIntrSetTrigger" name="vGPIOIntrSetTrigger">
+<area shape="rect" id="node2" href="$group__sensor__api.html#gae67dae41e3e2e9eb6b530da5910e3d0b" title="Initialization of the platform peripherals related to the sensors. " alt="" coords="189,5,323,32"/>
+<area shape="rect" id="node5" href="$testgpiotask_8h.html#a7c1cccf00762168875c0dc439954b7a9" title="vTaskTestGpio" alt="" coords="203,56,309,83"/>
+<area shape="rect" id="node3" href="$group__sensortask.html#ga53a50e3204bbf93e9a98c4400f3a9d4b" title="vSensorTask" alt="" coords="371,5,467,32"/>
+<area shape="rect" id="node4" href="$user__main_8c.html#aa8253cd89ed4b268472ed62f4f2074ae" title="user_init" alt="" coords="515,5,585,32"/>
+</map>

@@ -1,0 +1,10 @@
+<map id="Functional Modules" name="Functional Modules">
+<area shape="rect" id="node1" href="$group__filesystem.html" title="Handling of the device flash file system. " alt="" coords="224,5,316,32"/>
+<area shape="rect" id="node2" href="$group__devices.html" title="Handling and registry of the networks devices information. " alt="" coords="203,56,337,83"/>
+<area shape="rect" id="node3" href="$group__sensor.html" title="Handling of sensor elements. " alt="" coords="239,107,301,133"/>
+<area shape="rect" id="node5" href="$group__actuator.html" title="Handling of actuator elements. " alt="" coords="235,157,305,184"/>
+<area shape="rect" id="node6" href="$group__comm__prot.html" title="Handling of data sent and received by the UDP interface. " alt="" coords="188,208,352,235"/>
+<area shape="rect" id="node7" href="$group__webserver.html" title="Handling of the web user interface. " alt="" coords="229,259,311,285"/>
+<area shape="rect" id="node8" href="$group__timing.html" title="Handling of timing elements. " alt="" coords="240,309,300,336"/>
+<area shape="rect" id="node9" href="$group__configuration.html" title="Handling of the device running configuration. " alt="" coords="221,360,319,387"/>
+</map>

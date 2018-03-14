@@ -1,0 +1,7 @@
+<map id="zReadHomePageFromFlash" name="zReadHomePageFromFlash">
+<area shape="rect" id="node2" href="$group__webserver__api.html#ga64fc8b5825f61de7eb026edde2e5b1c3" title="Homepage retrieval function. " alt="" coords="239,5,351,32"/>
+<area shape="rect" id="node3" href="$group__webserver__api.html#ga2733479e601491ec530f82a0f931574e" title="reads the decoded request data, " alt="" coords="399,5,573,32"/>
+<area shape="rect" id="node4" href="$group__webserver__api.html#gaead809f9b519620720f01f7defac2b51" title="HTTP request handler. " alt="" coords="621,5,740,32"/>
+<area shape="rect" id="node5" href="$group__webserver__api.html#ga290852ab5d9ac5d90f96c97c2306be25" title="vSetupWebserver" alt="" coords="788,5,911,32"/>
+<area shape="rect" id="node6" href="$user__main_8c.html#aa8253cd89ed4b268472ed62f4f2074ae" title="user_init" alt="" coords="959,5,1029,32"/>
+</map>

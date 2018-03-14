@@ -1,0 +1,6 @@
+<map id="vProtocolDoBroadcast" name="vProtocolDoBroadcast">
+<area shape="rect" id="node2" href="$group__behaviourtask.html#gaaaf9a987d64f0c0f23c0e3dbd06744c3" title="Detects the current operation mode. " alt="" coords="204,5,357,32"/>
+<area shape="rect" id="node5" href="$group__behaviourtask.html#ga713bf72d868c1e2e81765ff6b3206142" title="callback for the broadcast timer " alt="" coords="405,56,597,83"/>
+<area shape="rect" id="node3" href="$group__behaviourtask.html#ga6e927596a963d703a9585646aabd5715" title="Behavior task main body. " alt="" coords="449,5,553,32"/>
+<area shape="rect" id="node4" href="$user__main_8c.html#aa8253cd89ed4b268472ed62f4f2074ae" title="user_init" alt="" coords="645,31,716,57"/>
+</map>

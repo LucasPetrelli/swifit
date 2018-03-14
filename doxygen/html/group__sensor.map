@@ -1,0 +1,5 @@
+<map id="Sensor" name="Sensor">
+<area shape="rect" id="node1" href="$group__sensor__types.html" title="Sensor type definitions. " alt="" coords="299,5,356,32"/>
+<area shape="rect" id="node4" href="$group__sensor__api.html" title="Sensor handling functions. " alt="" coords="306,56,349,83"/>
+<area shape="rect" id="node3" href="$group__module.html" title="Functional modules for handling a specific task. " alt="" coords="5,31,140,57"/>
+</map>

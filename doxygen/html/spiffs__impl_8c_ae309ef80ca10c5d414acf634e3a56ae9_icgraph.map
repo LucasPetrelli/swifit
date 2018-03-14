@@ -1,0 +1,6 @@
+<map id="spiffs_fs1_init" name="spiffs_fs1_init">
+<area shape="rect" id="node2" href="$group__spiffs__adapter.html#ga960a3834526a6bb88d4b1111b1c01a58" title="initializes the SPIFFS file system " alt="" coords="153,31,244,57"/>
+<area shape="rect" id="node3" href="$group__system__adapter.html#ga231fd4483f839f85ce0f6cbce50d4a4a" title="System specific setup encapsulation. " alt="" coords="311,5,400,32"/>
+<area shape="rect" id="node5" href="$testspiffs_8h.html#afd84b5a75a31e6f815f3ef5bc39623b5" title="task for testing SPIFFS " alt="" coords="292,56,419,83"/>
+<area shape="rect" id="node4" href="$user__main_8c.html#aa8253cd89ed4b268472ed62f4f2074ae" title="user_init" alt="" coords="467,5,537,32"/>
+</map>

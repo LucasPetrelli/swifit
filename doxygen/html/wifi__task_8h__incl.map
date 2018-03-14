@@ -1,0 +1,10 @@
+<map id="application/wifi_task/wifi_task.h" name="application/wifi_task/wifi_task.h">
+<area shape="rect" id="node2" href="$wifi__adapter_8h.html" title="wifi_adapter.h" alt="" coords="433,95,534,121"/>
+<area shape="rect" id="node15" href="$wifi__task__types_8h.html" title="wifi_task_types.h" alt="" coords="852,95,974,121"/>
+<area shape="rect" id="node3" href="$exceptions_8h.html" title="Definitions of exception type and macros for handling. " alt="" coords="374,319,470,345"/>
+<area shape="rect" id="node4" href="$debug__adapter_8h.html" title="Debug and logging tools implementation. " alt="" coords="446,393,564,420"/>
+<area shape="rect" id="node8" href="$wifi__types_8h.html" title="wifi_types.h" alt="" coords="617,169,708,196"/>
+<area shape="rect" id="node13" href="$espconn__mdns_8h.html" title="espconn_mdns.h" alt="" coords="280,169,402,196"/>
+<area shape="rect" id="node7" href="$product__config_8h.html" title="../../projconf/product\l_config.h" alt="" coords="530,468,669,509"/>
+<area shape="rect" id="node9" href="$basictypes_8h.html" title="basictypes.h" alt="" coords="614,244,710,271"/>
+</map>

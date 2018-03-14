@@ -1,0 +1,4 @@
+<map id="UART_ResetFifo" name="UART_ResetFifo">
+<area shape="rect" id="node2" href="$group___u_a_r_t___driver___a_p_is.html#ga7acf0ca55c5f3449933864112e054bfc" title="Config Common parameters of serial ports. " alt="" coords="172,5,309,32"/>
+<area shape="rect" id="node3" href="$group___u_a_r_t___driver___a_p_is.html#gaf76603d6634a53a0f678ef6451fe2b4e" title="An example illustrates how to configure the serial port. " alt="" coords="357,5,456,32"/>
+</map>

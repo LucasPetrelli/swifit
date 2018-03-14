@@ -1,0 +1,8 @@
+<map id="vActuatorTaskDeactivate" name="vActuatorTaskDeactivate">
+<area shape="rect" id="node2" href="$behavior__task_8c.html#ac759b1f07b696c86659187e426ed5199" title="prv_vBehaviorHandleEvent" alt="" coords="217,5,388,32"/>
+<area shape="rect" id="node5" href="$group__platformtask.html#ga2b74c911f62cb000741db7385852bc1f" title="Sets the platform red LED accordingly to the current relay state. " alt="" coords="226,56,379,83"/>
+<area shape="rect" id="node7" href="$group__timekeeper.html#gafb56c2057983091423dbb47212398a63" title="Timekeeper task body. " alt="" coords="436,107,559,133"/>
+<area shape="rect" id="node3" href="$group__behaviourtask.html#ga6e927596a963d703a9585646aabd5715" title="Behavior task main body. " alt="" coords="445,5,549,32"/>
+<area shape="rect" id="node4" href="$user__main_8c.html#aa8253cd89ed4b268472ed62f4f2074ae" title="user_init" alt="" coords="607,56,677,83"/>
+<area shape="rect" id="node6" href="$group__platformtask.html#gaae651a397c2c969b5571f6b9294669fd" title="Platform task main body. " alt="" coords="446,56,549,83"/>
+</map>

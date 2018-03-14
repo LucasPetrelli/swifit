@@ -1,0 +1,40 @@
+<map id="vSPIFFSClose" name="vSPIFFSClose">
+<area shape="rect" id="node2" href="$group__spiffs__adapter.html#gaaa9266e05bd6a848a3e1d52dce3e17be" title="vSPIFFSTest" alt="" coords="166,156,265,182"/>
+<area shape="rect" id="node4" href="$group__filesystem.html#ga79e33372ead045683579170f221f314d" title="Read data to a file. " alt="" coords="160,308,271,334"/>
+<area shape="rect" id="node26" href="$group__filesystem.html#ga4dc2cb49d7f16284e0a9fffc74ed9549" title="Writes data from a file. " alt="" coords="168,409,263,436"/>
+<area shape="rect" id="node3" href="$testspiffs_8h.html#afd84b5a75a31e6f815f3ef5bc39623b5" title="task for testing SPIFFS " alt="" coords="351,54,477,81"/>
+<area shape="rect" id="node5" href="$group__configuration__api.html#ga757e748fda16fc9fd06ed4d25435d65f" title="Reads the device configuration from the file system. " alt="" coords="584,358,716,385"/>
+<area shape="rect" id="node7" href="$group__configuration__api.html#ga7938b2dfa4ca3b1f6e3464d73d7cbd42" title="Gets the device name. " alt="" coords="335,156,493,182"/>
+<area shape="rect" id="node19" href="$group__configuration__api.html#ga5c7d07ba90f75cc3a35a171a4e686855" title="Reads from flash memory the starting actuator state. " alt="" coords="323,562,505,603"/>
+<area shape="rect" id="node22" href="$group__configuration__api.html#ga98642841d166707c2b5d9f33b17a141c" title="Gets the device time table from the flash. " alt="" coords="319,257,509,284"/>
+<area shape="rect" id="node23" href="$group__configuration__api.html#ga237ec7afd904f846ca78647e608db444" title="Gets the device rule table from the flash. " alt="" coords="319,358,509,385"/>
+<area shape="rect" id="node6" href="$user__main_8c.html#aa8253cd89ed4b268472ed62f4f2074ae" title="user_init" alt="" coords="1820,378,1891,405"/>
+<area shape="rect" id="node8" href="$group__wifi.html#ga1d249d498b1f8e35f338dee64d068ad5" title="vTaskWifi" alt="" coords="611,105,689,132"/>
+<area shape="rect" id="node9" href="$devices_8h.html#aea06cc228f95a7f1b0ab73147683dc05" title="psDeviceGetSelf" alt="" coords="591,257,709,284"/>
+<area shape="rect" id="node10" href="$group__timekeeper.html#gafb56c2057983091423dbb47212398a63" title="Timekeeper task body. " alt="" coords="1286,321,1409,348"/>
+<area shape="rect" id="node11" href="$group__comm__prot__api.html#gafb1ab6701e3379d8b2086731f74a9064" title="Allocates and populates a new status message. " alt="" coords="815,358,970,385"/>
+<area shape="rect" id="node13" href="$group__webserver__handlers.html#ga08d0acb957140292676c92217473d5cf" title="Device list get handler. " alt="" coords="827,257,959,284"/>
+<area shape="rect" id="node18" href="$group__webserver__handlers.html#ga6ca69484110ed82f8c3e646bb248218e" title="Device timing get handler. " alt="" coords="815,206,971,233"/>
+<area shape="rect" id="node12" href="$group__behaviourtask.html#ga6e927596a963d703a9585646aabd5715" title="Behavior task main body. " alt="" coords="1075,460,1179,486"/>
+<area shape="rect" id="node14" href="$webserver_8c.html#ae01716b39902b06ff46d43234a714e79" title="prv_pcHandleCGIRequest" alt="" coords="1043,181,1212,208"/>
+<area shape="rect" id="node15" href="$group__webserver__api.html#ga2733479e601491ec530f82a0f931574e" title="reads the decoded request data, " alt="" coords="1260,232,1435,258"/>
+<area shape="rect" id="node16" href="$group__webserver__api.html#ga4ecf96482d61304c592c5976b39f33c0" title="HTTP request handler. " alt="" coords="1483,238,1601,265"/>
+<area shape="rect" id="node17" href="$group__webserver__api.html#gac0d8d120135c6ff53f5ebe88810f89fe" title="vSetupWebserver" alt="" coords="1649,270,1772,297"/>
+<area shape="rect" id="node20" href="$group__actuator__api.html#ga4bbdf977fcf9c73e951ea7693a59436e" title="Initialization of the platform peripherals related to the actuators. " alt="" coords="579,568,721,594"/>
+<area shape="rect" id="node21" href="$group__actuatortask.html#gad4a8388085842d3f968095590c1b01dc" title="Actuator task main body. " alt="" coords="841,616,945,642"/>
+<area shape="rect" id="node24" href="$behavior__task_8c.html#ac759b1f07b696c86659187e426ed5199" title="prv_vBehaviorHandleEvent" alt="" coords="807,460,978,486"/>
+<area shape="rect" id="node25" href="$group__webserver__handlers.html#ga97fb70ff32987a545ddb0fa1b48a71fb" title="Network rules request handler. " alt="" coords="815,156,970,182"/>
+<area shape="rect" id="node27" href="$group__configuration__api.html#ga8ffdd2f7591511a4bc7265546388847c" title="Overrides the device configuration with the default on the file system. " alt="" coords="333,409,495,436"/>
+<area shape="rect" id="node28" href="$group__configuration__api.html#ga547fa3fa98e80fd67fd70b7ecf75adcb" title="Sets the current configuration. " alt="" coords="353,105,475,132"/>
+<area shape="rect" id="node32" href="$group__configuration__api.html#ga6234dfcd192df46a1a257108f85f581d" title="Sets the device name. " alt="" coords="336,206,492,233"/>
+<area shape="rect" id="node33" href="$group__configuration__api.html#gaefe47779f23b2e9753eb262a5dfca7a3" title="Sets in the flash memory the starting actuator state. " alt="" coords="329,627,499,668"/>
+<area shape="rect" id="node36" href="$group__configuration__api.html#ga4ceb12a10850122d692567876c0f6bcb" title="Sets the device time table in the flash. " alt="" coords="323,460,505,486"/>
+<area shape="rect" id="node38" href="$group__configuration__api.html#gae88767a20c7280a933d555ba290de5b0" title="Sets the device rule table in the flash. " alt="" coords="325,510,503,537"/>
+<area shape="rect" id="node29" href="$group__configuration__api.html#ga7b974c9a1d374d37275164db5037bda0" title="Clears the message field from the device configuration. " alt="" coords="557,54,743,81"/>
+<area shape="rect" id="node31" href="$group__webserver__handlers.html#gaa78df8e709223d2ba5af1538a8b62631" title="WLAN configuration post handler. " alt="" coords="581,156,719,182"/>
+<area shape="rect" id="node30" href="$group__webserver__handlers.html#gaf5c983acb365b233f8d1c55ad1ad0b80" title="Configuration message get handler. " alt="" coords="811,54,974,81"/>
+<area shape="rect" id="node34" href="$group__actuator__api.html#gaf0f5c6cdbbbeb2a221f9f820b9c5326d" title="Activates an actuator. " alt="" coords="576,669,724,696"/>
+<area shape="rect" id="node35" href="$group__actuator__api.html#ga65d0293fb564b1b669a82ff82bf574af" title="Deactivates an actuator. " alt="" coords="569,618,731,645"/>
+<area shape="rect" id="node37" href="$behavior__task_8c.html#a68cb8e881e36604ba938f11b4cef1fcd" title="prv_vBehaviorHandleTimingReq" alt="" coords="793,510,993,537"/>
+<area shape="rect" id="node39" href="$behavior__task_8c.html#a4038d21f3d25cc7d7815a4caf850bc01" title="prv_vBehaviourHandleNewRules" alt="" coords="791,561,995,588"/>
+</map>

@@ -1,0 +1,17 @@
+<map id="eWifiRetrieveCurrentIP" name="eWifiRetrieveCurrentIP">
+<area shape="rect" id="node2" href="$group__udp__adapter.html#ga9f4ef19403290f3957bd2865176390a0" title="Creates a new UDP message. " alt="" coords="204,5,351,32"/>
+<area shape="rect" id="node3" href="$testsocket_8h.html#ab0a523aead0e843a04545443eb2066cb" title="vTestSocketRxTask" alt="" coords="408,5,545,32"/>
+<area shape="rect" id="node4" href="$devices_8h.html#aea06cc228f95a7f1b0ab73147683dc05" title="psDeviceGetSelf" alt="" coords="219,107,336,133"/>
+<area shape="rect" id="node15" href="$group__comm__prot__api.html#ga709eebf79991487b495e24a365cc42e4" title="Initialization of the protocol. " alt="" coords="231,208,323,235"/>
+<area shape="rect" id="node5" href="$group__timekeeper.html#gafb56c2057983091423dbb47212398a63" title="Timekeeper task body. " alt="" coords="846,157,969,184"/>
+<area shape="rect" id="node7" href="$group__comm__prot__api.html#gafb1ab6701e3379d8b2086731f74a9064" title="Allocates and populates a new status message. " alt="" coords="399,208,554,235"/>
+<area shape="rect" id="node9" href="$group__webserver__handlers.html#ga08d0acb957140292676c92217473d5cf" title="Device list get handler. " alt="" coords="411,56,543,83"/>
+<area shape="rect" id="node14" href="$group__webserver__handlers.html#ga6ca69484110ed82f8c3e646bb248218e" title="Device timing get handler. " alt="" coords="399,107,555,133"/>
+<area shape="rect" id="node6" href="$user__main_8c.html#aa8253cd89ed4b268472ed62f4f2074ae" title="user_init" alt="" coords="1380,157,1451,184"/>
+<area shape="rect" id="node8" href="$group__behaviourtask.html#ga6e927596a963d703a9585646aabd5715" title="Behavior task main body. " alt="" coords="635,208,739,235"/>
+<area shape="rect" id="node10" href="$webserver_8c.html#ae01716b39902b06ff46d43234a714e79" title="prv_pcHandleCGIRequest" alt="" coords="603,107,772,133"/>
+<area shape="rect" id="node11" href="$group__webserver__api.html#ga2733479e601491ec530f82a0f931574e" title="reads the decoded request data, " alt="" coords="820,107,995,133"/>
+<area shape="rect" id="node12" href="$group__webserver__api.html#ga4ecf96482d61304c592c5976b39f33c0" title="HTTP request handler. " alt="" coords="1043,107,1161,133"/>
+<area shape="rect" id="node13" href="$group__webserver__api.html#gac0d8d120135c6ff53f5ebe88810f89fe" title="vSetupWebserver" alt="" coords="1209,107,1332,133"/>
+<area shape="rect" id="node16" href="$group__behaviourtask.html#gaaaf9a987d64f0c0f23c0e3dbd06744c3" title="Detects the current operation mode. " alt="" coords="400,259,553,285"/>
+</map>

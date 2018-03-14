@@ -1,0 +1,6 @@
+<map id="UART_SetBaudrate" name="UART_SetBaudrate">
+<area shape="rect" id="node2" href="$group__system__adapter.html#ga231fd4483f839f85ce0f6cbce50d4a4a" title="System specific setup encapsulation. " alt="" coords="212,5,301,32"/>
+<area shape="rect" id="node4" href="$group___u_a_r_t___driver___a_p_is.html#ga7acf0ca55c5f3449933864112e054bfc" title="Config Common parameters of serial ports. " alt="" coords="188,56,325,83"/>
+<area shape="rect" id="node3" href="$user__main_8c.html#aa8253cd89ed4b268472ed62f4f2074ae" title="user_init" alt="" coords="387,5,458,32"/>
+<area shape="rect" id="node5" href="$group___u_a_r_t___driver___a_p_is.html#gaf76603d6634a53a0f678ef6451fe2b4e" title="An example illustrates how to configure the serial port. " alt="" coords="373,56,472,83"/>
+</map>

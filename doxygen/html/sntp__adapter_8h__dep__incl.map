@@ -1,0 +1,7 @@
+<map id="adapter/sntp_adapter/sntp_adapter.h" name="adapter/sntp_adapter/sntp_adapter.h">
+<area shape="rect" id="node2" href="$sntp__adapter_8c.html" title="adapter/sntp_adapter\l/sntp_adapter.c" alt="" coords="27,95,171,136"/>
+<area shape="rect" id="node3" href="$timing_8h.html" title="module/timing/timing.h" alt="" coords="195,102,349,129"/>
+<area shape="rect" id="node4" href="$timekeeper__task_8c.html" title="application/timekeeper\l_task/timekeeper_task.c" alt="" coords="5,184,171,225"/>
+<area shape="rect" id="node5" href="$timing_8c.html" title="module/timing/timing.c" alt="" coords="195,191,349,218"/>
+<area shape="rect" id="node6" href="$webserver_8c.html" title="module/webserver/webserver.c" alt="" coords="373,191,571,218"/>
+</map>

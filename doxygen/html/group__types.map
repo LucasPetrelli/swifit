@@ -1,0 +1,6 @@
+<map id="Types" name="Types">
+<area shape="rect" id="node1" href="$group__exceptions.html" title="definition of the main exception enumeration " alt="" coords="317,5,404,32"/>
+<area shape="rect" id="node2" href="$group__event.html" title="definition of the event enumeration type and related data " alt="" coords="330,56,391,83"/>
+<area shape="rect" id="node5" href="$group__memory.html" title="definition of basic memory data types (e.g. Queue types) " alt="" coords="326,107,395,133"/>
+<area shape="rect" id="node4" href="$group__adapter.html" title="ESP8266 SDK adaptation for the project. " alt="" coords="5,56,164,83"/>
+</map>

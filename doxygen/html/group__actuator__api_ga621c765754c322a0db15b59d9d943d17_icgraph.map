@@ -1,0 +1,7 @@
+<map id="vActuatorDeactivate" name="vActuatorDeactivate">
+<area shape="rect" id="node2" href="$group__actuator__api.html#ga4bbdf977fcf9c73e951ea7693a59436e" title="Initialization of the platform peripherals related to the actuators. " alt="" coords="200,5,341,32"/>
+<area shape="rect" id="node5" href="$group__actuator__api.html#ga65d0293fb564b1b669a82ff82bf574af" title="Deactivates an actuator. " alt="" coords="189,56,352,83"/>
+<area shape="rect" id="node6" href="$group__actuator__api.html#gaa5295cdd706da9fb6db449fd86b3242a" title="Toggle the state of an actuator. " alt="" coords="201,107,341,133"/>
+<area shape="rect" id="node3" href="$group__actuatortask.html#gad4a8388085842d3f968095590c1b01dc" title="Actuator task main body. " alt="" coords="400,56,504,83"/>
+<area shape="rect" id="node4" href="$user__main_8c.html#aa8253cd89ed4b268472ed62f4f2074ae" title="user_init" alt="" coords="552,56,623,83"/>
+</map>

@@ -1,0 +1,11 @@
+<map id="ESP8266 Adapter APIs" name="ESP8266 Adapter APIs">
+<area shape="rect" id="node1" href="$group__gpio__adapter.html" title="GPIO handling API. " alt="" coords="219,5,273,32"/>
+<area shape="rect" id="node2" href="$group__sntp__adapter.html" title="Simple Network Time Protocol adaptation layer. " alt="" coords="218,56,274,83"/>
+<area shape="rect" id="node3" href="$group__debug__adapter.html" title="Debugging handling APIs. " alt="" coords="217,107,275,133"/>
+<area shape="rect" id="node4" href="$group__wifi__adapter.html" title="Wifi setup API. " alt="" coords="224,157,268,184"/>
+<area shape="rect" id="node5" href="$group__http__adapter.html" title="HTTP server platform specific implementation. " alt="" coords="219,208,273,235"/>
+<area shape="rect" id="node6" href="$group__system__adapter.html" title="System miscellaneous APIs. " alt="" coords="213,259,279,285"/>
+<area shape="rect" id="node7" href="$group__spiffs__adapter.html" title="SPIFFS file system management API. " alt="" coords="212,309,280,336"/>
+<area shape="rect" id="node8" href="$group__udp__adapter.html" title="UDP communication API. " alt="" coords="221,360,271,387"/>
+<area shape="rect" id="node9" href="$group__types.html" title="global type definitions used in all layers of code " alt="" coords="217,411,275,437"/>
+</map>

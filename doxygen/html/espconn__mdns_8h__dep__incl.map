@@ -1,0 +1,9 @@
+<map id="driver/espconn_mdns.h" name="driver/espconn_mdns.h">
+<area shape="rect" id="node2" href="$wifi__adapter_8h.html" title="adapter/wifi_adapter\l/wifi_adapter.h" alt="" coords="275,80,412,121"/>
+<area shape="rect" id="node3" href="$wifi__adapter_8c.html" title="adapter/wifi_adapter\l/wifi_adapter.c" alt="" coords="5,169,143,211"/>
+<area shape="rect" id="node4" href="$wifi__task_8h.html" title="Wifi task. " alt="" coords="167,169,306,211"/>
+<area shape="rect" id="node6" href="$user__main_8c.html" title="user_main.c" alt="" coords="297,266,390,293"/>
+<area shape="rect" id="node7" href="$devices_8c.html" title="module/devices/devices.c" alt="" coords="381,177,551,203"/>
+<area shape="rect" id="node8" href="$testsocket_8c.html" title="testing/testsocket\l/testsocket.c" alt="" coords="575,169,701,211"/>
+<area shape="rect" id="node5" href="$wifi__task_8c.html" title="application/wifi_task\l/wifi_task.c" alt="" coords="134,259,273,300"/>
+</map>

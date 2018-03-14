@@ -1,0 +1,11 @@
+<map id="vProtocolSendMessage" name="vProtocolSendMessage">
+<area shape="rect" id="node2" href="$group__behaviourtask.html#ga6e927596a963d703a9585646aabd5715" title="Behavior task main body. " alt="" coords="775,156,879,183"/>
+<area shape="rect" id="node4" href="$behavior__task_8c.html#a5b581f055597929835216bc8296e7c48" title="prv_vBehaviourHandleActuatorReq" alt="" coords="464,55,683,81"/>
+<area shape="rect" id="node5" href="$behavior__task_8c.html#a68cb8e881e36604ba938f11b4cef1fcd" title="prv_vBehaviorHandleTimingReq" alt="" coords="473,105,673,132"/>
+<area shape="rect" id="node6" href="$behavior__task_8c.html#ac759b1f07b696c86659187e426ed5199" title="prv_vBehaviorHandleEvent" alt="" coords="229,156,399,183"/>
+<area shape="rect" id="node7" href="$behavior__task_8c.html#a4038d21f3d25cc7d7815a4caf850bc01" title="prv_vBehaviourHandleNewRules" alt="" coords="212,207,416,233"/>
+<area shape="rect" id="node8" href="$group__comm__prot__api.html#ga3089c73c8a5d5f53f14ff1071ad8cd55" title="Sends a broadcast message to the current /24 subnetwork. " alt="" coords="239,257,389,284"/>
+<area shape="rect" id="node3" href="$user__main_8c.html#aa8253cd89ed4b268472ed62f4f2074ae" title="user_init" alt="" coords="971,195,1041,221"/>
+<area shape="rect" id="node9" href="$group__behaviourtask.html#gaaaf9a987d64f0c0f23c0e3dbd06744c3" title="Detects the current operation mode. " alt="" coords="497,257,650,284"/>
+<area shape="rect" id="node10" href="$group__behaviourtask.html#ga713bf72d868c1e2e81765ff6b3206142" title="callback for the broadcast timer " alt="" coords="731,271,923,297"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="vScheduleReset" name="vScheduleReset">
+<area shape="rect" id="node2" href="$group__webserver__handlers.html#gaba3c5f0e09ce2905df44eb8a775b64a2" title="Device restart post handler. " alt="" coords="168,5,321,32"/>
+<area shape="rect" id="node3" href="$group__webserver__api.html#ga2733479e601491ec530f82a0f931574e" title="reads the decoded request data, " alt="" coords="369,5,544,32"/>
+<area shape="rect" id="node4" href="$group__webserver__api.html#gaead809f9b519620720f01f7defac2b51" title="HTTP request handler. " alt="" coords="592,5,711,32"/>
+<area shape="rect" id="node5" href="$group__webserver__api.html#ga290852ab5d9ac5d90f96c97c2306be25" title="vSetupWebserver" alt="" coords="759,5,881,32"/>
+<area shape="rect" id="node6" href="$user__main_8c.html#aa8253cd89ed4b268472ed62f4f2074ae" title="user_init" alt="" coords="929,5,1000,32"/>
+</map>

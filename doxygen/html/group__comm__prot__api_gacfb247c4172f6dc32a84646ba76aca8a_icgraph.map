@@ -1,0 +1,7 @@
+<map id="psProtocolMakeBroadcastMsg" name="psProtocolMakeBroadcastMsg">
+<area shape="rect" id="node2" href="$group__comm__prot__api.html#ga3089c73c8a5d5f53f14ff1071ad8cd55" title="Sends a broadcast message to the current /24 subnetwork. " alt="" coords="253,31,404,57"/>
+<area shape="rect" id="node3" href="$group__behaviourtask.html#gaaaf9a987d64f0c0f23c0e3dbd06744c3" title="Detects the current operation mode. " alt="" coords="452,5,605,32"/>
+<area shape="rect" id="node6" href="$group__behaviourtask.html#ga713bf72d868c1e2e81765ff6b3206142" title="callback for the broadcast timer " alt="" coords="653,56,845,83"/>
+<area shape="rect" id="node4" href="$group__behaviourtask.html#ga6e927596a963d703a9585646aabd5715" title="Behavior task main body. " alt="" coords="697,5,801,32"/>
+<area shape="rect" id="node5" href="$user__main_8c.html#aa8253cd89ed4b268472ed62f4f2074ae" title="user_init" alt="" coords="893,31,964,57"/>
+</map>

@@ -1,0 +1,12 @@
+<map id="adapter/http_adapter/http_types.h" name="adapter/http_adapter/http_types.h">
+<area shape="rect" id="node2" href="$http__adapter_8h.html" title="adapter/http_adapter\l/http_adapter.h" alt="" coords="511,95,652,136"/>
+<area shape="rect" id="node3" href="$http__adapter_8c.html" title="adapter/http_adapter\l/http_adapter.c" alt="" coords="415,184,556,225"/>
+<area shape="rect" id="node4" href="$webserver_8h.html" title="module/webserver/webserver.h" alt="" coords="580,191,777,218"/>
+<area shape="rect" id="node5" href="$comm__protocol_8c.html" title="module/protocol/comm\l_protocol.c" alt="" coords="5,273,160,315"/>
+<area shape="rect" id="node6" href="$devices__list_8c.html" title="module/webserver/handlers\l/devices_list.c" alt="" coords="184,273,363,315"/>
+<area shape="rect" id="node7" href="$devices__timing_8c.html" title="module/webserver/handlers\l/devices_timing.c" alt="" coords="387,273,565,315"/>
+<area shape="rect" id="node8" href="$request__rules_8c.html" title="module/webserver/handlers\l/request_rules.c" alt="" coords="589,273,768,315"/>
+<area shape="rect" id="node9" href="$update__rules_8c.html" title="module/webserver/handlers\l/update_rules.c" alt="" coords="792,273,971,315"/>
+<area shape="rect" id="node10" href="$webserver_8c.html" title="module/webserver/webserver.c" alt="" coords="995,281,1192,307"/>
+<area shape="rect" id="node11" href="$user__main_8c.html" title="user_main.c" alt="" coords="1216,281,1309,307"/>
+</map>

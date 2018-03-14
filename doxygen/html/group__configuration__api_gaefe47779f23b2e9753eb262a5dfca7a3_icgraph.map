@@ -1,0 +1,6 @@
+<map id="vConfigurationSetActuatorState" name="vConfigurationSetActuatorState">
+<area shape="rect" id="node2" href="$group__actuator__api.html#gaf0f5c6cdbbbeb2a221f9f820b9c5326d" title="Activates an actuator. " alt="" coords="231,5,379,32"/>
+<area shape="rect" id="node5" href="$group__actuator__api.html#ga65d0293fb564b1b669a82ff82bf574af" title="Deactivates an actuator. " alt="" coords="224,56,387,83"/>
+<area shape="rect" id="node3" href="$group__actuatortask.html#gad4a8388085842d3f968095590c1b01dc" title="Actuator task main body. " alt="" coords="435,31,539,57"/>
+<area shape="rect" id="node4" href="$user__main_8c.html#aa8253cd89ed4b268472ed62f4f2074ae" title="user_init" alt="" coords="587,31,657,57"/>
+</map>

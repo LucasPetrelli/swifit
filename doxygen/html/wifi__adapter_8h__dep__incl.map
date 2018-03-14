@@ -1,0 +1,8 @@
+<map id="adapter/wifi_adapter/wifi_adapter.h" name="adapter/wifi_adapter/wifi_adapter.h">
+<area shape="rect" id="node2" href="$wifi__adapter_8c.html" title="adapter/wifi_adapter\l/wifi_adapter.c" alt="" coords="5,95,143,136"/>
+<area shape="rect" id="node3" href="$wifi__task_8h.html" title="Wifi task. " alt="" coords="167,95,306,136"/>
+<area shape="rect" id="node5" href="$user__main_8c.html" title="user_main.c" alt="" coords="297,191,390,218"/>
+<area shape="rect" id="node6" href="$devices_8c.html" title="module/devices/devices.c" alt="" coords="381,102,551,129"/>
+<area shape="rect" id="node7" href="$testsocket_8c.html" title="testing/testsocket\l/testsocket.c" alt="" coords="575,95,701,136"/>
+<area shape="rect" id="node4" href="$wifi__task_8c.html" title="application/wifi_task\l/wifi_task.c" alt="" coords="134,184,273,225"/>
+</map>

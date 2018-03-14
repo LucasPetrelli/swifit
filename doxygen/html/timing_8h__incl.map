@@ -1,0 +1,9 @@
+<map id="module/timing/timing.h" name="module/timing/timing.h">
+<area shape="rect" id="node2" href="$sntp__adapter_8h.html" title="sntp_adapter.h" alt="" coords="246,80,354,107"/>
+<area shape="rect" id="node10" href="$timing__types_8h.html" title="timing_types.h" alt="" coords="396,80,503,107"/>
+<area shape="rect" id="node3" href="$basictypes_8h.html" title="basictypes.h" alt="" coords="217,155,313,181"/>
+<area shape="rect" id="node4" href="$product__config_8h.html" title="../../projconf/product\l_config.h" alt="" coords="5,379,144,420"/>
+<area shape="rect" id="node6" href="$exceptions_8h.html" title="Definitions of exception type and macros for handling. " alt="" coords="208,229,304,256"/>
+<area shape="rect" id="node7" href="$debug__adapter_8h.html" title="Debug and logging tools implementation. " alt="" coords="197,304,315,331"/>
+<area shape="rect" id="node11" href="$u__time_8h.html" title="u_time.h" alt="" coords="417,155,489,181"/>
+</map>

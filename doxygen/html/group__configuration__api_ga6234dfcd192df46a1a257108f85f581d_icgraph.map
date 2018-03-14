@@ -1,0 +1,9 @@
+<map id="vConfigurationSetName" name="vConfigurationSetName">
+<area shape="rect" id="node2" href="$group__configuration__api.html#ga757e748fda16fc9fd06ed4d25435d65f" title="Reads the device configuration from the file system. " alt="" coords="415,5,547,32"/>
+<area shape="rect" id="node4" href="$group__webserver__handlers.html#gaa78df8e709223d2ba5af1538a8b62631" title="WLAN configuration post handler. " alt="" coords="209,56,348,83"/>
+<area shape="rect" id="node3" href="$user__main_8c.html#aa8253cd89ed4b268472ed62f4f2074ae" title="user_init" alt="" coords="1173,31,1244,57"/>
+<area shape="rect" id="node5" href="$webserver_8c.html#ae01716b39902b06ff46d43234a714e79" title="prv_pcHandleCGIRequest" alt="" coords="396,56,565,83"/>
+<area shape="rect" id="node6" href="$group__webserver__api.html#ga2733479e601491ec530f82a0f931574e" title="reads the decoded request data, " alt="" coords="613,56,788,83"/>
+<area shape="rect" id="node7" href="$group__webserver__api.html#ga4ecf96482d61304c592c5976b39f33c0" title="HTTP request handler. " alt="" coords="836,56,955,83"/>
+<area shape="rect" id="node8" href="$group__webserver__api.html#gac0d8d120135c6ff53f5ebe88810f89fe" title="vSetupWebserver" alt="" coords="1003,56,1125,83"/>
+</map>

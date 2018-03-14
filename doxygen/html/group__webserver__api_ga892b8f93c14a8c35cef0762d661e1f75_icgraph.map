@@ -1,0 +1,8 @@
+<map id="psWebserverMakeJSONFromDevice" name="psWebserverMakeJSONFromDevice">
+<area shape="rect" id="node2" href="$group__webserver__handlers.html#ga08d0acb957140292676c92217473d5cf" title="Device list get handler. " alt="" coords="284,5,416,32"/>
+<area shape="rect" id="node3" href="$webserver_8c.html#ae01716b39902b06ff46d43234a714e79" title="prv_pcHandleCGIRequest" alt="" coords="464,5,633,32"/>
+<area shape="rect" id="node4" href="$group__webserver__api.html#ga2733479e601491ec530f82a0f931574e" title="reads the decoded request data, " alt="" coords="681,5,856,32"/>
+<area shape="rect" id="node5" href="$group__webserver__api.html#ga4ecf96482d61304c592c5976b39f33c0" title="HTTP request handler. " alt="" coords="904,5,1023,32"/>
+<area shape="rect" id="node6" href="$group__webserver__api.html#gac0d8d120135c6ff53f5ebe88810f89fe" title="vSetupWebserver" alt="" coords="1071,5,1193,32"/>
+<area shape="rect" id="node7" href="$user__main_8c.html#aa8253cd89ed4b268472ed62f4f2074ae" title="user_init" alt="" coords="1241,5,1312,32"/>
+</map>

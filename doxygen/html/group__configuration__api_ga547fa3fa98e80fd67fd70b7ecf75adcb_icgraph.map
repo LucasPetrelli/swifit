@@ -1,0 +1,11 @@
+<map id="vConfigurationSet" name="vConfigurationSet">
+<area shape="rect" id="node2" href="$group__wifi.html#ga1d249d498b1f8e35f338dee64d068ad5" title="vTaskWifi" alt="" coords="452,5,529,32"/>
+<area shape="rect" id="node4" href="$group__configuration__api.html#ga7b974c9a1d374d37275164db5037bda0" title="Clears the message field from the device configuration. " alt="" coords="176,56,361,83"/>
+<area shape="rect" id="node10" href="$group__webserver__handlers.html#gaa78df8e709223d2ba5af1538a8b62631" title="WLAN configuration post handler. " alt="" coords="199,107,338,133"/>
+<area shape="rect" id="node3" href="$user__main_8c.html#aa8253cd89ed4b268472ed62f4f2074ae" title="user_init" alt="" coords="1397,31,1468,57"/>
+<area shape="rect" id="node5" href="$group__webserver__handlers.html#gaf5c983acb365b233f8d1c55ad1ad0b80" title="Configuration message get handler. " alt="" coords="409,56,572,83"/>
+<area shape="rect" id="node6" href="$webserver_8c.html#ae01716b39902b06ff46d43234a714e79" title="prv_pcHandleCGIRequest" alt="" coords="620,56,789,83"/>
+<area shape="rect" id="node7" href="$group__webserver__api.html#ga2733479e601491ec530f82a0f931574e" title="reads the decoded request data, " alt="" coords="837,56,1012,83"/>
+<area shape="rect" id="node8" href="$group__webserver__api.html#ga4ecf96482d61304c592c5976b39f33c0" title="HTTP request handler. " alt="" coords="1060,56,1179,83"/>
+<area shape="rect" id="node9" href="$group__webserver__api.html#gac0d8d120135c6ff53f5ebe88810f89fe" title="vSetupWebserver" alt="" coords="1227,56,1349,83"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="vDeviceLogRuleTable" name="vDeviceLogRuleTable">
+<area shape="rect" id="node2" href="$group__configuration__api.html#gae88767a20c7280a933d555ba290de5b0" title="Sets the device rule table in the flash. " alt="" coords="196,31,375,57"/>
+<area shape="rect" id="node3" href="$behavior__task_8c.html#a4038d21f3d25cc7d7815a4caf850bc01" title="prv_vBehaviourHandleNewRules" alt="" coords="423,5,627,32"/>
+<area shape="rect" id="node6" href="$group__configuration__api.html#ga757e748fda16fc9fd06ed4d25435d65f" title="Reads the device configuration from the file system. " alt="" coords="675,56,807,83"/>
+<area shape="rect" id="node4" href="$group__behaviourtask.html#ga6e927596a963d703a9585646aabd5715" title="Behavior task main body. " alt="" coords="689,5,793,32"/>
+<area shape="rect" id="node5" href="$user__main_8c.html#aa8253cd89ed4b268472ed62f4f2074ae" title="user_init" alt="" coords="855,31,925,57"/>
+</map>

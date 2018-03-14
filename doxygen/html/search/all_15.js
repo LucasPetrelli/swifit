@@ -1,0 +1,22 @@
+var searchData=
+[
+  ['xbehaviornotificationqueue',['xBehaviorNotificationQueue',['../structts_wifi_task_configuration.html#a65b06e73c04f834a2b055c79f329c3c1',1,'tsWifiTaskConfiguration']]],
+  ['xbehaviorqueue',['xBehaviorQueue',['../structts_behaviour_task_configuration.html#a8e189dfea8b64f5ee1993217f0a6fc79',1,'tsBehaviourTaskConfiguration']]],
+  ['xbroadcasttimer',['xBroadcastTimer',['../structts_behaviour_task_configuration.html#ab40ab1057f8db6d1de714fa47243454c',1,'tsBehaviourTaskConfiguration']]],
+  ['xdevicelist',['xDeviceList',['../structts_behaviour_task_configuration.html#ac2f291521510d75534a8b73640b377ab',1,'tsBehaviourTaskConfiguration']]],
+  ['xlastwaketime',['xLastWakeTime',['../structts_behaviour_task_configuration.html#a1729f10e513af596b78571a8866a9b44',1,'tsBehaviourTaskConfiguration::xLastWakeTime()'],['../structts_platform_task_configuration.html#a1729f10e513af596b78571a8866a9b44',1,'tsPlatformTaskConfiguration::xLastWakeTime()']]],
+  ['xlastwakeuptick',['xLastWakeUpTick',['../structts_timekeeper_task_configuration.html#a2c35536004a08e3a9d19b929014bb552',1,'tsTimekeeperTaskConfiguration']]],
+  ['xlistofdevices',['xListOfDevices',['../group__devices__types.html#ga895f06b5d50d7329b48a26afa01ef1dd',1,'devices_types.h']]],
+  ['xmutex',['xMutex',['../structts_spiffs_control.html#a1437d87d42bfb45521c4258960c18ac0',1,'tsSpiffsControl']]],
+  ['xprintsemaphore',['xPrintSemaphore',['../group__debug__adapter.html#ga45849f32b1d8600345ea3f2f532d9e45',1,'xPrintSemaphore():&#160;debug_adapter.c'],['../group__debug__adapter.html#ga45849f32b1d8600345ea3f2f532d9e45',1,'xPrintSemaphore():&#160;debug_adapter.c']]],
+  ['xqueue',['xQueue',['../actuator__task_8c.html#a6a6228afd9b745efeaead6a1c37efc60',1,'actuator_task.c']]],
+  ['xqueuefromisrtotask',['xQueueFromISRToTask',['../structts_sensor_control.html#a972b6b37855020a36681ef8b5cf42ef7',1,'tsSensorControl']]],
+  ['xqueuefromudptorxhandler',['xQueueFromUDPToRxHandler',['../structts_u_d_p_control.html#a7120ac99ac470d617ae34da6b73aa951',1,'tsUDPControl']]],
+  ['xqueueuart',['xQueueUart',['../uart_8c.html#a04b7adb7b2225168b5261f3d5468e546',1,'uart.c']]],
+  ['xscheduledreset',['xScheduledReset',['../platform__task_8c.html#aaf78de85ddf3e388a9170023d6f13297',1,'platform_task.c']]],
+  ['xtimekeepernotificationqueue',['xTimekeeperNotificationQueue',['../structts_wifi_task_configuration.html#aa2519a4951fffa160892023d7c7655bd',1,'tsWifiTaskConfiguration']]],
+  ['xtimekeeperqueue',['xTimekeeperQueue',['../structts_timekeeper_task_configuration.html#a81d430a502d1ecce1cfadb447b2aa3e3',1,'tsTimekeeperTaskConfiguration']]],
+  ['xuarttaskhandle',['xUartTaskHandle',['../uart_8c.html#abf36966e2b9e803e7bc3b895420d614d',1,'uart.c']]],
+  ['xwifinotificationqueue',['xWifiNotificationQueue',['../structts_wifi_task_configuration.html#a8e81952e7e17167c5706534260c0f194',1,'tsWifiTaskConfiguration']]],
+  ['xwifinotifyqueue',['xWifiNotifyQueue',['../wifi__adapter_8c.html#af45f4ad3313b5a2a8698b610719d455f',1,'wifi_adapter.c']]]
+];

@@ -1,0 +1,51 @@
+<map id="adapter/debug_adapter/debug_adapter.h" name="adapter/debug_adapter/debug_adapter.h">
+<area shape="rect" id="node2" href="$debug__adapter_8c.html" title="adapter/debug_adapter\l/debug_adapter.c" alt="" coords="5,95,160,136"/>
+<area shape="rect" id="node3" href="$http__adapter_8h.html" title="adapter/http_adapter\l/http_adapter.h" alt="" coords="184,95,325,136"/>
+<area shape="rect" id="node5" href="$webserver_8h.html" title="module/webserver/webserver.h" alt="" coords="723,549,920,575"/>
+<area shape="rect" id="node13" href="$spiffs__adapter_8h.html" title="adapter/spiffs_adapter\l/spiffs_adapter.h" alt="" coords="880,184,1029,225"/>
+<area shape="rect" id="node18" href="$system__adapter_8h.html" title="ESP8266 System adapter implementation header file. " alt="" coords="2409,363,2572,404"/>
+<area shape="rect" id="node24" href="$exceptions_8h.html" title="Definitions of exception type and macros for handling. " alt="" coords="2556,102,2735,129"/>
+<area shape="rect" id="node25" href="$basictypes_8h.html" title="adapter/types/basictypes.h" alt="" coords="1715,191,1893,218"/>
+<area shape="rect" id="node32" href="$timing_8c.html" title="module/timing/timing.c" alt="" coords="3243,549,3397,575"/>
+<area shape="rect" id="node39" href="$udp__adapter_8h.html" title="Adapters for the ESP8266 SDK&#39;s UDP feature. " alt="" coords="2597,363,2737,404"/>
+<area shape="rect" id="node42" href="$wifi__adapter_8h.html" title="adapter/wifi_adapter\l/wifi_adapter.h" alt="" coords="2958,363,3095,404"/>
+<area shape="rect" id="node45" href="$timekeeper__task_8c.html" title="application/timekeeper\l_task/timekeeper_task.c" alt="" coords="2765,363,2931,404"/>
+<area shape="rect" id="node4" href="$http__adapter_8c.html" title="adapter/http_adapter\l/http_adapter.c" alt="" coords="133,184,275,225"/>
+<area shape="rect" id="node6" href="$comm__protocol_8c.html" title="module/protocol/comm\l_protocol.c" alt="" coords="1343,631,1497,672"/>
+<area shape="rect" id="node7" href="$devices__list_8c.html" title="module/webserver/handlers\l/devices_list.c" alt="" coords="937,631,1116,672"/>
+<area shape="rect" id="node8" href="$devices__timing_8c.html" title="module/webserver/handlers\l/devices_timing.c" alt="" coords="1140,631,1319,672"/>
+<area shape="rect" id="node9" href="$request__rules_8c.html" title="module/webserver/handlers\l/request_rules.c" alt="" coords="311,631,489,672"/>
+<area shape="rect" id="node10" href="$update__rules_8c.html" title="module/webserver/handlers\l/update_rules.c" alt="" coords="513,631,692,672"/>
+<area shape="rect" id="node11" href="$webserver_8c.html" title="module/webserver/webserver.c" alt="" coords="716,638,913,665"/>
+<area shape="rect" id="node12" href="$user__main_8c.html" title="user_main.c" alt="" coords="2353,638,2447,665"/>
+<area shape="rect" id="node14" href="$spiffs__adapter_8c.html" title="adapter/spiffs_adapter\l/spiffs_adapter.c" alt="" coords="400,273,549,315"/>
+<area shape="rect" id="node15" href="$filesystem_8h.html" title="Functions that manage data on the filesystem. " alt="" coords="785,281,986,307"/>
+<area shape="rect" id="node16" href="$configuration_8c.html" title="module/configuration\l/configuration.c" alt="" coords="619,363,760,404"/>
+<area shape="rect" id="node17" href="$filesystem_8c.html" title="module/filesystem/filesystem.c" alt="" coords="785,370,986,397"/>
+<area shape="rect" id="node19" href="$system__adapter_8c.html" title="adapter/system_adapter\l/system_adapter.c" alt="" coords="2200,452,2363,493"/>
+<area shape="rect" id="node20" href="$udp__adapter_8c.html" title="adapter/udp_adapter\l/udp_adapter.c" alt="" coords="2489,452,2629,493"/>
+<area shape="rect" id="node21" href="$platform__task_8c.html" title="application/platform\l_task/platform_task.c" alt="" coords="2029,452,2176,493"/>
+<area shape="rect" id="node22" href="$wifi__task_8c.html" title="application/wifi_task\l/wifi_task.c" alt="" coords="2961,541,3100,583"/>
+<area shape="rect" id="node23" href="$devices_8c.html" title="module/devices/devices.c" alt="" coords="2705,459,2874,486"/>
+<area shape="rect" id="node26" href="$gpio__adapter_8h.html" title="ESP8266 GPIO adapter implementation header file. " alt="" coords="1631,273,1774,315"/>
+<area shape="rect" id="node28" href="$actuator__types_8h.html" title="module/actuator/actuator\l_types.h" alt="" coords="1441,363,1607,404"/>
+<area shape="rect" id="node29" href="$devices__types_8h.html" title="module/devices/devices\l_types.h" alt="" coords="1445,452,1603,493"/>
+<area shape="rect" id="node30" href="$behavior__task__types_8h.html" title="application/behavior\l_task/behavior_task_types.h" alt="" coords="1644,541,1831,583"/>
+<area shape="rect" id="node33" href="$sensor__types_8h.html" title="module/sensor/sensor\l_types.h" alt="" coords="1163,363,1314,404"/>
+<area shape="rect" id="node35" href="$sntp__adapter_8h.html" title="adapter/sntp_adapter\l/sntp_adapter.h" alt="" coords="1944,273,2088,315"/>
+<area shape="rect" id="node37" href="$generic__list_8c.html" title="adapter/types/list\l/generic_list.c" alt="" coords="2112,273,2235,315"/>
+<area shape="rect" id="node38" href="$udp__types_8h.html" title="adapter/udp_adapter\l/udp_types.h" alt="" coords="2411,273,2551,315"/>
+<area shape="rect" id="node41" href="$wifi__types_8h.html" title="adapter/wifi_adapter\l/wifi_types.h" alt="" coords="2810,273,2947,315"/>
+<area shape="rect" id="node46" href="$platform__task_8h.html" title="application/platform\l_task/platform_task.h" alt="" coords="2239,363,2385,404"/>
+<area shape="rect" id="node47" href="$configuration__types_8h.html" title="module/configuration\l/configuration_types.h" alt="" coords="1276,273,1425,315"/>
+<area shape="rect" id="node48" href="$protocol__types_8h.html" title="module/protocol/protocol\l_types.h" alt="" coords="1205,452,1369,493"/>
+<area shape="rect" id="node49" href="$handler__types_8h.html" title="module/webserver/handlers\l/handler_types.h" alt="" coords="1001,452,1180,493"/>
+<area shape="rect" id="node50" href="$webserver__types_8h.html" title="module/webserver/webserver\l_types.h" alt="" coords="573,273,760,315"/>
+<area shape="rect" id="node27" href="$gpio__adapter_8c.html" title="ESP8266 GPIO adapter source code. " alt="" coords="1631,363,1774,404"/>
+<area shape="rect" id="node34" href="$testgpiotask_8c.html" title="testing/testgpio/testgpiotask.c" alt="" coords="1799,370,1996,397"/>
+<area shape="rect" id="node31" href="$comm__protocol_8h.html" title="module/protocol/comm\l_protocol.h" alt="" coords="1343,541,1497,583"/>
+<area shape="rect" id="node36" href="$sntp__adapter_8c.html" title="adapter/sntp_adapter\l/sntp_adapter.c" alt="" coords="2071,363,2215,404"/>
+<area shape="rect" id="node40" href="$testsocket_8c.html" title="testing/testsocket\l/testsocket.c" alt="" coords="2950,452,3077,493"/>
+<area shape="rect" id="node43" href="$wifi__adapter_8c.html" title="adapter/wifi_adapter\l/wifi_adapter.c" alt="" coords="3265,452,3402,493"/>
+<area shape="rect" id="node44" href="$wifi__task_8h.html" title="Wifi task. " alt="" coords="3101,452,3240,493"/>
+</map>

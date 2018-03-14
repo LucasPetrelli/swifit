@@ -1,0 +1,7 @@
+<map id="adapter/spiffs_adapter/spiffs_adapter.h" name="adapter/spiffs_adapter/spiffs_adapter.h">
+<area shape="rect" id="node2" href="$spiffs__adapter_8c.html" title="adapter/spiffs_adapter\l/spiffs_adapter.c" alt="" coords="5,95,155,136"/>
+<area shape="rect" id="node3" href="$filesystem_8h.html" title="Functions that manage data on the filesystem. " alt="" coords="179,102,381,129"/>
+<area shape="rect" id="node6" href="$user__main_8c.html" title="user_main.c" alt="" coords="405,102,499,129"/>
+<area shape="rect" id="node4" href="$configuration_8c.html" title="module/configuration\l/configuration.c" alt="" coords="111,184,252,225"/>
+<area shape="rect" id="node5" href="$filesystem_8c.html" title="module/filesystem/filesystem.c" alt="" coords="277,191,478,218"/>
+</map>

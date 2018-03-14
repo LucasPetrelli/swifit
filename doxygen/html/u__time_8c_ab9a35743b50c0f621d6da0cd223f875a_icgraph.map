@@ -1,0 +1,6 @@
+<map id="timet_to_tm" name="timet_to_tm">
+<area shape="rect" id="node2" href="$group__timing__api.html#gaf8cbf4cad9f47d2ed9852be569d52d21" title="Retrieves a struct with decoded fields from a timestamp. " alt="" coords="144,5,331,32"/>
+<area shape="rect" id="node3" href="$group__timing__api.html#ga41219778a8e0bb21538127ea64cf12a6" title="Retrieves the count of minutes since the beginning of the day u32Timestamp represents. " alt="" coords="379,5,600,32"/>
+<area shape="rect" id="node4" href="$group__timekeeper.html#gafb56c2057983091423dbb47212398a63" title="Timekeeper task body. " alt="" coords="648,5,771,32"/>
+<area shape="rect" id="node5" href="$user__main_8c.html#aa8253cd89ed4b268472ed62f4f2074ae" title="user_init" alt="" coords="819,5,889,32"/>
+</map>

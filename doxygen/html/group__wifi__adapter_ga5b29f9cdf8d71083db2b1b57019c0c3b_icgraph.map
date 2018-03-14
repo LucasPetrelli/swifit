@@ -1,0 +1,5 @@
+<map id="eWifiGetConnectionStatus" name="eWifiGetConnectionStatus">
+<area shape="rect" id="node2" href="$group__wifi__adapter.html#gafb6fc13bc6e2e3c42873b1917443ad0f" title="Test if wifi is connected or not. " alt="" coords="228,5,373,32"/>
+<area shape="rect" id="node3" href="$group__udp__adapter.html#ga9f4ef19403290f3957bd2865176390a0" title="Creates a new UDP message. " alt="" coords="421,5,568,32"/>
+<area shape="rect" id="node4" href="$testsocket_8h.html#ab0a523aead0e843a04545443eb2066cb" title="vTestSocketRxTask" alt="" coords="616,5,753,32"/>
+</map>

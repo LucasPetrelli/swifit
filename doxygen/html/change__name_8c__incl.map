@@ -1,0 +1,19 @@
+<map id="module/webserver/handlers/change_name.c" name="module/webserver/handlers/change_name.c">
+<area shape="rect" id="node2" href="$change__name_8h.html" title="change_name.h" alt="" coords="763,95,877,121"/>
+<area shape="rect" id="node3" href="$handler__types_8h.html" title="handler_types.h" alt="" coords="763,169,877,196"/>
+<area shape="rect" id="node4" href="$http__ok_8h.html" title="http_ok.h" alt="" coords="107,244,183,271"/>
+<area shape="rect" id="node5" href="$basictypes_8h.html" title="basictypes.h" alt="" coords="208,244,304,271"/>
+<area shape="rect" id="node13" href="$config__wlan_8h.html" title="config_wlan.h" alt="" coords="329,244,429,271"/>
+<area shape="rect" id="node14" href="$status_8h.html" title="status.h" alt="" coords="453,244,523,271"/>
+<area shape="rect" id="node15" href="$config__message_8h.html" title="config_message.h" alt="" coords="547,244,674,271"/>
+<area shape="rect" id="node16" href="$device__restart_8h.html" title="device_restart.h" alt="" coords="698,244,811,271"/>
+<area shape="rect" id="node17" href="$devices__list_8h.html" title="devices_list.h" alt="" coords="835,244,935,271"/>
+<area shape="rect" id="node18" href="$issue__action_8h.html" title="issue_action.h" alt="" coords="960,244,1067,271"/>
+<area shape="rect" id="node19" href="$devices__timing_8h.html" title="devices_timing.h" alt="" coords="1091,244,1210,271"/>
+<area shape="rect" id="node20" href="$update__timing_8h.html" title="update_timing.h" alt="" coords="1235,244,1349,271"/>
+<area shape="rect" id="node21" href="$request__rules_8h.html" title="request_rules.h" alt="" coords="1374,244,1485,271"/>
+<area shape="rect" id="node22" href="$update__rules_8h.html" title="update_rules.h" alt="" coords="1509,244,1616,271"/>
+<area shape="rect" id="node6" href="$product__config_8h.html" title="../../projconf/product\l_config.h" alt="" coords="5,468,144,509"/>
+<area shape="rect" id="node8" href="$exceptions_8h.html" title="Definitions of exception type and macros for handling. " alt="" coords="208,319,304,345"/>
+<area shape="rect" id="node9" href="$debug__adapter_8h.html" title="Debug and logging tools implementation. " alt="" coords="197,393,315,420"/>
+</map>

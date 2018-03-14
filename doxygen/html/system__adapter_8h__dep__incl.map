@@ -1,0 +1,8 @@
+<map id="adapter/system_adapter/system_adapter.h" name="adapter/system_adapter/system_adapter.h">
+<area shape="rect" id="node2" href="$system__adapter_8c.html" title="adapter/system_adapter\l/system_adapter.c" alt="" coords="5,95,168,136"/>
+<area shape="rect" id="node3" href="$udp__adapter_8c.html" title="adapter/udp_adapter\l/udp_adapter.c" alt="" coords="193,95,333,136"/>
+<area shape="rect" id="node4" href="$platform__task_8c.html" title="application/platform\l_task/platform_task.c" alt="" coords="357,95,504,136"/>
+<area shape="rect" id="node5" href="$wifi__task_8c.html" title="application/wifi_task\l/wifi_task.c" alt="" coords="528,95,667,136"/>
+<area shape="rect" id="node6" href="$devices_8c.html" title="module/devices/devices.c" alt="" coords="691,102,861,129"/>
+<area shape="rect" id="node7" href="$user__main_8c.html" title="user_main.c" alt="" coords="885,102,979,129"/>
+</map>

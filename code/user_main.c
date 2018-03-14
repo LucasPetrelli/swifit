@@ -85,39 +85,9 @@ uint32 user_rf_cal_sector_set(void)
 *******************************************************************************/
 void user_init(void)
 {
-
-    /* need to set opmode before you set config */
-
-    char* pcSSID = "Flink-22A4";
-    char* pcPassword = "Falp24gh";
-    char* pcName = "Magitek-Bit-001";
-
-
     vSystemInit();
     LOG_DEBUG("Init\n\n\n");
     struct	rst_info	*rtc_info	=	system_get_rst_info();
-    LOG_DEBUG("reset reason:	%x\n",	rtc_info->reason);
-	if	(rtc_info->reason	==	REASON_WDT_RST	||
-		rtc_info->reason	==	REASON_EXCEPTION_RST	||
-		rtc_info->reason	==	REASON_SOFT_WDT_RST)	{
-		if	(rtc_info->reason	==	REASON_EXCEPTION_RST)	{
-
-			LOG_DEBUG("Fatal exception (%d):\n", rtc_info->exccause);
-
-		}
-
-		LOG_DEBUG(
-				"epc1=0x%08x,\n"
-				"epc2=0x%08x,\n"
-				"epc3=0x%08x,\n"
-				"excvaddr=0x%08x,\n"
-				"depc=0x%08x\n",
-				rtc_info->epc1,
-				rtc_info->epc2,
-				rtc_info->epc3,
-				rtc_info->excvaddr,
-				rtc_info->depc);//The	address	of	the	last	crash	is	printed,	which	is	used	to	debug	garbled	output.
-	}
 	LOG_DEBUG("Starting heap: %u", u32SystemFreeHeap());
 	// --- Read configuration from the fs
     vConfigurationRead();

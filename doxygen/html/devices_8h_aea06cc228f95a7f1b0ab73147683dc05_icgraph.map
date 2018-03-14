@@ -1,0 +1,12 @@
+<map id="psDeviceGetSelf" name="psDeviceGetSelf">
+<area shape="rect" id="node2" href="$group__timekeeper.html#gafb56c2057983091423dbb47212398a63" title="Timekeeper task body. " alt="" coords="618,5,741,32"/>
+<area shape="rect" id="node4" href="$group__comm__prot__api.html#gafb1ab6701e3379d8b2086731f74a9064" title="Allocates and populates a new status message. " alt="" coords="382,56,537,83"/>
+<area shape="rect" id="node6" href="$group__webserver__handlers.html#ga08d0acb957140292676c92217473d5cf" title="Device list get handler. " alt="" coords="183,107,315,133"/>
+<area shape="rect" id="node11" href="$group__webserver__handlers.html#ga6ca69484110ed82f8c3e646bb248218e" title="Device timing get handler. " alt="" coords="171,157,327,184"/>
+<area shape="rect" id="node3" href="$user__main_8c.html#aa8253cd89ed4b268472ed62f4f2074ae" title="user_init" alt="" coords="1152,56,1223,83"/>
+<area shape="rect" id="node5" href="$group__behaviourtask.html#ga6e927596a963d703a9585646aabd5715" title="Behavior task main body. " alt="" coords="822,56,926,83"/>
+<area shape="rect" id="node7" href="$webserver_8c.html#ae01716b39902b06ff46d43234a714e79" title="prv_pcHandleCGIRequest" alt="" coords="375,107,544,133"/>
+<area shape="rect" id="node8" href="$group__webserver__api.html#ga2733479e601491ec530f82a0f931574e" title="reads the decoded request data, " alt="" coords="592,107,767,133"/>
+<area shape="rect" id="node9" href="$group__webserver__api.html#ga4ecf96482d61304c592c5976b39f33c0" title="HTTP request handler. " alt="" coords="815,107,933,133"/>
+<area shape="rect" id="node10" href="$group__webserver__api.html#gac0d8d120135c6ff53f5ebe88810f89fe" title="vSetupWebserver" alt="" coords="981,107,1104,133"/>
+</map>

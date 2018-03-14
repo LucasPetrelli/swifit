@@ -1,0 +1,11 @@
+<map id="driver/uart.h" name="driver/uart.h">
+<area shape="rect" id="node2" href="$system__adapter_8h.html" title="ESP8266 System adapter implementation header file. " alt="" coords="432,80,595,121"/>
+<area shape="rect" id="node9" href="$m_d_n_sresp_8c.html" title="driver/mDNSresp.c" alt="" coords="619,87,749,114"/>
+<area shape="rect" id="node10" href="$uart_8c.html" title="driver/uart.c" alt="" coords="774,87,863,114"/>
+<area shape="rect" id="node3" href="$system__adapter_8c.html" title="adapter/system_adapter\l/system_adapter.c" alt="" coords="5,169,168,211"/>
+<area shape="rect" id="node4" href="$udp__adapter_8c.html" title="adapter/udp_adapter\l/udp_adapter.c" alt="" coords="193,169,333,211"/>
+<area shape="rect" id="node5" href="$platform__task_8c.html" title="application/platform\l_task/platform_task.c" alt="" coords="357,169,504,211"/>
+<area shape="rect" id="node6" href="$wifi__task_8c.html" title="application/wifi_task\l/wifi_task.c" alt="" coords="528,169,667,211"/>
+<area shape="rect" id="node7" href="$devices_8c.html" title="module/devices/devices.c" alt="" coords="691,177,861,203"/>
+<area shape="rect" id="node8" href="$user__main_8c.html" title="user_main.c" alt="" coords="885,177,979,203"/>
+</map>

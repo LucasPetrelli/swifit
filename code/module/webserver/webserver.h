@@ -55,7 +55,7 @@
  */
 
 
-//#define WEBSV_VERBOSE
+#define WEBSV_VERBOSE
 
 /**
  * @brief Local logger function definition

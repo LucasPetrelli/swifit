@@ -1,0 +1,14 @@
+<map id="psActuatorMountRequest" name="psActuatorMountRequest">
+<area shape="rect" id="node2" href="$group__actuatortask.html#gaebc7a8dd2ef10a5e08f6974ea7bf949d" title="Create and send a deactivate request to the actuator task. " alt="" coords="233,107,383,133"/>
+<area shape="rect" id="node11" href="$group__actuatortask.html#gae7ebef11b116e3a6e74d8810bc4e6553" title="Create and send an activate request to the actuator task. " alt="" coords="226,157,390,184"/>
+<area shape="rect" id="node12" href="$group__actuatortask.html#ga9356980eaea22b5fa4992a4c6300b537" title="Create and send a toggle fast request to the actuator task. " alt="" coords="224,5,392,32"/>
+<area shape="rect" id="node13" href="$group__actuatortask.html#ga675bd09557bc4c40115a2e4e399698a4" title="Create and send a toggle slow request to the actuator task. " alt="" coords="223,56,393,83"/>
+<area shape="rect" id="node3" href="$group__platformtask.html#gabcc74762fe22e35766adf0708045c43b" title="Sets the platform LEDs accordingly to the current mode. " alt="" coords="455,56,581,83"/>
+<area shape="rect" id="node6" href="$group__platformtask.html#ga2b74c911f62cb000741db7385852bc1f" title="Sets the platform red LED accordingly to the current relay state. " alt="" coords="441,107,595,133"/>
+<area shape="rect" id="node7" href="$group__webserver__handlers.html#ga00283f1275bc672a133df6053c55566a" title="Issue action post handler. " alt="" coords="447,157,589,184"/>
+<area shape="rect" id="node4" href="$group__platformtask.html#gaae651a397c2c969b5571f6b9294669fd" title="Platform task main body. " alt="" coords="679,107,781,133"/>
+<area shape="rect" id="node5" href="$user__main_8c.html#aa8253cd89ed4b268472ed62f4f2074ae" title="user_init" alt="" coords="1203,132,1273,159"/>
+<area shape="rect" id="node8" href="$group__webserver__api.html#ga2733479e601491ec530f82a0f931574e" title="reads the decoded request data, " alt="" coords="643,157,817,184"/>
+<area shape="rect" id="node9" href="$group__webserver__api.html#gaead809f9b519620720f01f7defac2b51" title="HTTP request handler. " alt="" coords="865,157,984,184"/>
+<area shape="rect" id="node10" href="$group__webserver__api.html#ga290852ab5d9ac5d90f96c97c2306be25" title="vSetupWebserver" alt="" coords="1032,157,1155,184"/>
+</map>

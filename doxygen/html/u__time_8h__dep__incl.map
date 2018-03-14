@@ -1,0 +1,32 @@
+<map id="driver/u_time.h" name="driver/u_time.h">
+<area shape="rect" id="node2" href="$timekeeper__task_8c.html" title="application/timekeeper\l_task/timekeeper_task.c" alt="" coords="5,437,171,479"/>
+<area shape="rect" id="node3" href="$u__time_8c.html" title="driver/u_time.c" alt="" coords="812,87,919,114"/>
+<area shape="rect" id="node4" href="$timing__types_8h.html" title="module/timing/timing\l_types.h" alt="" coords="645,80,787,121"/>
+<area shape="rect" id="node5" href="$configuration_8h.html" title="module/configuration\l/configuration.h" alt="" coords="1879,348,2020,389"/>
+<area shape="rect" id="node19" href="$devices__types_8h.html" title="module/devices/devices\l_types.h" alt="" coords="891,169,1050,211"/>
+<area shape="rect" id="node31" href="$timing_8h.html" title="module/timing/timing.h" alt="" coords="489,177,642,203"/>
+<area shape="rect" id="node6" href="$behavior__task_8c.html" title="application/behavior\l_task/behavior_task.c" alt="" coords="1457,437,1605,479"/>
+<area shape="rect" id="node7" href="$platform__task_8h.html" title="application/platform\l_task/platform_task.h" alt="" coords="2329,437,2476,479"/>
+<area shape="rect" id="node8" href="$platform__task_8c.html" title="application/platform\l_task/platform_task.c" alt="" coords="2440,527,2587,568"/>
+<area shape="rect" id="node10" href="$user__main_8c.html" title="user_main.c" alt="" coords="1815,534,1908,561"/>
+<area shape="rect" id="node11" href="$wifi__task_8c.html" title="application/wifi_task\l/wifi_task.c" alt="" coords="2551,437,2689,479"/>
+<area shape="rect" id="node12" href="$actuator_8c.html" title="module/actuator/actuator.c" alt="" coords="2714,445,2891,471"/>
+<area shape="rect" id="node13" href="$configuration_8c.html" title="module/configuration\l/configuration.c" alt="" coords="2916,437,3057,479"/>
+<area shape="rect" id="node14" href="$devices_8c.html" title="module/devices/devices.c" alt="" coords="1629,445,1798,471"/>
+<area shape="rect" id="node15" href="$config__message_8c.html" title="module/webserver/handlers\l/config_message.c" alt="" coords="1924,437,2103,479"/>
+<area shape="rect" id="node16" href="$config__wlan_8c.html" title="module/webserver/handlers\l/config_wlan.c" alt="" coords="2127,437,2305,479"/>
+<area shape="rect" id="node17" href="$request__rules_8c.html" title="module/webserver/handlers\l/request_rules.c" alt="" coords="1253,437,1432,479"/>
+<area shape="rect" id="node18" href="$webserver_8c.html" title="module/webserver/webserver.c" alt="" coords="245,445,443,471"/>
+<area shape="rect" id="node9" href="$device__restart_8c.html" title="module/webserver/handlers\l/device_restart.c" alt="" coords="2237,527,2416,568"/>
+<area shape="rect" id="node20" href="$behavior__task__types_8h.html" title="application/behavior\l_task/behavior_task_types.h" alt="" coords="1033,259,1220,300"/>
+<area shape="rect" id="node24" href="$devices_8h.html" title="module/devices/devices.h" alt="" coords="861,355,1030,382"/>
+<area shape="rect" id="node27" href="$comm__protocol_8h.html" title="module/protocol/comm\l_protocol.h" alt="" coords="1055,348,1209,389"/>
+<area shape="rect" id="node28" href="$timing_8c.html" title="module/timing/timing.c" alt="" coords="585,266,738,293"/>
+<area shape="rect" id="node29" href="$update__timing_8c.html" title="module/webserver/handlers\l/update_timing.c" alt="" coords="1244,259,1423,300"/>
+<area shape="rect" id="node30" href="$webserver_8h.html" title="module/webserver/webserver.h" alt="" coords="639,355,836,382"/>
+<area shape="rect" id="node21" href="$behavior__task_8h.html" title="application/behavior\l_task/behavior_task.h" alt="" coords="1247,348,1395,389"/>
+<area shape="rect" id="node22" href="$devices__list_8c.html" title="module/webserver/handlers\l/devices_list.c" alt="" coords="1051,437,1229,479"/>
+<area shape="rect" id="node23" href="$update__rules_8c.html" title="module/webserver/handlers\l/update_rules.c" alt="" coords="848,437,1027,479"/>
+<area shape="rect" id="node25" href="$comm__protocol_8c.html" title="module/protocol/comm\l_protocol.c" alt="" coords="669,437,824,479"/>
+<area shape="rect" id="node26" href="$devices__timing_8c.html" title="module/webserver/handlers\l/devices_timing.c" alt="" coords="467,437,645,479"/>
+</map>

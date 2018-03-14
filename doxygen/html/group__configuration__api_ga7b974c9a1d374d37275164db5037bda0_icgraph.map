@@ -1,0 +1,8 @@
+<map id="vConfigurationClearMessage" name="vConfigurationClearMessage">
+<area shape="rect" id="node2" href="$group__webserver__handlers.html#gaf5c983acb365b233f8d1c55ad1ad0b80" title="Configuration message get handler. " alt="" coords="239,5,401,32"/>
+<area shape="rect" id="node3" href="$webserver_8c.html#ae01716b39902b06ff46d43234a714e79" title="prv_pcHandleCGIRequest" alt="" coords="449,5,619,32"/>
+<area shape="rect" id="node4" href="$group__webserver__api.html#ga2733479e601491ec530f82a0f931574e" title="reads the decoded request data, " alt="" coords="667,5,841,32"/>
+<area shape="rect" id="node5" href="$group__webserver__api.html#ga4ecf96482d61304c592c5976b39f33c0" title="HTTP request handler. " alt="" coords="889,5,1008,32"/>
+<area shape="rect" id="node6" href="$group__webserver__api.html#gac0d8d120135c6ff53f5ebe88810f89fe" title="vSetupWebserver" alt="" coords="1056,5,1179,32"/>
+<area shape="rect" id="node7" href="$user__main_8c.html#aa8253cd89ed4b268472ed62f4f2074ae" title="user_init" alt="" coords="1227,5,1297,32"/>
+</map>

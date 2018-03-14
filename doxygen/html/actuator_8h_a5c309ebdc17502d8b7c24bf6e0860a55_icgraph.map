@@ -1,0 +1,7 @@
+<map id="vActuatorActivate" name="vActuatorActivate">
+<area shape="rect" id="node2" href="$actuator_8h.html#a4bbdf977fcf9c73e951ea7693a59436e" title="vActuatorInitPlatform" alt="" coords="179,5,321,32"/>
+<area shape="rect" id="node5" href="$actuator_8h.html#af0f5c6cdbbbeb2a221f9f820b9c5326d" title="vActuatorActivateById" alt="" coords="176,56,324,83"/>
+<area shape="rect" id="node6" href="$actuator_8h.html#aa5295cdd706da9fb6db449fd86b3242a" title="vActuatorToggleById" alt="" coords="180,107,320,133"/>
+<area shape="rect" id="node3" href="$actuator__task_8h.html#ad4a8388085842d3f968095590c1b01dc" title="vActuatorTask" alt="" coords="372,56,476,83"/>
+<area shape="rect" id="node4" href="$user__main_8c.html#aa8253cd89ed4b268472ed62f4f2074ae" title="user_init" alt="" coords="524,56,595,83"/>
+</map>

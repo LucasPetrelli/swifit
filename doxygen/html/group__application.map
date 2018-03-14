@@ -1,0 +1,8 @@
+<map id="Application" name="Application">
+<area shape="rect" id="node2" href="$group__actuatortask.html" title="Task that handles the status of the onboard actuators. " alt="" coords="149,5,220,32"/>
+<area shape="rect" id="node3" href="$group__behaviourtask.html" title="Task that receives inputs and take actions based on the current state of execution. " alt="" coords="145,56,224,83"/>
+<area shape="rect" id="node4" href="$group__wifi.html" title="Task dedicated to take care of the Wi&#45;Fi connection. " alt="" coords="163,107,207,133"/>
+<area shape="rect" id="node5" href="$group__platformtask.html" title="Task that oversees the current state of the platform. " alt="" coords="149,157,220,184"/>
+<area shape="rect" id="node6" href="$group__timekeeper.html" title="Task dedicated to take care of the timekeeping. " alt="" coords="140,208,229,235"/>
+<area shape="rect" id="node7" href="$group__sensortask.html" title="Task that receives sensor events and handles them accordingly. " alt="" coords="153,259,216,285"/>
+</map>

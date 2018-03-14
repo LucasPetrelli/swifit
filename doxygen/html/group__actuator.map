@@ -1,0 +1,5 @@
+<map id="Actuator" name="Actuator">
+<area shape="rect" id="node1" href="$group__actuator__types.html" title="Actuator type definitions. " alt="" coords="307,5,364,32"/>
+<area shape="rect" id="node2" href="$group__module.html" title="Functional modules for handling a specific task. " alt="" coords="5,31,140,57"/>
+<area shape="rect" id="node4" href="$group__actuator__api.html" title="Actuator handling functions. " alt="" coords="314,56,357,83"/>
+</map>

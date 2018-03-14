@@ -1,0 +1,7 @@
+<map id="module/sensor/sensor.h" name="module/sensor/sensor.h">
+<area shape="rect" id="node2" href="$sensor__task_8h.html" title="application/sensor\l_task/sensor_task.h" alt="" coords="76,80,216,121"/>
+<area shape="rect" id="node5" href="$sensor_8c.html" title="module/sensor/sensor.c" alt="" coords="240,87,401,114"/>
+<area shape="rect" id="node6" href="$webserver_8c.html" title="module/webserver/webserver.c" alt="" coords="426,87,623,114"/>
+<area shape="rect" id="node3" href="$sensor__task_8c.html" title="application/sensor\l_task/sensor_task.c" alt="" coords="5,169,145,211"/>
+<area shape="rect" id="node4" href="$user__main_8c.html" title="user_main.c" alt="" coords="170,177,263,203"/>
+</map>

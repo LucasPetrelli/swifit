@@ -38,13 +38,12 @@
  */
 typedef enum {
 	UDP_MESSAGE_RX,			/**< Received UDP message queue item */
-	SENSOR_MESSAGE,			/**< Sensor status message */
+	SENSOR_MESSAGE,			/**< Sensor status change message */
 	ACTUATOR_MESSAGE,		/**< Actuator request message */
-	RESTART_MESSAGE,		/**< Device restart messa */
+	RESTART_MESSAGE,		/**< Device restart request message */
 	WIFI_MESSAGE,			/**< Wifi status change notification */
-	TIMING_PARAMETER,
-	PENDING_HTTP_REQ,
-	RULES_MESSAGE,
+	TIMING_PARAMETER,		/**< Timing table change request */
+	RULES_MESSAGE,			/**< Network rule table change request */
 	N_QUEUE_MSG_TYPES		/**< Queue item types count */
 } teMemQueueMessageType;
 

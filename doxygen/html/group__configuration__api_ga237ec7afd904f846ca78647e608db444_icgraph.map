@@ -1,0 +1,11 @@
+<map id="psConfigurationGetRuleTable" name="psConfigurationGetRuleTable">
+<area shape="rect" id="node2" href="$behavior__task_8c.html#ac759b1f07b696c86659187e426ed5199" title="prv_vBehaviorHandleEvent" alt="" coords="243,5,413,32"/>
+<area shape="rect" id="node5" href="$group__configuration__api.html#ga757e748fda16fc9fd06ed4d25435d65f" title="Reads the device configuration from the file system. " alt="" coords="480,56,612,83"/>
+<area shape="rect" id="node6" href="$group__webserver__handlers.html#ga97fb70ff32987a545ddb0fa1b48a71fb" title="Network rules request handler. " alt="" coords="251,107,405,133"/>
+<area shape="rect" id="node3" href="$group__behaviourtask.html#ga6e927596a963d703a9585646aabd5715" title="Behavior task main body. " alt="" coords="714,5,818,32"/>
+<area shape="rect" id="node4" href="$user__main_8c.html#aa8253cd89ed4b268472ed62f4f2074ae" title="user_init" alt="" coords="1239,56,1309,83"/>
+<area shape="rect" id="node7" href="$webserver_8c.html#ae01716b39902b06ff46d43234a714e79" title="prv_pcHandleCGIRequest" alt="" coords="461,107,631,133"/>
+<area shape="rect" id="node8" href="$group__webserver__api.html#ga2733479e601491ec530f82a0f931574e" title="reads the decoded request data, " alt="" coords="679,107,853,133"/>
+<area shape="rect" id="node9" href="$group__webserver__api.html#ga4ecf96482d61304c592c5976b39f33c0" title="HTTP request handler. " alt="" coords="901,107,1020,133"/>
+<area shape="rect" id="node10" href="$group__webserver__api.html#gac0d8d120135c6ff53f5ebe88810f89fe" title="vSetupWebserver" alt="" coords="1068,107,1191,133"/>
+</map>

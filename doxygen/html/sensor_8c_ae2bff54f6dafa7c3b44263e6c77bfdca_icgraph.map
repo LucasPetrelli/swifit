@@ -1,0 +1,5 @@
+<map id="vSensorHandlerIsr" name="vSensorHandlerIsr">
+<area shape="rect" id="node2" href="$sensor_8h.html#ae67dae41e3e2e9eb6b530da5910e3d0b" title="vSensorInitPlatform" alt="" coords="180,5,313,32"/>
+<area shape="rect" id="node3" href="$sensor__task_8h.html#a53a50e3204bbf93e9a98c4400f3a9d4b" title="vSensorTask" alt="" coords="361,5,457,32"/>
+<area shape="rect" id="node4" href="$user__main_8c.html#aa8253cd89ed4b268472ed62f4f2074ae" title="user_init" alt="" coords="505,5,576,32"/>
+</map>

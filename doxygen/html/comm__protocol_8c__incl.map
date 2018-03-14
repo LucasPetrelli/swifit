@@ -1,0 +1,47 @@
+<map id="module/protocol/comm_protocol.c" name="module/protocol/comm_protocol.c">
+<area shape="rect" id="node2" href="$comm__protocol_8h.html" title="comm_protocol.h" alt="" coords="735,95,858,121"/>
+<area shape="rect" id="node22" href="$webserver_8h.html" title="webserver.h" alt="" coords="2276,169,2367,196"/>
+<area shape="rect" id="node50" href="$devices_8h.html" title="devices.h" alt="" coords="977,95,1053,121"/>
+<area shape="rect" id="node3" href="$protocol__types_8h.html" title="protocol_types.h" alt="" coords="808,169,926,196"/>
+<area shape="rect" id="node7" href="$devices__types_8h.html" title="devices_types.h" alt="" coords="932,244,1047,271"/>
+<area shape="rect" id="node10" href="$sensor__types_8h.html" title="sensor_types.h" alt="" coords="604,319,714,345"/>
+<area shape="rect" id="node14" href="$udp__adapter_8h.html" title="Adapters for the ESP8266 SDK&#39;s UDP feature. " alt="" coords="260,319,364,345"/>
+<area shape="rect" id="node19" href="$actuator__task_8h.html" title="actuator_task.h" alt="" coords="671,169,783,196"/>
+<area shape="rect" id="node4" href="$basictypes_8h.html" title="basictypes.h" alt="" coords="832,468,928,495"/>
+<area shape="rect" id="node5" href="$exceptions_8h.html" title="Definitions of exception type and macros for handling. " alt="" coords="790,543,886,569"/>
+<area shape="rect" id="node6" href="$debug__adapter_8h.html" title="Debug and logging tools implementation. " alt="" coords="864,617,982,644"/>
+<area shape="rect" id="node8" href="$actuator__types_8h.html" title="actuator_types.h" alt="" coords="738,319,857,345"/>
+<area shape="rect" id="node12" href="$configuration__types_8h.html" title="configuration_types.h" alt="" coords="944,393,1089,420"/>
+<area shape="rect" id="node13" href="$timing__types_8h.html" title="timing_types.h" alt="" coords="932,319,1039,345"/>
+<area shape="rect" id="node9" href="$gpio__adapter_8h.html" title="ESP8266 GPIO adapter implementation header file. " alt="" coords="711,393,818,420"/>
+<area shape="rect" id="node15" href="$udp__types_8h.html" title="udp_types.h" alt="" coords="210,393,303,420"/>
+<area shape="rect" id="node16" href="$mem__types_8h.html" title="mem_types.h" alt="" coords="434,393,535,420"/>
+<area shape="rect" id="node20" href="$actuator_8h.html" title="actuator.h" alt="" coords="778,244,858,271"/>
+<area shape="rect" id="node21" href="$actuator__task__types_8h.html" title="actuator_task_types.h" alt="" coords="602,244,753,271"/>
+<area shape="rect" id="node23" href="$webserver__types_8h.html" title="webserver_types.h" alt="" coords="1072,244,1201,271"/>
+<area shape="rect" id="node25" href="$handler__types_8h.html" title="handler_types.h" alt="" coords="3079,244,3194,271"/>
+<area shape="rect" id="node36" href="$welcome__config_8html_8h.html" title="welcome_config.html.h" alt="" coords="3695,244,3850,271"/>
+<area shape="rect" id="node37" href="$controller_8js_8h.html" title="controller.js.h" alt="" coords="3874,244,3974,271"/>
+<area shape="rect" id="node38" href="$homepage_8html_8h.html" title="homepage.html.h" alt="" coords="1226,244,1348,271"/>
+<area shape="rect" id="node39" href="$homepage_8css_8h.html" title="homepage.css.h" alt="" coords="1373,244,1492,271"/>
+<area shape="rect" id="node40" href="$homepage_8js_8h.html" title="homepage.js.h" alt="" coords="1516,244,1623,271"/>
+<area shape="rect" id="node41" href="$devices__page_8js_8h.html" title="devices_page.js.h" alt="" coords="1647,244,1772,271"/>
+<area shape="rect" id="node42" href="$devices__page__template_8js_8h.html" title="devices_page_template.js.h" alt="" coords="1797,244,1980,271"/>
+<area shape="rect" id="node43" href="$timing__page_8js_8h.html" title="timing_page.js.h" alt="" coords="2004,244,2122,271"/>
+<area shape="rect" id="node44" href="$timing__page__template_8js_8h.html" title="timing_page_template.js.h" alt="" coords="2146,244,2321,271"/>
+<area shape="rect" id="node45" href="$timing__page_8css_8h.html" title="timing_page.css.h" alt="" coords="2346,244,2474,271"/>
+<area shape="rect" id="node46" href="$program__page_8js_8h.html" title="program_page.js.h" alt="" coords="2498,244,2628,271"/>
+<area shape="rect" id="node47" href="$program__page__template_8js_8h.html" title="program_page_template.js.h" alt="" coords="2652,244,2839,271"/>
+<area shape="rect" id="node48" href="$program__page_8css_8h.html" title="program_page.css.h" alt="" coords="2864,244,3004,271"/>
+<area shape="rect" id="node49" href="$http__adapter_8h.html" title="http_adapter.h" alt="" coords="3645,543,3750,569"/>
+<area shape="rect" id="node24" href="$http__ok_8h.html" title="http_ok.h" alt="" coords="1688,319,1764,345"/>
+<area shape="rect" id="node27" href="$config__wlan_8h.html" title="config_wlan.h" alt="" coords="3086,319,3186,345"/>
+<area shape="rect" id="node28" href="$status_8h.html" title="status.h" alt="" coords="3211,319,3280,345"/>
+<area shape="rect" id="node29" href="$config__message_8h.html" title="config_message.h" alt="" coords="3305,319,3432,345"/>
+<area shape="rect" id="node30" href="$device__restart_8h.html" title="device_restart.h" alt="" coords="3456,319,3569,345"/>
+<area shape="rect" id="node31" href="$devices__list_8h.html" title="devices_list.h" alt="" coords="2409,319,2509,345"/>
+<area shape="rect" id="node32" href="$issue__action_8h.html" title="issue_action.h" alt="" coords="2534,319,2640,345"/>
+<area shape="rect" id="node33" href="$change__name_8h.html" title="change_name.h" alt="" coords="2664,319,2779,345"/>
+<area shape="rect" id="node34" href="$devices__timing_8h.html" title="devices_timing.h" alt="" coords="2804,319,2922,345"/>
+<area shape="rect" id="node35" href="$update__timing_8h.html" title="update_timing.h" alt="" coords="2947,319,3062,345"/>
+</map>

@@ -1,0 +1,21 @@
+<map id="module/devices/devices.c" name="module/devices/devices.c">
+<area shape="rect" id="node2" href="$devices_8h.html" title="devices.h" alt="" coords="325,80,401,107"/>
+<area shape="rect" id="node10" href="$product__config_8h.html" title="../../projconf/product\l_config.h" alt="" coords="291,603,429,644"/>
+<area shape="rect" id="node22" href="$wifi__adapter_8h.html" title="wifi_adapter.h" alt="" coords="941,229,1043,256"/>
+<area shape="rect" id="node27" href="$system__adapter_8h.html" title="ESP8266 System adapter implementation header file. " alt="" coords="1369,229,1495,256"/>
+<area shape="rect" id="node30" href="$configuration_8h.html" title="configuration.h" alt="" coords="193,80,300,107"/>
+<area shape="rect" id="node3" href="$devices__types_8h.html" title="devices_types.h" alt="" coords="300,155,415,181"/>
+<area shape="rect" id="node4" href="$actuator__types_8h.html" title="actuator_types.h" alt="" coords="395,229,514,256"/>
+<area shape="rect" id="node9" href="$basictypes_8h.html" title="basictypes.h" alt="" coords="451,379,547,405"/>
+<area shape="rect" id="node16" href="$sensor__types_8h.html" title="sensor_types.h" alt="" coords="538,229,649,256"/>
+<area shape="rect" id="node18" href="$configuration__types_8h.html" title="configuration_types.h" alt="" coords="174,229,319,256"/>
+<area shape="rect" id="node19" href="$timing__types_8h.html" title="timing_types.h" alt="" coords="43,229,149,256"/>
+<area shape="rect" id="node5" href="$gpio__adapter_8h.html" title="ESP8266 GPIO adapter implementation header file. " alt="" coords="445,304,552,331"/>
+<area shape="rect" id="node6" href="$gpio_8h.html" title="gpio.h" alt="" coords="931,379,989,405"/>
+<area shape="rect" id="node12" href="$exceptions_8h.html" title="Definitions of exception type and macros for handling. " alt="" coords="603,453,699,480"/>
+<area shape="rect" id="node13" href="$debug__adapter_8h.html" title="Debug and logging tools implementation. " alt="" coords="591,528,710,555"/>
+<area shape="rect" id="node20" href="$u__time_8h.html" title="u_time.h" alt="" coords="60,304,132,331"/>
+<area shape="rect" id="node23" href="$wifi__types_8h.html" title="wifi_types.h" alt="" coords="765,304,856,331"/>
+<area shape="rect" id="node26" href="$espconn__mdns_8h.html" title="espconn_mdns.h" alt="" coords="931,304,1053,331"/>
+<area shape="rect" id="node29" href="$uart_8h.html" title="uart.h" alt="" coords="1577,304,1631,331"/>
+</map>

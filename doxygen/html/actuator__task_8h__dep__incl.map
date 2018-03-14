@@ -1,0 +1,9 @@
+<map id="application/actuator_task/actuator_task.h" name="application/actuator_task/actuator_task.h">
+<area shape="rect" id="node2" href="$actuator__task_8c.html" title="application/actuator\l_task/actuator_task.c" alt="" coords="5,95,153,136"/>
+<area shape="rect" id="node3" href="$platform__task_8c.html" title="application/platform\l_task/platform_task.c" alt="" coords="178,95,325,136"/>
+<area shape="rect" id="node4" href="$comm__protocol_8h.html" title="module/protocol/comm\l_protocol.h" alt="" coords="349,95,503,136"/>
+<area shape="rect" id="node7" href="$issue__action_8c.html" title="module/webserver/handlers\l/issue_action.c" alt="" coords="527,95,706,136"/>
+<area shape="rect" id="node8" href="$user__main_8c.html" title="user_main.c" alt="" coords="730,102,823,129"/>
+<area shape="rect" id="node5" href="$behavior__task_8c.html" title="application/behavior\l_task/behavior_task.c" alt="" coords="264,184,412,225"/>
+<area shape="rect" id="node6" href="$comm__protocol_8c.html" title="module/protocol/comm\l_protocol.c" alt="" coords="437,184,591,225"/>
+</map>

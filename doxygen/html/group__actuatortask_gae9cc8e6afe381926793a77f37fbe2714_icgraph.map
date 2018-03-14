@@ -1,0 +1,18 @@
+<map id="psActuatorMountRequest" name="psActuatorMountRequest">
+<area shape="rect" id="node2" href="$group__actuatortask.html#gaebc7a8dd2ef10a5e08f6974ea7bf949d" title="Create and send a deactivate request to the actuator task. " alt="" coords="233,107,383,133"/>
+<area shape="rect" id="node10" href="$group__actuatortask.html#gae7ebef11b116e3a6e74d8810bc4e6553" title="Create and send an activate request to the actuator task. " alt="" coords="226,157,390,184"/>
+<area shape="rect" id="node11" href="$group__actuatortask.html#ga9356980eaea22b5fa4992a4c6300b537" title="Create and send a toggle fast request to the actuator task. " alt="" coords="224,56,392,83"/>
+<area shape="rect" id="node12" href="$group__actuatortask.html#ga675bd09557bc4c40115a2e4e399698a4" title="Create and send a toggle slow request to the actuator task. " alt="" coords="223,5,393,32"/>
+<area shape="rect" id="node13" href="$group__webserver__handlers.html#ga00283f1275bc672a133df6053c55566a" title="Issue action post handler. " alt="" coords="237,220,379,247"/>
+<area shape="rect" id="node3" href="$behavior__task_8c.html#ac759b1f07b696c86659187e426ed5199" title="prv_vBehaviorHandleEvent" alt="" coords="441,144,612,171"/>
+<area shape="rect" id="node6" href="$group__platformtask.html#gabcc74762fe22e35766adf0708045c43b" title="Sets the platform LEDs accordingly to the current mode. " alt="" coords="463,43,590,69"/>
+<area shape="rect" id="node8" href="$group__platformtask.html#ga2b74c911f62cb000741db7385852bc1f" title="Sets the platform red LED accordingly to the current relay state. " alt="" coords="450,93,603,120"/>
+<area shape="rect" id="node9" href="$group__timekeeper.html#gafb56c2057983091423dbb47212398a63" title="Timekeeper task body. " alt="" coords="465,195,588,221"/>
+<area shape="rect" id="node4" href="$group__behaviourtask.html#ga6e927596a963d703a9585646aabd5715" title="Behavior task main body. " alt="" coords="890,144,994,171"/>
+<area shape="rect" id="node5" href="$user__main_8c.html#aa8253cd89ed4b268472ed62f4f2074ae" title="user_init" alt="" coords="1220,169,1291,196"/>
+<area shape="rect" id="node7" href="$group__platformtask.html#gaae651a397c2c969b5571f6b9294669fd" title="Platform task main body. " alt="" coords="696,93,799,120"/>
+<area shape="rect" id="node14" href="$webserver_8c.html#ae01716b39902b06ff46d43234a714e79" title="prv_pcHandleCGIRequest" alt="" coords="442,245,611,272"/>
+<area shape="rect" id="node15" href="$group__webserver__api.html#ga2733479e601491ec530f82a0f931574e" title="reads the decoded request data, " alt="" coords="660,245,835,272"/>
+<area shape="rect" id="node16" href="$group__webserver__api.html#ga4ecf96482d61304c592c5976b39f33c0" title="HTTP request handler. " alt="" coords="883,245,1001,272"/>
+<area shape="rect" id="node17" href="$group__webserver__api.html#gac0d8d120135c6ff53f5ebe88810f89fe" title="vSetupWebserver" alt="" coords="1049,245,1172,272"/>
+</map>

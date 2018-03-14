@@ -1,0 +1,5 @@
+<map id="eWifiWaitToBeConnected" name="eWifiWaitToBeConnected">
+<area shape="rect" id="node2" href="$group__wifi.html#ga1d249d498b1f8e35f338dee64d068ad5" title="vTaskWifi" alt="" coords="254,5,331,32"/>
+<area shape="rect" id="node4" href="$testsocket_8h.html#ab0a523aead0e843a04545443eb2066cb" title="vTestSocketRxTask" alt="" coords="224,56,361,83"/>
+<area shape="rect" id="node3" href="$user__main_8c.html#aa8253cd89ed4b268472ed62f4f2074ae" title="user_init" alt="" coords="409,5,480,32"/>
+</map>

@@ -1,0 +1,33 @@
+<map id="module/sensor/sensor_types.h" name="module/sensor/sensor_types.h">
+<area shape="rect" id="node2" href="$behavior__task_8c.html" title="application/behavior\l_task/behavior_task.c" alt="" coords="1274,363,1422,404"/>
+<area shape="rect" id="node3" href="$devices__types_8h.html" title="module/devices/devices\l_types.h" alt="" coords="1969,95,2127,136"/>
+<area shape="rect" id="node25" href="$comm__protocol_8h.html" title="module/protocol/comm\l_protocol.h" alt="" coords="2223,184,2377,225"/>
+<area shape="rect" id="node29" href="$sensor_8h.html" title="module/sensor/sensor.h" alt="" coords="2825,281,2986,307"/>
+<area shape="rect" id="node4" href="$behavior__task__types_8h.html" title="application/behavior\l_task/behavior_task_types.h" alt="" coords="1911,184,2097,225"/>
+<area shape="rect" id="node10" href="$configuration_8h.html" title="module/configuration\l/configuration.h" alt="" coords="887,273,1028,315"/>
+<area shape="rect" id="node21" href="$devices_8h.html" title="module/devices/devices.h" alt="" coords="2074,281,2243,307"/>
+<area shape="rect" id="node26" href="$timing_8c.html" title="module/timing/timing.c" alt="" coords="1530,191,1683,218"/>
+<area shape="rect" id="node27" href="$update__timing_8c.html" title="module/webserver/handlers\l/update_timing.c" alt="" coords="1708,184,1887,225"/>
+<area shape="rect" id="node28" href="$webserver_8h.html" title="module/webserver/webserver.h" alt="" coords="2460,281,2657,307"/>
+<area shape="rect" id="node5" href="$behavior__task_8h.html" title="application/behavior\l_task/behavior_task.h" alt="" coords="1793,273,1941,315"/>
+<area shape="rect" id="node6" href="$devices__list_8c.html" title="module/webserver/handlers\l/devices_list.c" alt="" coords="1895,363,2073,404"/>
+<area shape="rect" id="node7" href="$request__rules_8c.html" title="module/webserver/handlers\l/request_rules.c" alt="" coords="1692,363,1871,404"/>
+<area shape="rect" id="node8" href="$update__rules_8c.html" title="module/webserver/handlers\l/update_rules.c" alt="" coords="2097,363,2276,404"/>
+<area shape="rect" id="node9" href="$user__main_8c.html" title="user_main.c" alt="" coords="1413,459,1507,486"/>
+<area shape="rect" id="node11" href="$platform__task_8h.html" title="application/platform\l_task/platform_task.h" alt="" coords="116,363,263,404"/>
+<area shape="rect" id="node12" href="$platform__task_8c.html" title="application/platform\l_task/platform_task.c" alt="" coords="5,452,152,493"/>
+<area shape="rect" id="node14" href="$wifi__task_8c.html" title="application/wifi_task\l/wifi_task.c" alt="" coords="337,363,476,404"/>
+<area shape="rect" id="node15" href="$actuator_8c.html" title="module/actuator/actuator.c" alt="" coords="501,370,678,397"/>
+<area shape="rect" id="node16" href="$configuration_8c.html" title="module/configuration\l/configuration.c" alt="" coords="703,363,844,404"/>
+<area shape="rect" id="node17" href="$devices_8c.html" title="module/devices/devices.c" alt="" coords="1498,370,1667,397"/>
+<area shape="rect" id="node18" href="$config__message_8c.html" title="module/webserver/handlers\l/config_message.c" alt="" coords="868,363,1047,404"/>
+<area shape="rect" id="node19" href="$config__wlan_8c.html" title="module/webserver/handlers\l/config_wlan.c" alt="" coords="1071,363,1249,404"/>
+<area shape="rect" id="node20" href="$webserver_8c.html" title="module/webserver/webserver.c" alt="" coords="2489,370,2687,397"/>
+<area shape="rect" id="node13" href="$device__restart_8c.html" title="module/webserver/handlers\l/device_restart.c" alt="" coords="176,452,355,493"/>
+<area shape="rect" id="node22" href="$timekeeper__task_8c.html" title="application/timekeeper\l_task/timekeeper_task.c" alt="" coords="2300,363,2465,404"/>
+<area shape="rect" id="node23" href="$comm__protocol_8c.html" title="module/protocol/comm\l_protocol.c" alt="" coords="2964,363,3119,404"/>
+<area shape="rect" id="node24" href="$devices__timing_8c.html" title="module/webserver/handlers\l/devices_timing.c" alt="" coords="2711,363,2889,404"/>
+<area shape="rect" id="node30" href="$sensor__task_8h.html" title="application/sensor\l_task/sensor_task.h" alt="" coords="3329,363,3469,404"/>
+<area shape="rect" id="node32" href="$sensor_8c.html" title="module/sensor/sensor.c" alt="" coords="3143,370,3305,397"/>
+<area shape="rect" id="node31" href="$sensor__task_8c.html" title="application/sensor\l_task/sensor_task.c" alt="" coords="3329,452,3469,493"/>
+</map>

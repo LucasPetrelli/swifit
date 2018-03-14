@@ -1,0 +1,45 @@
+<map id="module/webserver/webserver.c" name="module/webserver/webserver.c">
+<area shape="rect" id="node4" href="$webserver_8h.html" title="webserver.h" alt="" coords="1961,80,2051,107"/>
+<area shape="rect" id="node44" href="$configuration_8h.html" title="configuration.h" alt="" coords="426,80,533,107"/>
+<area shape="rect" id="node45" href="$actuator_8h.html" title="actuator.h" alt="" coords="221,80,301,107"/>
+<area shape="rect" id="node46" href="$sensor_8h.html" title="sensor.h" alt="" coords="557,80,629,107"/>
+<area shape="rect" id="node47" href="$devices_8h.html" title="devices.h" alt="" coords="325,80,401,107"/>
+<area shape="rect" id="node48" href="$timing_8h.html" title="timing.h" alt="" coords="629,155,697,181"/>
+<area shape="rect" id="node50" href="$os__config_8h.html" title="os_config.h" alt="" coords="3370,80,3458,107"/>
+<area shape="rect" id="node5" href="$webserver__types_8h.html" title="webserver_types.h" alt="" coords="1584,155,1713,181"/>
+<area shape="rect" id="node8" href="$debug__adapter_8h.html" title="Debug and logging tools implementation. " alt="" coords="723,379,841,405"/>
+<area shape="rect" id="node10" href="$handler__types_8h.html" title="handler_types.h" alt="" coords="2134,155,2249,181"/>
+<area shape="rect" id="node23" href="$welcome__config_8html_8h.html" title="welcome_config.html.h" alt="" coords="1822,304,1977,331"/>
+<area shape="rect" id="node24" href="$controller_8js_8h.html" title="controller.js.h" alt="" coords="2441,304,2541,331"/>
+<area shape="rect" id="node25" href="$homepage_8html_8h.html" title="homepage.html.h" alt="" coords="2566,304,2689,331"/>
+<area shape="rect" id="node26" href="$homepage_8css_8h.html" title="homepage.css.h" alt="" coords="2713,304,2832,331"/>
+<area shape="rect" id="node27" href="$homepage_8js_8h.html" title="homepage.js.h" alt="" coords="2857,304,2963,331"/>
+<area shape="rect" id="node28" href="$devices__page_8js_8h.html" title="devices_page.js.h" alt="" coords="2987,304,3113,331"/>
+<area shape="rect" id="node29" href="$devices__page__template_8js_8h.html" title="devices_page_template.js.h" alt="" coords="3137,304,3320,331"/>
+<area shape="rect" id="node30" href="$timing__page_8js_8h.html" title="timing_page.js.h" alt="" coords="3345,304,3462,331"/>
+<area shape="rect" id="node31" href="$timing__page__template_8js_8h.html" title="timing_page_template.js.h" alt="" coords="3487,304,3661,331"/>
+<area shape="rect" id="node32" href="$timing__page_8css_8h.html" title="timing_page.css.h" alt="" coords="773,155,901,181"/>
+<area shape="rect" id="node33" href="$program__page_8js_8h.html" title="program_page.js.h" alt="" coords="925,155,1055,181"/>
+<area shape="rect" id="node34" href="$program__page__template_8js_8h.html" title="program_page_template.js.h" alt="" coords="1079,155,1266,181"/>
+<area shape="rect" id="node35" href="$program__page_8css_8h.html" title="program_page.css.h" alt="" coords="1291,155,1431,181"/>
+<area shape="rect" id="node36" href="$http__adapter_8h.html" title="http_adapter.h" alt="" coords="1455,155,1560,181"/>
+<area shape="rect" id="node39" href="$devices__types_8h.html" title="devices_types.h" alt="" coords="334,155,449,181"/>
+<area shape="rect" id="node6" href="$basictypes_8h.html" title="basictypes.h" alt="" coords="642,304,738,331"/>
+<area shape="rect" id="node9" href="$http__ok_8h.html" title="http_ok.h" alt="" coords="1315,229,1391,256"/>
+<area shape="rect" id="node12" href="$config__wlan_8h.html" title="config_wlan.h" alt="" coords="2336,229,2436,256"/>
+<area shape="rect" id="node13" href="$status_8h.html" title="status.h" alt="" coords="2461,229,2530,256"/>
+<area shape="rect" id="node14" href="$config__message_8h.html" title="config_message.h" alt="" coords="2555,229,2681,256"/>
+<area shape="rect" id="node15" href="$device__restart_8h.html" title="device_restart.h" alt="" coords="2705,229,2819,256"/>
+<area shape="rect" id="node16" href="$devices__list_8h.html" title="devices_list.h" alt="" coords="2843,229,2943,256"/>
+<area shape="rect" id="node17" href="$issue__action_8h.html" title="issue_action.h" alt="" coords="1517,229,1623,256"/>
+<area shape="rect" id="node18" href="$change__name_8h.html" title="change_name.h" alt="" coords="1647,229,1762,256"/>
+<area shape="rect" id="node19" href="$devices__timing_8h.html" title="devices_timing.h" alt="" coords="1787,229,1905,256"/>
+<area shape="rect" id="node20" href="$update__timing_8h.html" title="update_timing.h" alt="" coords="1930,229,2045,256"/>
+<area shape="rect" id="node21" href="$request__rules_8h.html" title="request_rules.h" alt="" coords="2069,229,2180,256"/>
+<area shape="rect" id="node22" href="$update__rules_8h.html" title="update_rules.h" alt="" coords="2205,229,2311,256"/>
+<area shape="rect" id="node40" href="$actuator__types_8h.html" title="actuator_types.h" alt="" coords="5,229,124,256"/>
+<area shape="rect" id="node41" href="$sensor__types_8h.html" title="sensor_types.h" alt="" coords="369,229,480,256"/>
+<area shape="rect" id="node42" href="$configuration__types_8h.html" title="configuration_types.h" alt="" coords="148,229,293,256"/>
+<area shape="rect" id="node43" href="$timing__types_8h.html" title="timing_types.h" alt="" coords="505,229,611,256"/>
+<area shape="rect" id="node49" href="$sntp__adapter_8h.html" title="sntp_adapter.h" alt="" coords="636,229,744,256"/>
+</map>

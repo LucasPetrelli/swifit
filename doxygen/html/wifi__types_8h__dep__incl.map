@@ -1,0 +1,11 @@
+<map id="adapter/wifi_adapter/wifi_types.h" name="adapter/wifi_adapter/wifi_types.h">
+<area shape="rect" id="node2" href="$wifi__adapter_8h.html" title="adapter/wifi_adapter\l/wifi_adapter.h" alt="" coords="275,95,412,136"/>
+<area shape="rect" id="node9" href="$behavior__task_8c.html" title="application/behavior\l_task/behavior_task.c" alt="" coords="436,95,584,136"/>
+<area shape="rect" id="node10" href="$timekeeper__task_8c.html" title="application/timekeeper\l_task/timekeeper_task.c" alt="" coords="609,95,774,136"/>
+<area shape="rect" id="node3" href="$wifi__adapter_8c.html" title="adapter/wifi_adapter\l/wifi_adapter.c" alt="" coords="5,184,143,225"/>
+<area shape="rect" id="node4" href="$wifi__task_8h.html" title="Wifi task. " alt="" coords="167,184,306,225"/>
+<area shape="rect" id="node6" href="$user__main_8c.html" title="user_main.c" alt="" coords="297,281,390,307"/>
+<area shape="rect" id="node7" href="$devices_8c.html" title="module/devices/devices.c" alt="" coords="381,191,551,218"/>
+<area shape="rect" id="node8" href="$testsocket_8c.html" title="testing/testsocket\l/testsocket.c" alt="" coords="575,184,701,225"/>
+<area shape="rect" id="node5" href="$wifi__task_8c.html" title="application/wifi_task\l/wifi_task.c" alt="" coords="134,273,273,315"/>
+</map>

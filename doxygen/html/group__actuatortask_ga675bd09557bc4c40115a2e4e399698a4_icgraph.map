@@ -1,0 +1,5 @@
+<map id="vActuatorTaskToggleSlow" name="vActuatorTaskToggleSlow">
+<area shape="rect" id="node2" href="$group__platformtask.html#gabcc74762fe22e35766adf0708045c43b" title="Sets the platform LEDs accordingly to the current mode. " alt="" coords="224,5,351,32"/>
+<area shape="rect" id="node3" href="$group__platformtask.html#gaae651a397c2c969b5571f6b9294669fd" title="Platform task main body. " alt="" coords="399,5,501,32"/>
+<area shape="rect" id="node4" href="$user__main_8c.html#aa8253cd89ed4b268472ed62f4f2074ae" title="user_init" alt="" coords="549,5,620,32"/>
+</map>

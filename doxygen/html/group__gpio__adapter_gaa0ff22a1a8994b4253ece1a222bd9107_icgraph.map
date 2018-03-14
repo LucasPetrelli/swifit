@@ -1,0 +1,12 @@
+<map id="vGPIOWrite" name="vGPIOWrite">
+<area shape="rect" id="node2" href="$group__actuator__api.html#ga5c309ebdc17502d8b7c24bf6e0860a55" title="Activates an actuator. " alt="" coords="151,107,273,133"/>
+<area shape="rect" id="node8" href="$group__actuator__api.html#ga621c765754c322a0db15b59d9d943d17" title="Deactivates an actuator. " alt="" coords="144,56,280,83"/>
+<area shape="rect" id="node10" href="$testgpiotask_8c.html#a6af6db9f6b8209d84f200606b26314d5" title="vHandler" alt="" coords="177,183,247,209"/>
+<area shape="rect" id="node3" href="$group__actuator__api.html#ga4bbdf977fcf9c73e951ea7693a59436e" title="Initialization of the platform peripherals related to the actuators. " alt="" coords="339,107,480,133"/>
+<area shape="rect" id="node6" href="$group__actuator__api.html#gaf0f5c6cdbbbeb2a221f9f820b9c5326d" title="Activates an actuator. " alt="" coords="335,157,483,184"/>
+<area shape="rect" id="node7" href="$group__actuator__api.html#gaa5295cdd706da9fb6db449fd86b3242a" title="Toggle the state of an actuator. " alt="" coords="339,56,479,83"/>
+<area shape="rect" id="node4" href="$group__actuatortask.html#gad4a8388085842d3f968095590c1b01dc" title="Actuator task main body. " alt="" coords="539,81,643,108"/>
+<area shape="rect" id="node5" href="$user__main_8c.html#aa8253cd89ed4b268472ed62f4f2074ae" title="user_init" alt="" coords="691,81,761,108"/>
+<area shape="rect" id="node9" href="$group__actuator__api.html#ga65d0293fb564b1b669a82ff82bf574af" title="Deactivates an actuator. " alt="" coords="328,5,491,32"/>
+<area shape="rect" id="node11" href="$testgpiotask_8h.html#a7c1cccf00762168875c0dc439954b7a9" title="vTaskTestGpio" alt="" coords="356,208,463,235"/>
+</map>

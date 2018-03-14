@@ -1,0 +1,5 @@
+<map id="uart1_write_char" name="uart1_write_char">
+<area shape="rect" id="node2" href="$uart_8c.html#acf1e56e35d340a6cbdf171ed7cfd7a45" title="uart_task" alt="" coords="200,5,276,32"/>
+<area shape="rect" id="node3" href="$group___u_a_r_t___driver___a_p_is.html#gad7d853939e394a209f41b98e99778cc2" title="Config from which serial output printf function. " alt="" coords="171,56,305,83"/>
+<area shape="rect" id="node4" href="$group___u_a_r_t___driver___a_p_is.html#gaf76603d6634a53a0f678ef6451fe2b4e" title="An example illustrates how to configure the serial port. " alt="" coords="353,56,452,83"/>
+</map>

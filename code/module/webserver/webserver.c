@@ -36,7 +36,7 @@ xTaskHandle vSetupWebserver()
 
 void* vRequestHandler(char* zRequest)
 {
-	//LOG_WEB("New request!\n%s", zRequest);
+	LOG_WEB("New request!\n%s", zRequest);
 
 	// Parses the raw request into a structure with data split
     tsHttpRequest sParsedRequest = sGetRequest(zRequest);
